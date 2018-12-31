@@ -68,7 +68,7 @@ gem 'sidekiq'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'stripe', '~> 4.4'
-
+gem 'figaro'
 
 group :development, :test do
   gem 'better_errors'
