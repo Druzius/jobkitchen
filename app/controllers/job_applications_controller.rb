@@ -4,7 +4,7 @@ class JobApplicationsController < ApplicationController
   # end
 
   def new
-
+    @job_applications = JobApplication.new
   end
 
   def create
@@ -14,6 +14,5 @@ class JobApplicationsController < ApplicationController
   def destroy
 
   end
-
 
 end
