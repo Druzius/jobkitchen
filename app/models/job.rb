@@ -4,11 +4,5 @@ class Job < ApplicationRecord
 
   JOB_TYPES = ["Full-time", "Part-time", "Contract"]
 
-  validates :title, presence: true
-  validates :apply_url, presence: true
-  validates :job_type, presence: true
-  validates :job_author, presence: true
-  validates :location, presence: true
-  validates :avatar, presence: true
-  validates :description, presence: true
+  validates :title, :apply_url, :job_type, :job_author, :location, :avatar, :description, presence: true
 end
