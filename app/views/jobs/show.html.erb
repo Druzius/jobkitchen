@@ -9,7 +9,7 @@
     <div class="content text-serif f4">
       <%= @job.description.html_safe %>
     </div>
-    <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-large is-fullwidth is-link" %>
+    <%= link_to 'Apply to this job', new_job_job_application_path(@job.id), class:"button is-rounded is-large is-fullwidth is-link" %>
   </div>
   <div class="column is-2 is-offset-1 has-text-centered">
     <% if !@job.avatar.file.nil? %>
@@ -21,7 +21,7 @@
         <i class="fa fa-globe"></i>
       <% end %>
     </div>
-    <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-fullwidth is-link" %>
+    <%= link_to 'Apply to this job', new_job_job_application_path(@job.id), class:"button is-rounded is-fullwidth is-link" %>
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>
