@@ -5,14 +5,14 @@ class JobApplicationsController < ApplicationController
 
   def new
     @job = Job.find(params[:job_id])
-    @job_applications = JobApplication.new
+    @job_application = JobApplication.new
   end
 
   def create
     @job = Job.find(params[:job_id])
-    @job_applications = JobApplication.new(job_application_params)
-    @job_applications.user = current_user
-    if @job_applications.save!
+    @job_application = JobApplication.new(job_application_params)
+    @job_application.user = current_user
+    if @job_application.save!
       redirect_to jobs_path
     else
       render :new
@@ -20,7 +20,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def destroy
-    @job_applications = JobApplication.find(params[:id])
+    @job_application = JobApplication.find(params[:id])
     @job_application.destroy
     redirect_to jobs_path
   end
