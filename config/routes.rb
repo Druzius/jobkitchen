@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  mount ForestLiana::Engine => '/forest'
   resources :jobs do
     resources :job_applications
   end
