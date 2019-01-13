@@ -1,6 +1,6 @@
 <nav class="panel">
   <p class="text-uppercase has-text-gray pv1 f6">סנן לפי עבודה</p>
-  <ul class="mb3 pa0">
+  <ul class="filter mb3 pa0">
     <li class="pv1">
       <%= link_to 'כל התחומים', jobs_path, class: "button icon is-dark" %>
     </li>
@@ -20,7 +20,7 @@
       <%= link_to 'מקצועות שירות ואירוח', jobs_path(job_type: "מקצועות שירות ואירוח"), class: "button icon is-info" %>
     </li>
   </ul>
-  <p class="text-uppercase has-text-gray pv1 f6">filter by area</p>
+  <p class="text-uppercase has-text-gray pv1 f6">סנן לפי איזור</p>
   <ul class="filter mb3 pa0">
     <li class="pv1">
       <%= link_to 'תל אביב והמרכז', jobs_path(location: ""), class: "button icon is-dark" %>
