@@ -18,3 +18,17 @@
 ul.filter li {
   display:inline;
 }
+
+.card {
+  max-height: 400px;
+  margin-bottom: 15px;
+}
+.card-image {
+  width: 50%;
+}
+
+.postings {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}

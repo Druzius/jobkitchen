@@ -62,6 +62,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'bootstrap-sass', '~> 3.3'
+gem 'font-awesome-sass', '~> 5.0.9'
 gem 'bulma-rails'
 gem 'simple_form'
 gem 'sidekiq'
