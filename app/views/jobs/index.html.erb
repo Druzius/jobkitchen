@@ -26,11 +26,11 @@
             <ul class="pv3">
               <li class="inline-block f6">Admin controls: </li>
               <li class="inline-block">
-                <%= link_to 'View', job, class: 'button is-small is-link is-outlined' %></li>
+                <%= link_to 'ראה', job, class: 'button is-small is-link is-outlined' %></li>
               <li class="inline-block">
-                <%= link_to 'Edit', edit_job_path(job), class: 'button is-small is-link is-outlined' %></li>
+                <%= link_to 'ערוך', edit_job_path(job), class: 'button is-small is-link is-outlined' %></li>
               <li class="inline-block">
-                <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
+                <%= link_to 'מחק', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
             </ul>
           <% end %>
         </div>
