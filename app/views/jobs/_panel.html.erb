@@ -1,23 +1,44 @@
 <nav class="panel">
   <p class="text-uppercase has-text-gray pv1 f6">filter by job type</p>
-  <ul class="mb3 pa0">
+  <ul class="filter mb3 pa0">
     <li class="pv1">
-      <%= link_to 'כל התחומים', jobs_path, class: "button is-fullwidth is-dark" %>
+      <%= link_to 'כל התחומים', jobs_path, class: "button icon is-dark" %>
     </li>
     <li class="pv1">
-      <%= link_to 'ייעוץ, מכירות ושיווק', jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "button is-fullwidth is-primary" %>
+      <%= link_to 'ייעוץ, מכירות ושיווק', jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "button icon is-primary" %>
     </li>
     <li class="pv1">
-      <%= link_to 'מקצועות המטבח', jobs_path(job_type: "מקצועות המטבח"), class: "button is-fullwidth is-link" %>
+      <%= link_to 'מקצועות המטבח', jobs_path(job_type: "מקצועות המטבח"), class: "button icon is-link" %>
     </li>
     <li class="pv1">
-      <%= link_to 'מקצועות כלליים', jobs_path(job_type: "מקצועות כלליים"), class: "button is-fullwidth is-warning" %>
+      <%= link_to 'מקצועות כלליים', jobs_path(job_type: "מקצועות כלליים"), class: "button icon is-warning" %>
     </li>
     <li class="pv1">
-      <%= link_to 'מקצועות ניהול ומנהלה', jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "button is-fullwidth is-success" %>
+      <%= link_to 'מקצועות ניהול ומנהלה', jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "button icon is-success" %>
     </li>
     <li class="pv1">
-      <%= link_to 'מקצועות שירות ואירוח', jobs_path(job_type: "מקצועות שירות ואירוח"), class: "button is-fullwidth is-info" %>
+      <%= link_to 'מקצועות שירות ואירוח', jobs_path(job_type: "מקצועות שירות ואירוח"), class: "button icon is-info" %>
+    </li>
+  </ul>
+  <p class="text-uppercase has-text-gray pv1 f6">filter by area</p>
+  <ul class="filter mb3 pa0">
+    <li class="pv1">
+      <%= link_to 'תל אביב והמרכז', jobs_path(location: ""), class: "button icon is-dark" %>
+    </li>
+    <li class="pv1">
+      <%= link_to 'ירושלים וסביבותיה', jobs_path(job_type: ""), class: "button icon is-primary" %>
+    </li>
+    <li class="pv1">
+      <%= link_to 'הצפון, חיפה והקריות', jobs_path(job_type: ""), class: "button icon is-link" %>
+    </li>
+    <li class="pv1">
+      <%= link_to 'אזור השרון', jobs_path(job_type: ""), class: "button icon is-warning" %>
+    </li>
+    <li class="pv1">
+      <%= link_to 'השפלה ודרום הארץ', jobs_path(job_type: ""), class: "button icon is-success" %>
+    </li>
+    <li class="pv1">
+      <%= link_to 'אילת והערבה', jobs_path(job_type: ""), class: "button icon is-info" %>
     </li>
   </ul>
 </nav>
