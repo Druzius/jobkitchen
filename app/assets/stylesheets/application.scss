@@ -3,6 +3,13 @@
 @import "jobs";
 @import "stripe";
 
+
+h1, h2, h3, h4, h5, p, a, ul, li {
+
+direction: rtl;
+}
+
+
 .notification {
   border-radius: 0;
 }

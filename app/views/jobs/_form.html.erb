@@ -14,10 +14,10 @@
   <div class="columns">
     <div class="field column is-4">
       <div class="control">
-        <label class="label">Job Type:</label>
+        <label class="label">סוג עבודה:</label>
         <div class="control has-icons-left">
           <span class="select">
-            <%= f.input_field :job_type, collection: Job::JOB_TYPES, prompt: "Select a job type" %>
+            <%= f.input_field :job_type, collection: Job::JOB_TYPES, prompt: "סוג עבודה" %>
           </span>
           <span class="icon is-small is-left">
             <i class="fa fa-briefcase"></i>
@@ -28,7 +28,7 @@
     <div class="column">
       <div class="field">
         <div class="control">
-          <%= f.input :location, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'Examples: "Tel Aviv Area"' %>
+          <%= f.input :location, require: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'דוגמא: "תל אביב"' %>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
             <%= f.input :avatar, as: :file, required: false, input_html: { class:"file-input job-avatar" }, label: false, wrapper: false %>
             <span class="file-cta">
               <span class="file-icon"><i class="fa fa-upload"></i></span>
-              <span class="file-label">Choose a file…</span>
+              <span class="file-label">בחר קובץ…</span>
             </span>
           </label>
         </div>
