@@ -8,6 +8,8 @@ class JobsController < ApplicationController
 
     if(params.has_key?(:job_type))
       @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+    elsif(params.has_key?(:location))
+      @jobs = Job.where(location: params[:location]).order("created_at desc")
     else
       @jobs = Job.all.order("created_at desc")
     end
@@ -35,6 +37,7 @@ class JobsController < ApplicationController
     token = params[:stripeToken]
     job_type = params[:job_type]
     job_title = params[:title]
+    location = params[:location]
     card_brand = params[:user][:card_brand]
     card_exp_month = params[:user][:card_exp_month]
     card_exp_year = params[:user][:card_exp_year]
@@ -96,6 +99,7 @@ class JobsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_job
     @job = Job.find(params[:id])
@@ -103,6 +107,6 @@ class JobsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def job_params
-    params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :apply_url, :avatar)
+    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar)
   end
 end
