@@ -2,12 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.index_title {
-  margin-bottom: 10px !important;
-  a{
-    color: $dark;
-  }
-}
+
 
 .icon {
   width: 190px;
@@ -20,12 +15,10 @@ ul.filter li {
 }
 
 .card {
-  height: 400px;
-  margin-bottom: 15px;
+  direction: rtl;
 }
-.card-image {
-  width: 50%;
-}
+
+
 
 .postings {
   display: flex;
