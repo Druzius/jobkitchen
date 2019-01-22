@@ -1,4 +1,24 @@
 <nav class="panel">
+  <ul class="filter buttons is-centered">
+    <li class="mh3">
+      <%= link_to 'test', jobs_path(location: "תל אביב והמרכז"), class: "pbutf circle" %>
+    </li>
+    <li class="mh3">
+      <%= link_to 'test', jobs_path(location: "ירושלים וסביבותיה"), class: "pbutf circle" %>
+    </li>
+    <li class="mh3">
+      <%= link_to 'test', jobs_path(location: "הצפון, חיפה והקריות"), class: "pbutf circle" %>
+    </li>
+    <li class="mh3">
+      <%= link_to 'test', jobs_path(location: "אזור השרון"), class: "pbutf circle" %>
+    </li>
+    <li class="mh3">
+      <%= link_to 'test', jobs_path(location: "השפלה ודרום הארץ"), class: "pbutf circle" %>
+    </li>
+    <li class="mh3">
+      <%= link_to 'test', jobs_path(location: "אילת והערבה"), class: "pbutf circle" %>
+    </li>
+  </ul>
   <p class="text-uppercase has-text-gray pv1 f6">סנן לפי עבודה</p>
   <ul class="filter mb3 pa0">
     <li class="pv1">
@@ -21,24 +41,24 @@
     </li>
   </ul>
   <p class="text-uppercase has-text-gray pv1 f6">סנן לפי איזור</p>
-  <ul class="filter mb3 pa0">
+  <ul class="filter is-grouped mb3 pa0">
     <li class="pv1">
       <%= link_to 'תל אביב והמרכז', jobs_path(location: "תל אביב והמרכז"), class: "button icon is-light" %>
     </li>
     <li class="pv1">
-      <%= link_to 'ירושלים וסביבותיה', jobs_path(location: "ירושלים וסביבותיה"), class: "button icon is-primary" %>
+      <%= link_to 'ירושלים וסביבותיה', jobs_path(location: "ירושלים וסביבותיה"), class: "button icon is-light" %>
     </li>
     <li class="pv1">
-      <%= link_to 'הצפון, חיפה והקריות', jobs_path(location: "הצפון, חיפה והקריות"), class: "button icon is-link" %>
+      <%= link_to 'הצפון, חיפה והקריות', jobs_path(location: "הצפון, חיפה והקריות"), class: "button icon is-light" %>
     </li>
     <li class="pv1">
-      <%= link_to 'אזור השרון', jobs_path(location: "אזור השרון"), class: "button icon is-warning" %>
+      <%= link_to 'אזור השרון', jobs_path(location: "אזור השרון"), class: "button icon is-light" %>
     </li>
     <li class="pv1">
-      <%= link_to 'השפלה ודרום הארץ', jobs_path(location: "השפלה ודרום הארץ"), class: "button icon is-success" %>
+      <%= link_to 'השפלה ודרום הארץ', jobs_path(location: "השפלה ודרום הארץ"), class: "button icon is-light" %>
     </li>
     <li class="pv1">
-      <%= link_to 'אילת והערבה', jobs_path(location: "אילת והערבה"), class: "button icon is-info" %>
+      <%= link_to 'אילת והערבה', jobs_path(location: "אילת והערבה"), class: "button icon is-light" %>
     </li>
   </ul>
 </nav>

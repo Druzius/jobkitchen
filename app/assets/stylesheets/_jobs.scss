@@ -11,7 +11,7 @@
 }
 
 ul.filter li {
-  display:inline;
+  display: inline-block;
 }
 
 .card {
@@ -19,6 +19,9 @@ ul.filter li {
 }
 
 
+.card-header-title {
+  padding: 1.5rem;
+}
 
 .postings {
   display: flex;

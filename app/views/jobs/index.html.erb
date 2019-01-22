@@ -1,16 +1,17 @@
-<div class="columns border-top">
-  <div class="column is-11 pl6">
-    <div class="pl3 pr1">
-      <%= render 'panel' %>
+<div class="container">
+  <div class="columns border-top">
+    <div class="column">
+      <div class="buttons is-centered">
+        <%= render 'panel' %>
+      </div>
     </div>
   </div>
 </div>
 
 
 
-
-<div class="container is-fluid">
-<div class="columns is-multiline is-centered">
+<div class="container">
+<div class="columns is-multiline pa3">
     <% @jobs.each do |job| %>
 
       <div class="column is-one-third">
@@ -36,7 +37,7 @@
             <%= sanitize(job.description.truncate(160, separator: '</p>')) %>
           </div>
           <div class="card-footer">
-            <div class="column has-text-right">
+            <div class="pr0 column has-text-right">
               <%= job_type(job.job_type) %>
               <p class="pt2 f6"><%= job.location %></p>
             </div>
