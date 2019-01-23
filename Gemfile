@@ -64,6 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bulma-rails'
 gem 'simple_form'
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'sidekiq'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
