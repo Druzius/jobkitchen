@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_01_21_110036) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "job_applications", force: :cascade do |t|
     t.string "phone_number"
     t.string "email"
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "job_id"
+    t.bigint "job_id"
     t.string "full_name"
     t.string "resume"
     t.text "work_experience"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_110036) do
     t.datetime "updated_at", null: false
     t.string "avatar"
     t.integer "user_id"
-    t.integer "job_applications_id"
+    t.bigint "job_applications_id"
     t.index ["job_applications_id"], name: "index_jobs_on_job_applications_id"
   end
 
@@ -61,4 +64,6 @@ ActiveRecord::Schema.define(version: 2019_01_21_110036) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "job_applications", "jobs"
+  add_foreign_key "jobs", "job_applications", column: "job_applications_id"
 end
