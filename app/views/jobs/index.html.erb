@@ -33,22 +33,22 @@
           </div>
         </div>
         <div class="card-content">
-          <div class="pv2 f6">
-            <%= sanitize(job.description.truncate(90, separator: '</p>')) %>
+          <div class="card-text pv2 f6">
+            <%= sanitize(job.description.truncate(94, separator: '</p>')) %>
           </div>
           <div class="card-footer">
             <div class="pr0 column has-text-right">
               <%= job_type(job.job_type) %>
-              <p class="pt2 f6"><%= job.location %></p>
+              <p class="pt2 f6"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
             </div>
             <% if current_user.try(:admin) || job_author(job) %>
               <ul class="pv3">
                 <li class="inline-block">
-                  <%= link_to 'ראה', job, class: 'button is-small is-link is-outlined' %></li>
+                  <%= link_to 'ראה', job, class: 'button is-normal is-link is-outlined' %></li>
                 <li class="inline-block">
-                  <%= link_to 'ערוך', edit_job_path(job), class: 'button is-small is-link is-outlined' %></li>
+                  <%= link_to 'ערוך', edit_job_path(job), class: 'button is-normal is-link is-outlined' %></li>
                 <li class="inline-block">
-                  <%= link_to 'מחק', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
+                  <%= link_to 'מחק', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-normal is-link is-outlined' %></li>
               </ul>
             <% else %>
               <ul class="pv3">

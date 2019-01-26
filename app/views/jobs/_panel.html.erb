@@ -1,22 +1,28 @@
 <nav class="panel">
   <ul class="filter buttons is-centered">
-    <li class="mh3">
-      <%= link_to 'test', jobs_path(location: "תל אביב והמרכז"), class: "pbutf circle" %>
+    <li class="mh3 icon-segment">
+      <%= link_to 'test', jobs_path, class: "pbutf circle dark" %>
+      <%= link_to 'כל התחומים', jobs_path, class: "icon-click" %>
     </li>
-    <li class="mh3">
-      <%= link_to 'test', jobs_path(location: "ירושלים וסביבותיה"), class: "pbutf circle" %>
+    <li class="mh3 icon-segment">
+      <%= link_to 'test', jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "pbutf circle link" %>
+      <%= link_to 'מכירות', jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "icon-click" %>
     </li>
-    <li class="mh3">
-      <%= link_to 'test', jobs_path(location: "הצפון, חיפה והקריות"), class: "pbutf circle" %>
+    <li class="mh3 icon-segment">
+      <%= link_to 'test', jobs_path(job_type: "מקצועות המטבח"), class: "pbutf circle success" %>
+      <%= link_to 'מטבח', jobs_path(job_type: "מקצועות המטבח"), class: "icon-click" %>
     </li>
-    <li class="mh3">
-      <%= link_to 'test', jobs_path(location: "אזור השרון"), class: "pbutf circle" %>
+    <li class="mh3 icon-segment">
+      <%= link_to 'test', jobs_path(job_type: "מקצועות כלליים"), class: "pbutf circle blue" %>
+      <%= link_to 'כלליים', jobs_path(job_type: "מקצועות כלליים"), class: "icon-click" %>
     </li>
-    <li class="mh3">
-      <%= link_to 'test', jobs_path(location: "השפלה ודרום הארץ"), class: "pbutf circle" %>
+    <li class="mh3 icon-segment">
+      <%= link_to 'test', jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "pbutf circle primary" %>
+      <%= link_to 'ניהול', jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "icon-click" %>
     </li>
-    <li class="mh3">
-      <%= link_to 'test', jobs_path(location: "אילת והערבה"), class: "pbutf circle" %>
+    <li class="mh3 icon-segment">
+      <%= link_to 'test', jobs_path(job_type: "מקצועות שירות ואירוח"), class: "pbutf circle info" %>
+      <%= link_to 'שירות', jobs_path(job_type: "מקצועות שירות ואירוח"), class: "icon-click" %>
     </li>
   </ul>
   <p class="text-uppercase has-text-gray pv1 f6">סנן לפי עבודה</p>
@@ -25,16 +31,16 @@
       <%= link_to 'כל התחומים', jobs_path, class: "button icon is-dark" %>
     </li>
     <li class="pv1">
-      <%= link_to 'ייעוץ, מכירות ושיווק', jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "button icon is-primary" %>
+      <%= link_to 'ייעוץ, מכירות ושיווק', jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "button icon is-link" %>
     </li>
     <li class="pv1">
-      <%= link_to 'מקצועות המטבח', jobs_path(job_type: "מקצועות המטבח"), class: "button icon is-link" %>
+      <%= link_to 'מקצועות המטבח', jobs_path(job_type: "מקצועות המטבח"), class: "button icon is-success" %>
     </li>
     <li class="pv1">
-      <%= link_to 'מקצועות כלליים', jobs_path(job_type: "מקצועות כלליים"), class: "button icon is-warning" %>
+      <%= link_to 'מקצועות כלליים', jobs_path(job_type: "מקצועות כלליים"), class: "button icon is-blue" %>
     </li>
     <li class="pv1">
-      <%= link_to 'מקצועות ניהול ומנהלה', jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "button icon is-success" %>
+      <%= link_to 'מקצועות ניהול ומנהלה', jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "button icon is-primary" %>
     </li>
     <li class="pv1">
       <%= link_to 'מקצועות שירות ואירוח', jobs_path(job_type: "מקצועות שירות ואירוח"), class: "button icon is-info" %>
