@@ -40,7 +40,7 @@ ul.filter li {
     display: block;
     width: 100px;
     height: 100px;
-    line-height: 100px;
+    line-height: 110px;
     position: relative;
     margin: auto;
     margin-top: 25px;
@@ -106,3 +106,8 @@ ul.filter li {
   align-items: center;
   flex-flow: column;
 }
+
+.icon-click {
+  color: #95989a;
+}
+
