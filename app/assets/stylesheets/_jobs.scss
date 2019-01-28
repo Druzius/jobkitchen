@@ -4,20 +4,19 @@
 
 
 
-.icon {
-  width: 190px;
-  height: 45px;
-  padding: 10px;
+
+.columns {
+  flex-direction: row-reverse;
 }
 
-ul.filter li {
-  display: inline-block;
-}
 
 .card {
   direction: rtl;
 }
 
+.card-text {
+  height: 58px;
+}
 
 .card-header-title {
   padding: 1.5rem;

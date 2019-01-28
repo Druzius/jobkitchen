@@ -295,3 +295,33 @@
 /* Background */
 .bg-white { background-color: white; }
 .bg-light { background-color: whitesmoke; }
+
+.is-purple {
+  background-color: #7045af;
+  color: white;
+}
+
+.is-orange {
+  background-color: #ff5733;
+  color: white;
+}
+
+.is-brown {
+  background-color: #aa530e;
+  color: white;
+}
+
+.is-blue {
+  background-color: #1f4287;
+  color: white;
+
+  &:hover {
+      background: #1b3b79;
+      color: white;
+    }
+}
+
+.tag.is-blue {
+  background-color: #1f4287;
+  color: white;
+}

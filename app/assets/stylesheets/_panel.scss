@@ -33,7 +33,6 @@ ul.filter li {
   }
 
   &.circle{
-    background: #23466e;
     border: none;
     border-radius: 900px;
     color: #e4ecfa;
@@ -41,16 +40,83 @@ ul.filter li {
     display: block;
     width: 100px;
     height: 100px;
-    line-height: 100px;
+    line-height: 110px;
     position: relative;
     margin: auto;
     margin-top: 25px;
+    margin-bottom: 8px;
     transition: 0.5s;
 
     &:hover {
-      background: #3e70aa;
       padding: -2px;
     }
   }
+
+  &.dark {
+    background-color: #363636;
+
+    &:hover {
+      background-color: #2f2f2f;
+    }
+  }
+
+  &.link {
+    background-color: #3273dc;
+
+    &:hover {
+      background-color: #276cda;
+    }
+  }
+
+  &.success {
+    background-color: #23d160;
+
+    &:hover {
+      background-color: #22c65b;
+    }
+  }
+
+  &.blue {
+    background-color: #1f4287;
+
+    &:hover {
+      background-color: #1b3b79;
+    }
+  }
+
+  &.primary {
+    background-color: #00d1b2;
+
+    &:hover {
+      background-color: #00c4a7;
+    }
+  }
+
+  &.info {
+    background-color: #209cee;
+
+    &:hover {
+      background-color: #1496ed;
+    }
+  }
+}
+
+.icon-segment {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+.icon-click {
+  color: #95989a;
+}
+
+.location {
+  padding-bottom: 50px;
+}
+
+a.dropdown-item {
+  padding-right: 1rem;
+  text-align: right;
 }
 

@@ -65,14 +65,18 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'bulma-rails'
 gem 'simple_form'
+gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sidekiq'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'stripe', '~> 4.4'
 gem 'figaro'
 gem 'forest_liana'
+gem 'webpacker', '~> 3.5'
+
 
 
 group :production do

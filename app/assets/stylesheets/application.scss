@@ -3,14 +3,26 @@
 @import "jobs";
 @import "stripe";
 @import "panel";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 
 
 
 h1, h2, h3, h4, h5, p, a, ul, li {
 
-direction: rtl;
+  direction: rtl;
 }
 
+.navbar {
+  direction: rtl;
+  align-items: end;
+}
+
+
+.navbar-item img {
+    max-height: 7.75rem;
+}
 
 .notification {
   border-radius: 0;
@@ -28,3 +40,5 @@ direction: rtl;
   text-transform: uppercase;
   font-weight: bold;
 }
+
+
