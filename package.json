@@ -1,5 +1,11 @@
 {
   "name": "job-k",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "aria-query": "^3.0.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
 }

@@ -72,6 +72,7 @@ gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'stripe', '~> 4.4'
 gem 'figaro'
 gem 'forest_liana'
+gem 'webpacker', '~> 3.5'
 
 
 group :development, :test do
