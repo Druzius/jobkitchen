@@ -14,16 +14,27 @@
   direction: rtl;
 }
 
-.card-text {
-  height: 58px;
-}
-
-.card-header-title {
-  padding: 1.5rem;
-}
-
-.postings {
+.is-horizontal {
   display: flex;
-  justify-content: space-between;
-  align-content: space-between;
+  flex-basis: 50ex;
+  flex-grow: 0;
+  flex-shrink: 1;
 }
+
+.card-image {
+  flex: 4;
+  flex-shrink: 1;
+}
+
+.image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.card-content {
+  flex: 3;
+}
+
