@@ -3,38 +3,59 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-
 .reversed {
-  flex-direction: row-reverse;
-}
-
-
-.card {
   direction: rtl;
 }
 
-.is-horizontal {
-  display: flex;
-  flex-basis: 50ex;
-  flex-grow: 0;
-  flex-shrink: 1;
+.link-background {
+  background-color: hsl(217, 71%, 53%);
 }
 
-.card-image {
-  flex: 4;
-  flex-shrink: 1;
+.success-background {
+  background-color: hsl(141, 71%, 48%);
 }
 
-.image {
-  display: block;
-  position: relative;
+.blue-background {
+  background-color: #1f4287;
+}
+
+.primary-background {
+  background-color: hsl(171, 100%, 41%);
+}
+
+.info-background {
+  background-color: hsl(204, 86%, 53%);
+}
+
+.card-product {
   overflow: hidden;
+  height: 135px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-product img {
   height: 100%;
-  width: 100%;
+  width: 100px;
+  padding: 2px;
+  object-fit: cover;
 }
 
-.card-content {
-  flex: 3;
+.card-product h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
 }
 
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .8;
+  margin: 0;
+}
+
+.card-product .card-product-infos {
+  height: 100%;
+  padding: 16px 12px;
+}
