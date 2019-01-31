@@ -17,12 +17,24 @@ h1, h2, h3, h4, h5, p, a, ul, li {
 .navbar {
   direction: rtl;
   align-items: end;
+  margin-bottom: 20px;
+  background: #f2f2f2;
+
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.navbar-menu {
+  padding-top: 15px;
+}
 
 .navbar-item img {
-    max-height: 7.75rem;
+    max-height: 6.75rem;
 }
+
+.navbar-item.button {
+  margin-left: 3px;
+}
+
 
 .notification {
   border-radius: 0;
