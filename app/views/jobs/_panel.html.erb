@@ -2,27 +2,27 @@
   <ul class="filter buttons is-centered">
     <li class="mh3 icon-segment">
       <%= link_to '<i class="fa fa-utensils fa-2x"></i>'.html_safe, jobs_path, class: "pbutf circle dark" %>
-      <%= link_to 'כל התחומים', jobs_path, class: "icon-click" %>
+      <%= content_tag :span, "כל התחומים", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
       <%= link_to '<i class="fa fa-utensils fa-2x"></i>'.html_safe, jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "pbutf circle link" %>
-      <%= link_to 'מכירות', jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "icon-click" %>
+      <%= content_tag :span, "מכירות", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
       <%= link_to '<i class="fa fa-utensils fa-2x"></i>'.html_safe, jobs_path(job_type: "מקצועות המטבח"), class: "pbutf circle success" %>
-      <%= link_to 'מטבח', jobs_path(job_type: "מקצועות המטבח"), class: "icon-click" %>
+      <%= content_tag :span, "מטבח", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
       <%= link_to '<i class="fa fa-utensils fa-2x"></i>'.html_safe, jobs_path(job_type: "מקצועות כלליים"), class: "pbutf circle blue" %>
-      <%= link_to 'כלליים', jobs_path(job_type: "מקצועות כלליים"), class: "icon-click" %>
+      <%= content_tag :span, "כלליים", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
       <%= link_to '<i class="fa fa-utensils fa-2x"></i>'.html_safe, jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "pbutf circle primary" %>
-      <%= link_to 'ניהול', jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "icon-click" %>
+      <%= content_tag :span, "ניהול", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
       <%= link_to '<i class="fa fa-utensils fa-2x"></i>'.html_safe, jobs_path(job_type: "מקצועות שירות ואירוח"), class: "pbutf circle info" %>
-      <%= link_to 'שירות', jobs_path(job_type: "מקצועות שירות ואירוח"), class: "icon-click" %>
+      <%= content_tag :span, "שירות", class: "icon-text" %>
     </li>
     <li>
       <div class="pb4">
