@@ -76,7 +76,7 @@ gem 'stripe', '~> 4.4'
 gem 'figaro'
 gem 'forest_liana'
 gem 'webpacker', '~> 3.5'
-
+gem 'compass', '~> 1.0', '>= 1.0.3'
 
 
 group :production do
