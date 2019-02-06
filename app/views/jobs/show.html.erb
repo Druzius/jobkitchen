@@ -1,22 +1,22 @@
 <div class="columns pt4 pb7">
-  <div class="column is-7 is-offset-1">
+  <div class="column is-7 is-offset-1 reversed">
     <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p>
     <h1 class="title is-2"><%= @job.title %></h1>
-    <ul class="list pb4">
-      <li class="inline-block f6 pr2"><%= job_type(@job.job_type) %></li>
-      <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
-    </ul>
-    <div class="content text-serif f4">
+    <ul class="list pb4 pt4">
+      <li class="block f6 pr2"><%= job_type(@job.job_type) %></li>
+      <li class="block f6 ph2"><i class="fas fa-map-marker-alt"></i> <%= @job.location %></li>
+    <div class="content text-serif f4 ph2">
       <%= @job.description.html_safe %>
     </div>
-    <%= link_to 'Apply to this job', new_job_job_application_path(@job.id), class:"button is-rounded is-large is-fullwidth is-link" %>
+    </ul>
+    <%= link_to 'Apply to this job', new_job_job_application_path(@job.id), class:"button is-rounded is-large is-link" %>
   </div>
   <div class="column is-2 is-offset-1 has-text-centered">
     <% if !@job.avatar.file.nil? %>
       <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered") %>
     <% end %>
     <h5 class="mt2 mb4 is-5 has-text-centered"><%= link_to @job.job_author %></h5>
-    <%= link_to 'Apply to this job', new_job_job_application_path(@job.id), class:"button is-rounded is-fullwidth is-link" %>
+
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>
