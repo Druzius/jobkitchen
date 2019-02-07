@@ -114,13 +114,36 @@ ul.filter li {
 }
 
 #kitchen {
+  position: absolute;
+  top: 25%;
+  left:33%;
   height: 50px;
   width: 32px;
 }
 
 #sales {
-  height: 45px;
+  position: absolute;
+  top: 25%;
+  left:31%;
+  height: 46px;
   width: 40px;
+}
+
+#all {
+  position: absolute;
+  top: 43%;
+  left:29%;
+  height: 10px;
+  width: 43px;
+}
+
+#service {
+  position: absolute;
+  top: 27%;
+  left:27%;
+  height: 45px;
+  width: 45px;
+
 }
 
 .icon-text {
