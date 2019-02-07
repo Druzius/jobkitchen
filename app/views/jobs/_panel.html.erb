@@ -5,11 +5,11 @@
       <%= content_tag :span, "כל התחומים", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
-      <%= link_to '<i class="fa fa-utensils fa-2x"></i>'.html_safe, jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "pbutf circle link" %>
+      <%= link_to image_tag('sales.png', class: "icon-image", id: "sales"), jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "pbutf circle link" %>
       <%= content_tag :span, "מכירות", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
-      <%= link_to image_tag('kitchen.png'), jobs_path(job_type: "מקצועות המטבח"), class: "pbutf circle success" %>
+      <%= link_to image_tag('kitchen.png', class: "icon-image", id: "kitchen"), jobs_path(job_type: "מקצועות המטבח"), class: "pbutf circle success" %>
       <%= content_tag :span, "מטבח", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
