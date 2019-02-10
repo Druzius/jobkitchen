@@ -18,9 +18,8 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   direction: rtl;
   align-items: end;
   margin-bottom: 20px;
-  background: rgb(242,242,242);
-background: linear-gradient(90deg, rgba(242,242,242,1) 0%, rgba(31,66,135,0.38279061624649857) 55%, rgba(242,242,242,1) 100%);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: #2f2f2f;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .navbar-menu {
@@ -28,7 +27,8 @@ background: linear-gradient(90deg, rgba(242,242,242,1) 0%, rgba(31,66,135,0.3827
 }
 
 .navbar-item img {
-    max-height: 6.75rem;
+    max-height: 4.75rem;
+    padding: 18px;
 }
 
 .navbar-item.button {
