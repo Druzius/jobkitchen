@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_110036) do
+ActiveRecord::Schema.define(version: 2019_02_10_162111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,13 +53,15 @@ ActiveRecord::Schema.define(version: 2019_01_21_110036) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "stripe_id"
-    t.string "card_brand"
-    t.string "card_last4"
-    t.string "card_exp_month"
-    t.string "card_exp_year"
-    t.datetime "expires_at"
     t.boolean "admin"
+    t.string "cc_token"
+    t.string "cc_4_digits"
+    t.string "cc_payer_name"
+    t.string "cc_payer_id"
+    t.string "cc_expire_month"
+    t.string "cc_expire_year"
+    t.string "cc_type_id"
+    t.string "cc_type_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

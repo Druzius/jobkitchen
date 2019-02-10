@@ -31,18 +31,23 @@ class JobsController < ApplicationController
             catalog_number: "MKT1",
             details: "item details",
             amount: 1,
-            price: 255,
+            price: 249,
             #this price include the VAT
             vat_type: "PRE"
     }],
     payment:[{
-               # bank transfer
-               payment_type: 4,
-               payment: 255,
-               comment: "transaction number is 23423423"
+               # credit card
+               payment_type: 3,
+               #date: date,
+               payment_sum: 249,
+               #cc_type: integer,
+               #cc_type_name: name_of_cc,
+               #cc_number: last_4_digits,
+               cc_deal_type: 1,
+               cc_num_of_payments: 1
     }],
     # THIS IS A MUST ONLY IN INVOICE RECIEPT
-    price_total: 255,
+    price_total: 249,
     comment: "some general comment for the document",
   }.to_json
 
