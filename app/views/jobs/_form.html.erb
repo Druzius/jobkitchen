@@ -8,11 +8,11 @@
   </div>
   <div class="columns">
     <div class="field column is-4">
-      <div class="control">
+      <div class="control is-pulled-right">
         <label class="label">סוג עבודה:</label>
         <div class="control has-icons-left">
           <span class="select">
-            <%= f.input_field :job_type, collection: Job::JOB_TYPES, prompt: "סוג עבודה" %>
+            <%= f.input_field :job_type, required: true, collection: Job::JOB_TYPES, prompt: "סוג עבודה" %>
           </span>
           <span class="icon is-small is-left">
             <i class="fa fa-briefcase"></i>
@@ -21,11 +21,11 @@
       </div>
     </div>
     <div class="field column is-4">
-      <div class="control">
+      <div class="control is-pulled-right">
         <label class="label">איזור:</label>
         <div class="control has-icons-left">
           <span class="select">
-            <%= f.input_field :location, collection: Job::JOB_AREA, prompt: "איזור" %>
+            <%= f.input_field :location, required: true, collection: Job::JOB_AREA, prompt: "איזור" %>
           </span>
           <span class="icon is-small is-left">
             <i class="fa fa-map-marker"></i>

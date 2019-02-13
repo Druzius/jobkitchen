@@ -1,6 +1,7 @@
 @import "bulma";
 @import "functions";
 @import "jobs";
+@import "job_applications";
 @import "stripe";
 @import "panel";
 @import "font-awesome-sprockets";
@@ -11,6 +12,10 @@
 
 h1, h2, h3, h4, h5, p, a, ul, li {
 
+  direction: rtl;
+}
+
+.reversed {
   direction: rtl;
 }
 
