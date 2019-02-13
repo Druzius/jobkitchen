@@ -2,13 +2,21 @@
 @import "functions";
 @import "jobs";
 @import "job_applications";
+@import "devise";
 @import "stripe";
 @import "panel";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
 
-
+body {
+  position: relative;
+  min-height: 100%;
+}
 
 h1, h2, h3, h4, h5, p, a, ul, li {
 
@@ -65,4 +73,8 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   font-weight: bold;
 }
 
-
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
