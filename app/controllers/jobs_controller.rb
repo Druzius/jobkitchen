@@ -60,7 +60,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Your job listing was successfully purchased' }
+        format.html { redirect_to @job, notice: 'המשרה שלך התפרסמה בהצלחה' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -79,7 +79,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to @job, notice: 'המשרה עודכנה בהצלחה' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -93,7 +93,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
+      format.html { redirect_to jobs_url, notice: 'המשרה הוסרה בהצלחה' }
       format.json { head :no_content }
     end
   end
