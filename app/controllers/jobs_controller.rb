@@ -94,39 +94,6 @@ class JobsController < ApplicationController
 
       response_hash = JSON.parse(res.body)
       redirect_to response_hash["url"]
-      # token = response_hash.secretTransactionId
-      # raise
-
-      # request = Net::HTTP::Get.new(uri.request_uri)
-      # request.body =  {
-      #   api_key: api_key,
-      #   developer_email: api_email,
-      #   sum: 5,
-      #   successUrl: "http://localhost:3000/"
-      # }.to_json
-      # response = http.request # Net::HTTPResponse object
-      # response.inspect
-      # raise
-
-      # Net::HTTP.start(uri.host, uri.port) do |http|
-      #   request = Net::HTTP::Get.new(uri.request_uri)
-      #   request.body = {api_key: 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf', developer_email: 'venomdrophearthstone@gmail.com', sum: 5, successUrl: "http://localhost:3000/"}.to_json
-
-      #   user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'
-      #   request.initialize_http_header({"User-Agent" => user_agent})
-
-      #   response = http.request(request)
-      #   puts response.inspect
-      #   raise
-      # end
-
-      # uri = URI('https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb')
-      # req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
-      # req.body = {api_key: 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf', developer_email: 'venomdrophearthstone@gmail.com', sum: 5, successUrl: "http://localhost:3000/"}.to_json
-      # res = Net::HTTP.start(uri.hostname, uri.port) do |http|
-      #   http.request(req)
-      #   raise
-      # end
 
       # format.html { redirect_to @job, notice: 'המשרה שלך התפרסמה בהצלחה' }
       # format.json { render :show, status: :created, location: @job }
