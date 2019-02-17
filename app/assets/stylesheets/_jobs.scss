@@ -6,7 +6,7 @@
 .card-product {
   overflow: hidden;
   height: 135px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   color: white;
@@ -42,34 +42,36 @@
 
 
 .card-product-link {
-  background-color: #3B87D0;
-  height: 100%;
-  padding: 12px 14px;
+  background-color: rgba(59,135,208,1);
+
 }
 
 .card-product-success {
-  background-color: #7B4626;
-  height: 100%;
-  padding: 12px 14px;
+  background-color: rgba(123,70,38,0.9);
+
 }
 
 .card-product-blue {
-  background-color: rgba(24,40,72,0.9);
-  height: 100%;
-  padding: 12px 14px;
+  background-color: rgba(14,19,107,0.9);
+
 }
 
 .card-product-primary {
   background-color: rgba(53,200,132,0.9);
-  height: 100%;
-  padding: 12px 14px;
+
 }
 
 .card-product-infos {
-  background-color: #FF6600;
-  height: 100%;
-  padding: 12px 14px;
+  background-color: rgba(255,102,0,0.9);
+
 }
+
+.card-product-blank {
+  background-color: rgba(181,181,181,1);
+
+}
+
+
 
 #location {
   text-align: left;

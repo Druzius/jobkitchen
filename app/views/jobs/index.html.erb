@@ -15,6 +15,7 @@
     <% @jobs.each do |job| %>
 
       <div class="column is-one-third">
+
         <div class="card-product">
 
           <div class="card-image">
@@ -33,9 +34,12 @@
               <div class="column card-product-blue">
             <% elsif job.job_type == 'מקצועות ניהול ומנהלה' %>
               <div class="column card-product-primary">
-            <% else %>
+            <% elsif job.job_type == 'מקצועות שירות ואירוח' %>
               <div class="column card-product-infos">
+            <% else %>
+              <div class="column card-product-blank">
             <% end %>
+
 
               <div class="title">
                 <h2><%= link_to job.title, job_path(job) %></h2>
@@ -46,17 +50,19 @@
 
 
                 <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
+
               </div>
 
 
             </div>
-
         </div>
-
       </div>
+
       <% end %>
 
     </div>
   </div>
+
 </div>
+
 
