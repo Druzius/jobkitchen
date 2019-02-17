@@ -3,32 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.link-background {
-  background-color: hsl(217, 71%, 53%);
-}
-
-.success-background {
-  background-color: hsl(141, 71%, 48%);
-}
-
-.blue-background {
-  background-color: #1f4287;
-}
-
-.primary-background {
-  background-color: hsl(171, 100%, 41%);
-}
-
-.info-background {
-  background-color: hsl(204, 86%, 53%);
-}
-
 .card-product {
   overflow: hidden;
   height: 135px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .card-product img {
@@ -36,22 +17,61 @@
   width: 100px;
   padding: 2px;
   object-fit: cover;
+  margin: 5px;
 }
 
 .card-product h2 {
+  color: white;
   font-size: 18px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
-  opacity: .8;
+  opacity: 1;
   margin: 0;
+  color: white;
 }
 
-.card-product .card-product-infos {
+.card-product a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.card-product-link {
+  background-color: #3B87D0;
   height: 100%;
-  padding: 16px 12px;
+  padding: 12px 14px;
+}
+
+.card-product-success {
+  background-color: rgba(145,83,34,0.9);
+  height: 100%;
+  padding: 12px 14px;
+}
+
+.card-product-blue {
+  background-color: rgba(24,40,72,0.9);
+  height: 100%;
+  padding: 12px 14px;
+}
+
+.card-product-primary {
+  background-color: rgba(53,200,132,0.9);
+  height: 100%;
+  padding: 12px 14px;
+}
+
+.card-product-infos {
+  background-color: rgba(249,114,9,0.9);
+  height: 100%;
+  padding: 12px 14px;
+}
+
+#location {
+  text-align: left;
+  margin-top: 15px;
 }
