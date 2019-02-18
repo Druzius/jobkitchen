@@ -77,7 +77,6 @@ gem 'figaro'
 gem 'forest_liana'
 gem 'webpacker', '~> 3.5'
 gem 'compass', '~> 1.0', '>= 1.0.3'
-gem 'binding_of_caller', '~> 0.7.2'
 
 
 group :production do
@@ -85,7 +84,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'guard'
   gem 'guard-livereload'
 end

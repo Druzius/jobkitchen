@@ -40,42 +40,18 @@ class JobsController < ApplicationController
   def create
     @job = current_user.jobs.build(job_params)
 
-    # token = params[:stripeToken]
-    # job_type = params[:job_type]
-    # job_title = params[:title]
-    # location = params[:location]
-    # card_brand = params[:user][:card_brand]
-    # card_exp_month = params[:user][:card_exp_month]
-    # card_exp_year = params[:user][:card_exp_year]
-    # card_last4 = params[:user][:card_last4]
+    @job.save if ezcount_form
+  end
 
-    # charge = Stripe::Charge.create(
-    #   :amount => 24900,
-    #   :currency => "ils",
-    #   :description => job_type,
-    #   :statement_descriptor => job_title,
-    #   :source => token
-    # )
-
-    # current_user.stripe_id = charge.id
-    # current_user.card_brand = card_brand
-    # current_user.card_exp_month = card_exp_month
-    # current_user.card_exp_year = card_exp_year
-    # current_user.card_last4 = card_last4
-    # current_user.save!
-
-    # respond_to do |format|
-
+  def ezcount_form
     api_key = '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551'
-    api_email = 'demo@ezcount.co.il'
-    developer_email = 'DEVELOPER@example.com'
+    developer_email = 'demo@ezcount.co.il'
     url = 'https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb'
 
     data = {
       api_key: api_key,
-      api_email: api_email,
       developer_email: developer_email,
-      sum: 5,
+      sum: 5.33,
       successUrl: "http://localhost:3000/"
     }.to_json
 
@@ -93,18 +69,21 @@ class JobsController < ApplicationController
     response_hash = JSON.parse(res.body)
     redirect_to response_hash["url"]
 
-    # @job.systoken = 1
+    return false if response_hash["secretTransactionId"]
+  end
 
-
+  def ezcount_validation
     # validation json request
 
     data2 = {
-      api_key: api_key,
-      developer_email: developer_email
+      api_key: '39c8d1857ecfabe6e40d658fc358ef0051fefd6fb11d2abcae15fb324da8d051',
+      developer_email: 'venomdrophearthstone@gmail.com'
     }.to_json
 
     sys_token = response_hash["url"][-36..-1]
     val_url = "https://demo.ezcount.co.il/api/payment/validate/#{sys_token}"
+
+    puts val_url
 
     uri_validate = URI val_url
     http2 = Net::HTTP.new(uri_validate.host, uri_validate.port)
@@ -115,23 +94,11 @@ class JobsController < ApplicationController
     req2 = Net::HTTP::Post.new(uri_validate.path, "Content-Type" => "application/json")
     req2.body = data2
     res2 = http2.request(req2)
-    puts "response #{res2.body}"
+    print "response #{res2.body}"
 
     response_hash2 = JSON.parse(res2.body)
+
     success = response_hash2["cgp_id"]
-    @job.create if validate_ezcount(success)
-
-
-    @job.save if success == ""
-
-    if @job.save
-      # format.html { redirect_to @job, notice: 'המשרה שלך התפרסמה בהצלחה' }
-      # format.json { render :show, status: :created, location: @job }
-    else
-      format.html { render :new }
-      format.json { render json: @job.errors, status: :unprocessable_entity }
-    end
-    @job.save
   end
 
   # rescue Stripe::CardError => e
