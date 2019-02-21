@@ -3,7 +3,6 @@ require 'uri'
 #on windows env, ruby have problems with verify certificates
 require 'openssl'
 
-
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
@@ -39,8 +38,9 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = current_user.jobs.build(job_params)
-
-    @job.save if ezcount_form
+    ezcount_form
+    ezcount_validation
+    @job.save
   end
 
   def ezcount_form
@@ -66,10 +66,14 @@ class JobsController < ApplicationController
     res = http.request(req)
     puts "response #{res.body}"
 
+    # KSYS TOKEN PARAMETER, TRY PARSING?
+    # SAVE KSYS TOKEN AS A PARAMETER
+    # ONCE USER REDIRECTS THE VARIABLES ARE CLEARED, NEED TO KEEP THE SYS TOKEN IN THE SAME SESSION
     response_hash = JSON.parse(res.body)
+    sys_token = response_hash["url"][-36..-1]
     redirect_to response_hash["url"]
 
-    return false if response_hash["secretTransactionId"]
+    # return false if response_hash["secretTransactionId"]
   end
 
   def ezcount_validation
@@ -80,7 +84,7 @@ class JobsController < ApplicationController
       developer_email: 'venomdrophearthstone@gmail.com'
     }.to_json
 
-    sys_token = response_hash["url"][-36..-1]
+    # USE THE PARAMETER OF SYS TOKEN, AND NOT URL FOR SYS TOKEN
     val_url = "https://demo.ezcount.co.il/api/payment/validate/#{sys_token}"
 
     puts val_url
@@ -95,10 +99,9 @@ class JobsController < ApplicationController
     req2.body = data2
     res2 = http2.request(req2)
     print "response #{res2.body}"
-
     response_hash2 = JSON.parse(res2.body)
 
-    success = response_hash2["cgp_id"]
+    # success = response_hash2["cgp_id"]
   end
 
   # rescue Stripe::CardError => e
