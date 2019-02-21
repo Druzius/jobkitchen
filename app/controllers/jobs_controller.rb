@@ -36,26 +36,21 @@ class JobsController < ApplicationController
 
   # POST /jobs
   # POST /jobs.json
-  def create
-    @job = current_user.jobs.build(job_params)
-    ezcount_form
-    ezcount_validation
-    @job.save
-  end
+
 
   def ezcount_form
     api_key = '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551'
     developer_email = 'demo@ezcount.co.il'
-    url = 'https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb'
+    form_url = 'https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb'
 
     data = {
       api_key: api_key,
       developer_email: developer_email,
       sum: 5.33,
-      successUrl: "http://localhost:3000/"
+      successUrl: "http://localhost:3000/pages/"
     }.to_json
 
-    uri = URI url
+    uri = URI(form_url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
@@ -70,40 +65,54 @@ class JobsController < ApplicationController
     # SAVE KSYS TOKEN AS A PARAMETER
     # ONCE USER REDIRECTS THE VARIABLES ARE CLEARED, NEED TO KEEP THE SYS TOKEN IN THE SAME SESSION
     response_hash = JSON.parse(res.body)
-    sys_token = response_hash["url"][-36..-1]
+    secret = response_hash["secretTransactionId"]
     redirect_to response_hash["url"]
 
-    # return false if response_hash["secretTransactionId"]
-  end
+    #puts ksys_token
 
-  def ezcount_validation
+    # return false if response_hash["secretTransactionId"]
+    end
+
+    def ezcount_validation
+
+    val_url = "https://demo.ezcount.co.il/api/payment/validate/#{secret}"
+
+    puts val_url
+    puts "SJAAAAAAAAAAAAAAAAAAAAAKKKKKKKKK/#{secret}"
+
     # validation json request
 
     data2 = {
-      api_key: '39c8d1857ecfabe6e40d658fc358ef0051fefd6fb11d2abcae15fb324da8d051',
-      developer_email: 'venomdrophearthstone@gmail.com'
+      developer_email: 'venomdrophearthstone@gmail.com',
+      api_key: '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551'
     }.to_json
 
     # USE THE PARAMETER OF SYS TOKEN, AND NOT URL FOR SYS TOKEN
-    val_url = "https://demo.ezcount.co.il/api/payment/validate/#{sys_token}"
 
-    puts val_url
-
-    uri_validate = URI val_url
+    uri_validate = URI(val_url)
     http2 = Net::HTTP.new(uri_validate.host, uri_validate.port)
     http2.use_ssl = true
     warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
     http2.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    req2 = Net::HTTP::Post.new(uri_validate.path, "Content-Type" => "application/json")
-    req2.body = data2
-    res2 = http2.request(req2)
-    print "response #{res2.body}"
-    response_hash2 = JSON.parse(res2.body)
+     req2 = Net::HTTP::Post.new(uri_validate.path, "Content-Type" => "application/json")
+      req2.body = data2
+      res2 = http2.request(req2)
+      #print "response #{res2.body}"
+     response_hash2 = JSON.parse(res2.body)
+     #puts response_hash2
 
     # success = response_hash2["cgp_id"]
+
+
   end
 
+  def create
+    @job = current_user.jobs.build(job_params)
+    ezcount_form
+    ezcount_validation
+    @job.save
+  end
   # rescue Stripe::CardError => e
   #   flash.alert = e.message
   #   render action: :new
