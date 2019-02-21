@@ -42,7 +42,6 @@ class JobsController < ApplicationController
     ezcount_validation
     @job.save
   end
-
   def ezcount_form
     api_key = '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551'
     developer_email = 'demo@ezcount.co.il'
@@ -52,6 +51,7 @@ class JobsController < ApplicationController
       api_key: api_key,
       developer_email: developer_email,
       sum: 5.33,
+      # MAKE A CONTROLLER FOR VALIDAITON WITH THE ROUTE OF THE SUCCESSPAGE
       successUrl: "http://localhost:3000/"
     }.to_json
 
@@ -70,7 +70,7 @@ class JobsController < ApplicationController
     # SAVE KSYS TOKEN AS A PARAMETER
     # ONCE USER REDIRECTS THE VARIABLES ARE CLEARED, NEED TO KEEP THE SYS TOKEN IN THE SAME SESSION
     response_hash = JSON.parse(res.body)
-    sys_token = response_hash["url"][-36..-1]
+    transaction_id = response_hash["secretTransactionId"]
     redirect_to response_hash["url"]
 
     # return false if response_hash["secretTransactionId"]
@@ -85,7 +85,7 @@ class JobsController < ApplicationController
     }.to_json
 
     # USE THE PARAMETER OF SYS TOKEN, AND NOT URL FOR SYS TOKEN
-    val_url = "https://demo.ezcount.co.il/api/payment/validate/#{sys_token}"
+    val_url = "https://demo.ezcount.co.il/api/payment/validate/#{transaction_id}"
 
     puts val_url
 
