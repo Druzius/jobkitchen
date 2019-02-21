@@ -1,7 +1,14 @@
-require 'net/http'
-require 'uri'
-#on windows env, ruby have problems with verify certificates
-require 'openssl'
+require 'httparty'
+require 'thread'
+require 'httparty_with_cookies'
+
+# require 'rest-client'
+
+class My_awesome_cookie_using_api
+  include HTTParty_with_cookies
+end
+
+
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
@@ -23,38 +30,8 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
-
   end
 
-
-
-  def ezcount_validation
-    # validation json request
-
-    data2 = {
-      api_key: '39c8d1857ecfabe6e40d658fc358ef0051fefd6fb11d2abcae15fb324da8d051',
-      developer_email: 'venomdrophearthstone@gmail.com'
-    }.to_json
-
-    # USE THE PARAMETER OF SYS TOKEN, AND NOT URL FOR SYS TOKEN
-    val_url = "https://demo.ezcount.co.il/api/payment/validate/#{transaction_id}"
-
-    puts val_url
-
-    uri_validate = URI val_url
-    http2 = Net::HTTP.new(uri_validate.host, uri_validate.port)
-    http2.use_ssl = true
-    warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
-    http2.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    req2 = Net::HTTP::Post.new(uri_validate.path, "Content-Type" => "application/json")
-    req2.body = data2
-    res2 = http2.request(req2)
-    print "response #{res2.body}"
-    response_hash2 = JSON.parse(res2.body)
-
-    # success = response_hash2["cgp_id"]
-  end
   # GET /jobs/new
   def new
     @job = current_user.jobs.build
@@ -68,76 +45,133 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = current_user.jobs.build(job_params)
-    ezcount_form
-    # ezcount_validation
-    @job.save
-  end
-  def ezcount_form
-    api_key = '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551'
-    developer_email = 'demo@ezcount.co.il'
-    url = 'https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb'
-
-    data = {
-      api_key: api_key,
-      developer_email: developer_email,
-      sum: 5.33,
-      # MAKE A CONTROLLER FOR VALIDAITON WITH THE ROUTE OF THE SUCCESSPAGE
-      successUrl: "http://localhost:3000/jobs/new"
-    }.to_json
-
-    uri = URI url
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    req = Net::HTTP::Post.new(uri.path, "Content-Type" => "application/json")
-    req.body = data
-    res = http.request(req)
-    puts "response #{res.body}"
-
-    # KSYS TOKEN PARAMETER, TRY PARSING?
-    # SAVE KSYS TOKEN AS A PARAMETER
-    # ONCE USER REDIRECTS THE VARIABLES ARE CLEARED, NEED TO KEEP THE SYS TOKEN IN THE SAME SESSION
-    response_hash = JSON.parse(res.body)
-    transaction_id = response_hash["secretTransactionId"]
-    redirect_to response_hash["url"]
-
-    # return false if response_hash["secretTransactionId"]
+    @job.save if ezcount_charge_verify_with_httparty
   end
 
-  # def ezcount_validation
-  #   # validation json request
+  # https://stackoverflow.com/questions/50048446/getting-setting-session-with-httparty
+  # https://stackoverflow.com/questions/38829525/persist-session-cookies-across-successive-get-requests
+  # "HTTParty is good for a lot of things, but maintaining sessions is not necessarily one of them. Have you tried Faraday? It's a lot more extensible. – tadman Apr 26 '18 at 23:45"
 
-  #   data2 = {
-  #     api_key: '39c8d1857ecfabe6e40d658fc358ef0051fefd6fb11d2abcae15fb324da8d051',
-  #     developer_email: 'venomdrophearthstone@gmail.com'
+  def ezcount_charge_verify_with_typhoeus
+  end
+
+  # def ezcount_charge_verify_with_restclient
+  #   # https://github.com/rest-client/rest-client
+  #   # https://github.com/rest-client/rest-client#cookies
+
+  #   params = {
+  #     :sum => '5',
+  #     :successUrl => 'http://localhost:3000/',
+  #     :api_key => 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
+  #     :developer_email => 'DEVELOPER@example.com',
+  #     :api_email => 'demo@ezcount.co.il'
   #   }.to_json
+  #   response = RestClient.post('https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb', params: {sum: 5},
+  #                              { successUrl: 'http://localhost:3000/', api_key: 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
+  #                                developer_email: 'DEVELOPER@example.com', api_email: 'demo@ezcount.co.il'})
 
-  #   # USE THE PARAMETER OF SYS TOKEN, AND NOT URL FOR SYS TOKEN
-  #   val_url = "https://demo.ezcount.co.il/api/payment/validate/#{transaction_id}"
-
-  #   puts val_url
-
-  #   uri_validate = URI val_url
-  #   http2 = Net::HTTP.new(uri_validate.host, uri_validate.port)
-  #   http2.use_ssl = true
-  #   warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
-  #   http2.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-  #   req2 = Net::HTTP::Post.new(uri_validate.path, "Content-Type" => "application/json")
-  #   req2.body = data2
-  #   res2 = http2.request(req2)
-  #   print "response #{res2.body}"
-  #   response_hash2 = JSON.parse(res2.body)
-
-  #   # success = response_hash2["cgp_id"]
+  #   raise
   # end
 
-  # rescue Stripe::CardError => e
-  #   flash.alert = e.message
-  #   render action: :new
-  # end
+  def ezcount_charge_verify_with_faraday
+
+  end
+
+  def ezcount_charge_verify_with_httparty
+
+    # api = My_awesome_cookie_using_api.new
+    # api.get 'http://someurl.com/endpoint'
+    # api.cookies['darkside'] #=> 'We have cookies!'
+
+
+    threads = []
+    threads << Thread.new {
+      @result = My_awesome_cookie_using_api.new
+      @result.post('https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb',
+                   :body => { :sum => 5,
+                              :successUrl => 'http://localhost:3000/trabsactions#new',
+                              :api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
+                              :developer_email => 'DEVELOPER@example.com',
+                              :api_email => 'demo@ezcount.co.il'
+                              }.to_json,
+                   :headers => { 'Content-Type' => 'application/json' } )
+      # @sys_token = @result["secretTransactionId"]
+      # redirect_to @result["url"]
+    }
+
+    threads << Thread.new {
+      # @sys_token = '123'
+      @url = "https://demo.ezcount.co.il/api/payment/validate/"
+      # @url_request = @url + @sys_token
+      @url2 = "https://demo.ezcount.co.il/api/payment/validate/#{@sys_token}"
+      @result2 = My_awesome_cookie_using_api.new
+      @result2.post(@url2,
+                    :body => { :sum => 5,
+                               :successUrl => 'http://localhost:3000/',
+                               :api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
+                               :developer_email => 'DEVELOPER@example.com',
+                               :api_email => 'demo@ezcount.co.il'
+                               }.to_json,
+                    :headers => { 'Content-Type' => 'application/json' })
+    }
+
+    threads.each(&:join) # this waits for all the threads to finish before proceeding
+    raise
+  end
+  # request = JSON.parse(request.body)
+  # redirect_to request["url"]
+
+  # 1. put data parameters in the get request
+  # 2. extend session across multiple get and post requests
+  # 3. use data from first request sys_token to make second request
+  # 3. use SSL
+
+  # first request: https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb
+  # second request: https://demo.ezcount.co.il/api/payment/validate/#{sys_token}
+
+  # data = {
+  #   api_key: ENV["EZCOUNT_API_ENV_SECRET"],
+  #   api_email: ENV["EZCOUNT_API_EMAIL_ENV_SECRET"],
+  #   developer_email: ENV["EZCOUNT_DEV_EMAIL_ENV_SECRET"],
+  #   sum: 5,
+  #   successUrl: "http://localhost:3000/"
+  # }.to_json
+
+  # uri = URI ENV["EZCOUNT_URL_ENV_SECRET"]
+
+  # first clearing form request
+  # http = Net::HTTP.new(uri.host, uri.port)
+  # http.use_ssl = true
+  # warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
+  # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+  # req = Net::HTTP::Post.new(uri.path, "Content-Type" => "application/json")
+  # req.body = data
+  # res = http.request(req)
+  # puts "response #{res.body}"
+
+  # response_hash = JSON.parse(res.body)
+  # redirect_to response_hash["url"]
+
+  # second verification request
+  # sys_token = response_hash["url"][-36..-1]
+  # val_url = "https://demo.ezcount.co.il/api/payment/validate/#{sys_token}"
+
+  # # uri_validate = URI val_url
+  # # http2 = Net::HTTP.new(uri_validate.host, uri_validate.port)
+  # # http2.use_ssl = true
+  # warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
+  # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+  # req2 = Net::HTTP::Post.new(uri_validate.path, "Content-Type" => "application/json")
+  # req2.body = data
+  # res2 = http2.request(req2)
+  # puts "response #{res2.body}"
+
+  # response_hash2 = JSON.parse(res2.body)
+  # success = response_hash2["cgp_id"]
+
+
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json

@@ -77,6 +77,10 @@ gem 'figaro'
 gem 'forest_liana'
 gem 'webpacker', '~> 3.5'
 gem 'compass', '~> 1.0', '>= 1.0.3'
+gem 'httparty', '~> 0.13.7'
+gem 'faraday-cookie_jar'
+gem 'faraday'
+gem 'httparty_with_cookies'
 
 
 group :production do
