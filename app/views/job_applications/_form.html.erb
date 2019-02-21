@@ -28,7 +28,7 @@
   <div class="columns">
     <div class="field column is-4">
       <div class="control">
-        <label class="label">בעלאת קורות</label>
+        <label class="label">העלה קורות חיים</label>
         <div class="file">
           <label class="file-label">
             <%= f.input :resume, as: :file, required: false, input_html: { class:"file-input job_application-avatar" }, label: false, wrapper: false %>
@@ -46,7 +46,7 @@
   </div>
   <hr />
   <div class="column">
-    <h4 class="subtitle is-6">אין קורות?</h4>
+    <h4 class="subtitle is-6">אין לך כרגע קובץ להעלות?</h4>
     <h4 class="subtitle is-4">ספר לנו על עצמך</h4>
   </div>
   <hr />
@@ -65,5 +65,5 @@
       <%= f.input :education, label: "השכלה", input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" }, placeholder: "איפה ומה למדת" %>
     </div>
   </div>
-  <%= f.button :submit,  value: "Create job application", class: "button is-primary is-large is-rounded mv4" %>
+  <%= f.button :submit,  value: "שלח", class: "button is-primary is-large is-rounded mv4" %>
 <% end %>
