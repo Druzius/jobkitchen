@@ -21,7 +21,6 @@ class JobsController < ApplicationController
       c.use :cookie_jar # to maintain the session cookie across the @payment and @verify requests
       c.response :json, :content_type => /\bjson$/
     end
-    @verified = false
   end
 
   # GET /jobs
@@ -55,9 +54,10 @@ class JobsController < ApplicationController
 
   def create
     @job = current_user.jobs.build(job_params)
+    @job.save
     ezcount_charge
-    url =  @payment.body["url"] + "&transaction=#{@payment.body["secretTransactionId"]}"
-    redirect_to url and return (@job.save if @verified == "baloney") #redirect works but job.save does not execute
+    url = @payment.body["url"] # + "&transaction=#{@payment.body["secretTransactionId"]}"
+    redirect_to url
   end
 
   def ezcount_charge
@@ -70,14 +70,12 @@ class JobsController < ApplicationController
                   :developer_email => 'DEVELOPER@example.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
     end
-
     secretTransactionId = @payment.body["secretTransactionId"]
     session[:transactionId] = secretTransactionId
     session[:job_posting] = @job
   end
 
   def ezcount_charge_verify
-    byebug
     @url = "https://demo.ezcount.co.il/api/payment/validate/#{session[:transactionId]}"
 
     @verify = @conn.post do |req|
@@ -86,13 +84,15 @@ class JobsController < ApplicationController
       req.body = {:api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
-
-    @verified = "baloney"
-    # @job = Job.find(session[:job_posting]["id"])
     # @job.destroy if @verified == false
-
-    raise
-    redirect_to jobs_path
+    if @verify.body["success"] == true
+      @job = Job.find(params[:id])
+      @job.state = 1
+      @job.save!
+      redirect_to job_path
+    else
+      redirect_to root_path
+    end
   end
 
   # PATCH/PUT /jobs/1
