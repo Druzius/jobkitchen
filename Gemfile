@@ -72,7 +72,7 @@ gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sidekiq'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
-gem 'stripe', '~> 4.4'
+# gem 'stripe', '~> 4.4'
 gem 'figaro'
 gem 'forest_liana'
 gem 'webpacker', '~> 3.5'
@@ -84,7 +84,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'guard'
   gem 'guard-livereload'
 end

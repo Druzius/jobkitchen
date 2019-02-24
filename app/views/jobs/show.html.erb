@@ -9,7 +9,7 @@
       <%= @job.description.html_safe %>
     </div>
     </ul>
-    <%= link_to 'Apply to this job', new_job_job_application_path(@job.id), class:"button is-rounded is-large is-link" %>
+    <%= link_to 'שלח קורות חיים', new_job_job_application_path(@job.id), class:"button is-rounded is-large is-link" %>
   </div>
   <div class="column is-2 is-offset-1 has-text-centered">
     <% if !@job.avatar.file.nil? %>
@@ -21,11 +21,11 @@
       <ul class="pv3">
         <li class="pv1 f6">Admin controls: </li>
         <li class="pv1 inline-block">
-          <%= link_to 'View', @job, class: 'button is-small is-link is-outlined' %></li>
+          <%= link_to 'ראה', @job, class: 'button is-small is-link is-outlined' %></li>
         <li class="pv1 inline-block">
-          <%= link_to 'Edit', edit_job_path(@job), class: 'button is-small is-link is-outlined' %></li>
+          <%= link_to 'ערוך', edit_job_path(@job), class: 'button is-small is-link is-outlined' %></li>
         <li class="pv1 inline-block">
-          <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
+          <%= link_to 'מחק', @job, method: :delete, data: { confirm: 'האם אתה בטוח?' }, class: 'button is-small is-link is-outlined' %></li>
       </ul>
     <% end %>
   </div>
