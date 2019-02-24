@@ -1,16 +1,32 @@
-require 'net/http'
-require 'uri'
-#on windows env, ruby have problems with verify certificates
-require 'openssl'
+require 'httparty'
+require 'thread'
+require 'faraday'
+require 'faraday-cookie_jar'
+
+
+# Add new column to jobs, state:integer, use enum for state in the model.
+# Manually add null:false, default:0 to the state in the migration
+# Save the job in
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_connection, only: [:create, :new, :ezcount_charge_verify]
+
+  def set_connection
+    @conn = Faraday.new(:url => 'https://demo.ezcount.co.il') do |c|
+      c.use Faraday::Request::UrlEncoded
+      c.use Faraday::Response::Logger
+      c.use Faraday::Adapter::NetHttp
+      c.use :cookie_jar # to maintain the session cookie across the @payment and @verify requests
+      c.response :json, :content_type => /\bjson$/
+    end
+    @verified = false
+  end
 
   # GET /jobs
   # GET /jobs.json
   def index
-
     if(params.has_key?(:job_type))
       @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
     elsif(params.has_key?(:location))
@@ -36,78 +52,48 @@ class JobsController < ApplicationController
 
   # POST /jobs
   # POST /jobs.json
+
   def create
     @job = current_user.jobs.build(job_params)
-    ezcount_form
-    ezcount_validation
-    @job.save
-  end
-  def ezcount_form
-    api_key = '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551'
-    developer_email = 'demo@ezcount.co.il'
-    url = 'https://demo.ezcount.co.il/api/payment/prepareSafeUrl/clearingFormForWeb'
-
-    data = {
-      api_key: api_key,
-      developer_email: developer_email,
-      sum: 5.33,
-      # MAKE A CONTROLLER FOR VALIDAITON WITH THE ROUTE OF THE SUCCESSPAGE
-      successUrl: "http://localhost:3000/"
-    }.to_json
-
-    uri = URI url
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    req = Net::HTTP::Post.new(uri.path, "Content-Type" => "application/json")
-    req.body = data
-    res = http.request(req)
-    puts "response #{res.body}"
-
-    # KSYS TOKEN PARAMETER, TRY PARSING?
-    # SAVE KSYS TOKEN AS A PARAMETER
-    # ONCE USER REDIRECTS THE VARIABLES ARE CLEARED, NEED TO KEEP THE SYS TOKEN IN THE SAME SESSION
-    response_hash = JSON.parse(res.body)
-    transaction_id = response_hash["secretTransactionId"]
-    redirect_to response_hash["url"]
-
-    # return false if response_hash["secretTransactionId"]
+    ezcount_charge
+    url =  @payment.body["url"] + "&transaction=#{@payment.body["secretTransactionId"]}"
+    redirect_to url and return (@job.save if @verified == "baloney") #redirect works but job.save does not execute
   end
 
-  def ezcount_validation
-    # validation json request
+  def ezcount_charge
+    @payment = @conn.post do |req|
+      req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
+      req.headers['Content-Type'] = 'application/json'
+      req.body = {:sum => 5,
+                  :successUrl => "http://localhost:3000/jobs/#{@job.id}/payment_success",
+                  :api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
+                  :developer_email => 'DEVELOPER@example.com',
+                  :api_email => 'demo@ezcount.co.il'}.to_json
+    end
 
-    data2 = {
-      api_key: '39c8d1857ecfabe6e40d658fc358ef0051fefd6fb11d2abcae15fb324da8d051',
-      developer_email: 'venomdrophearthstone@gmail.com'
-    }.to_json
-
-    # USE THE PARAMETER OF SYS TOKEN, AND NOT URL FOR SYS TOKEN
-    val_url = "https://demo.ezcount.co.il/api/payment/validate/#{transaction_id}"
-
-    puts val_url
-
-    uri_validate = URI val_url
-    http2 = Net::HTTP.new(uri_validate.host, uri_validate.port)
-    http2.use_ssl = true
-    warn "!!SSL disabled due to a windows bug, https://gist.github.com/luislavena/f064211759ee0f806c88, please do validation in production !!"
-    http2.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    req2 = Net::HTTP::Post.new(uri_validate.path, "Content-Type" => "application/json")
-    req2.body = data2
-    res2 = http2.request(req2)
-    print "response #{res2.body}"
-    response_hash2 = JSON.parse(res2.body)
-
-    # success = response_hash2["cgp_id"]
+    secretTransactionId = @payment.body["secretTransactionId"]
+    session[:transactionId] = secretTransactionId
+    session[:job_posting] = @job
   end
 
-  # rescue Stripe::CardError => e
-  #   flash.alert = e.message
-  #   render action: :new
-  # end
+  def ezcount_charge_verify
+    byebug
+    @url = "https://demo.ezcount.co.il/api/payment/validate/#{session[:transactionId]}"
+
+    @verify = @conn.post do |req|
+      req.url @url
+      req.headers['Content-Type'] = 'application/json'
+      req.body = {:api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
+                  :developer_email => 'DEVELOPER@example.com'}.to_json
+    end
+
+    @verified = "baloney"
+    # @job = Job.find(session[:job_posting]["id"])
+    # @job.destroy if @verified == false
+
+    raise
+    redirect_to jobs_path
+  end
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
