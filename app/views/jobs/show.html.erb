@@ -15,7 +15,7 @@
     <% if !@job.avatar.file.nil? %>
       <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered") %>
     <% end %>
-    <h5 class="mt2 mb4 is-5 has-text-centered"><%= link_to @job.job_author %></h5>
+    <h2 class="mt2 mb4 f3 has-text-centered"><%= @job.job_author %></h2>
 
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">

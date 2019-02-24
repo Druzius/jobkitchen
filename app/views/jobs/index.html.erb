@@ -1,62 +1,53 @@
-
-  <div class="columns">
-    <div class="column mb4">
-      <div class="buttons is-centered">
-        <%= render 'panel' %>
-      </div>
+<div class="columns">
+  <div class="column mb4">
+    <div class="buttons is-centered">
+      <%= render 'panel' %>
     </div>
   </div>
-
-
-
-
+</div>
 <div class="container">
   <div class="columns reversed is-multiline pa3">
     <% @jobs.each do |job| %>
-
       <div class="column is-one-third">
-        <div class="card-product">
+        <div class="card-product" style="cursor:pointer;" onclick="document.location='<%= job_path(job) %>'">
           <div class="card-image">
-          <% if !job.avatar.file.nil? %>
-            <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job_path(job) %>
-          <% end %>
+            <% if !job.avatar.file.nil? %>
+              <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job_path(job) %>
+            <% else %>
+              <%= link_to image_tag('favicon.png', width: 100, height: 100), job_path(job) %>
+            <% end %>
           </div>
 
+          <% if job.job_type == 'ייעוץ, מכירות ושיווק' %>
+            <div class="column card-product-link">
+            <% elsif job.job_type == 'מקצועות המטבח' %>
+              <div class="column card-product-success">
+              <% elsif job.job_type == 'מקצועות כלליים' %>
+                <div class="column card-product-blue">
+                <% elsif job.job_type == 'מקצועות ניהול ומנהלה' %>
+                  <div class="column card-product-primary">
+                  <% elsif job.job_type == 'מקצועות שירות ואירוח' %>
+                    <div class="column card-product-infos">
+                    <% else %>
+                      <div class="column card-product-blank">
+                      <% end %>
+                      <div class="title">
+                        <h2><%= link_to job.title, job_path(job) %></h2>
+                        <p><%= link_to job.job_author, job_path(job) %></p>
+                      </div>
+                      <div class="details">
+                        <p class=""><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
+                        <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            <div class="column card-product-infos">
-              <div class="title">
-                <h2><%= link_to job.title, job_path(job) %></h2>
-                <p><%= link_to job.job_author, job_path(job) %></p>
-              </div>
-              <p><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
-            </div>
-            <div class="column has-text-right card-product-infos">
-                <%= job_type(job.job_type) %>
-                <p class="pt2 f6"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
 
-              <% if current_user.try(:admin) || job_author(job) %>
-                <ul class="pv3 inline-block">
-                  <li class="inline-block">
-                    <%= link_to 'ראה', job, class: 'button is-small is-link is-outlined' %></li>
-                  <li class="inline-block">
-                    <%= link_to 'ערוך', edit_job_path(job), class: 'button is-small is-link is-outlined' %></li>
-                  <li class="inline-block">
-                    <%= link_to 'מחק', job, method: :delete, data: { confirm: 'האם אתה בטוח?' }, class: 'button is-small is-link is-outlined' %></li>
-                </ul>
-              <% else %>
-                <ul class="pv3">
-                  <li class="inline-block">
-                    <%= link_to 'ראה', job, class: 'button is-small is-link is-outlined' %></li>
-                </ul>
+
+            
+
               <% end %>
             </div>
-
+          </div>
         </div>
-
-      </div>
-      <% end %>
-
-    </div>
-
-</div>
-

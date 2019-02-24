@@ -1,3 +1,4 @@
+
 ul.filter li {
   display: inline-flex;
 }
@@ -12,7 +13,7 @@ ul.filter li {
 
   &:before{
     border-radius: 100px;
-    border: 2px solid #468cdc;
+    border: 2px solid #868686;
     box-shadow: 0 0 15px rgba(0, 255, 204, 0.15), 0 0 15px rgba(0, 255, 204, 0.15) inset;
     content: "";
     display: block;
@@ -53,50 +54,56 @@ ul.filter li {
   }
 
   &.dark {
-    background-color: #363636;
-
+    //background: linear-gradient(90deg, rgba(193,199,200,0.9) 0%, rgba(234,236,237,1) 51%, rgba(193,199,200,0.9) 100%);
+    background-color: rgba(76,80,87,0.9);
     &:hover {
-      background-color: #2f2f2f;
+      //background: linear-gradient(90deg, rgba(193,199,200,1) 0%, rgba(234,236,237,1) 51%, rgba(193,199,200,1) 100%);
+      background-color: rgba(76,80,87,1);
     }
   }
 
   &.link {
-    background-color: #3273dc;
-
+    //background: linear-gradient(90deg, rgba(36,113,163,0.9) 0%, rgba(67,168,236,1) 51%, rgba(36,113,163,0.9) 100%);
+    background-color: rgba(59,135,208,0.9);
     &:hover {
-      background-color: #276cda;
+      //background: linear-gradient(90deg, rgba(36,113,163,1) 0%, rgba(67,168,236,1) 51%, rgba(36,113,163,1) 100%);
+      background-color: rgba(59,135,208,1)
     }
   }
 
   &.success {
-    background-color: #23d160;
-
+    //background: linear-gradient(90deg, rgba(92,60,16,0.9) 0%, rgba(201,117,62,1) 51%, rgba(92,60,16,0.9) 100%);
+    background-color: rgba(88,49,49,0.9);
     &:hover {
-      background-color: #22c65b;
+      //background: linear-gradient(90deg, rgba(92,60,16,1) 0%, rgba(201,117,62,1) 51%, rgba(92,60,16,1) 100%);
+      background-color: rgba(88,49,49,1);
     }
   }
 
   &.blue {
-    background-color: #1f4287;
-
+    //background: linear-gradient(90deg, rgba(24,40,72,0.9) 0%, rgba(75,108,183,1) 51%, rgba(24,40,72,0.9) 100%);
+    background-color: rgba(37,63,115,0.9);
     &:hover {
-      background-color: #1b3b79;
+      //background: linear-gradient(90deg, rgba(24,40,72,1) 0%, rgba(75,108,183,1) 51%, rgba(24,40,72,1) 100%);
+      background-color: rgba(37,63,115,1);
     }
   }
 
   &.primary {
-    background-color: #00d1b2;
-
+    //background: linear-gradient(90deg, rgba(29,151,108,0.9) 0%, rgba(119,223,158,1) 51%, rgba(29,151,108,0.9) 100%);
+    background-color: rgba(29,151,108,0.9);
     &:hover {
-      background-color: #00c4a7;
+      //background: linear-gradient(90deg, rgba(29,151,108,1) 0%, rgba(119,223,158,1) 51%, rgba(29,151,108,1) 100%);
+      background-color: rgba(29,151,108,1);
     }
   }
 
   &.info {
-    background-color: #209cee;
-
+    //background: linear-gradient(90deg, rgba(255,81,47,0.9) 0%, rgba(240,152,25,1) 51%, rgba(255,81,47,0.9) 100%);
+    background-color: rgba(255,81,47,0.9);
     &:hover {
-      background-color: #1496ed;
+      //background: linear-gradient(90deg, rgba(255,81,47,1) 0%, rgba(240,152,25,1) 51%, rgba(255,81,47,1) 100%);
+      background-color: rgba(255,81,47,1);
     }
   }
 }
