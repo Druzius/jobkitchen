@@ -92,7 +92,6 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
-      raise
       redirect_to job_path
     else
       redirect_to root_path
