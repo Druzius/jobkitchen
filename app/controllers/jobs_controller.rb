@@ -56,7 +56,7 @@ class JobsController < ApplicationController
     @job = current_user.jobs.build(job_params)
     @job.save
     ezcount_charge
-    url = @payment.body["url"] # + "&transaction=#{@payment.body["secretTransactionId"]}"
+    url = @payment.body["url"]
     redirect_to url
   end
 
@@ -65,7 +65,7 @@ class JobsController < ApplicationController
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
       req.body = {:sum => 5,
-                  :successUrl => "http://localhost:3000/jobs/#{@job.id}/payment_success",
+                  :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
                   :api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
                   :developer_email => 'DEVELOPER@example.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
@@ -84,11 +84,15 @@ class JobsController < ApplicationController
       req.body = {:api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
+
+    session[:transactionId] = ""
+
     # @job.destroy if @verified == false
     if @verify.body["success"] == true
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
+      raise
       redirect_to job_path
     else
       redirect_to root_path
