@@ -24,6 +24,7 @@ Job.create!([{
                job_type: "ייעוץ, מכירות ושיווק",
                location: "תל אביב והמרכז",
                job_author: "ארומה",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/facebook.jpg").open
              },
@@ -33,6 +34,7 @@ Job.create!([{
                job_type: "מקצועות כלליים",
                location: "אילת והערבה",
                job_author: "קפה נואר",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/slack.jpg").open
              },
@@ -42,6 +44,7 @@ Job.create!([{
                job_type: "מקצועות המטבח",
                location: "אזור השרון",
                job_author: "ארומה",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/trello.jpg").open
              },
@@ -51,6 +54,7 @@ Job.create!([{
                job_type: "מקצועות כלליים",
                location: "תל אביב והמרכז",
                job_author: "אמורה מיו",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/wordpress.jpg").open
              },
@@ -60,6 +64,7 @@ Job.create!([{
                job_type: "ייעוץ, מכירות ושיווק",
                location: "השפלה ודרום הארץ",
                job_author: "ג'פניקה",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/basecamp.jpg").open
              },
@@ -69,6 +74,7 @@ Job.create!([{
                job_type: "ייעוץ, מכירות ושיווק",
                location: "ירושלים וסביבותיה",
                job_author: "דיקסי",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/twitter.jpg").open
              },
@@ -78,6 +84,7 @@ Job.create!([{
                job_type: "מקצועות כלליים",
                location: "תל אביב והמרכז",
                job_author: "בלאק",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/web-crunch.jpg").open
              },
@@ -87,6 +94,7 @@ Job.create!([{
                job_type: "מקצועות שירות ואירוח",
                location: "הצפון, חיפה והקריות",
                job_author: "קפה נואר",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/slack.jpg").open
              },
@@ -96,6 +104,7 @@ Job.create!([{
                job_type: "מקצועות המטבח",
                location: "השפלה ודרום הארץ",
                job_author: "ארומה",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/trello.jpg").open
              },
@@ -105,6 +114,7 @@ Job.create!([{
                job_type: "מקצועות המטבח",
                location: "תל אביב והמרכז",
                job_author: "אמורה מיו",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/wordpress.jpg").open
              },
@@ -114,6 +124,7 @@ Job.create!([{
                job_type: "מקצועות שירות ואירוח",
                location: "אזור השרון",
                job_author: "ג'פניקה",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/basecamp.jpg").open
              },
@@ -123,6 +134,7 @@ Job.create!([{
                job_type: "מקצועות כלליים",
                location: "אזור השרון",
                job_author: "דיקסי",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/twitter.jpg").open
              },
@@ -132,6 +144,7 @@ Job.create!([{
                job_type: "מקצועות כלליים",
                location: "תל אביב והמרכז",
                job_author: "בלאק",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/web-crunch.jpg").open
              },
@@ -141,6 +154,7 @@ Job.create!([{
                job_type: "מקצועות ניהול ומנהלה",
                location: "הצפון, חיפה והקריות",
                job_author: "קפה נואר",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/slack.jpg").open
              },
@@ -150,6 +164,7 @@ Job.create!([{
                job_type: "מקצועות ניהול ומנהלה",
                location: "השפלה ודרום הארץ",
                job_author: "ארומה",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/trello.jpg").open
              },
@@ -159,6 +174,7 @@ Job.create!([{
                job_type: "מקצועות המטבח",
                location: "תל אביב והמרכז",
                job_author: "אמורה מיו",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/wordpress.jpg").open
              },
@@ -168,6 +184,7 @@ Job.create!([{
                job_type: "מקצועות המטבח",
                location: "ירושלים וסביבותיה",
                job_author: "ג'פניקה",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/basecamp.jpg").open
              },
@@ -177,6 +194,7 @@ Job.create!([{
                job_type: "ייעוץ, מכירות ושיווק",
                location: "ירושלים וסביבותיה",
                job_author: "דיקסי",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/twitter.jpg").open
              },
@@ -186,6 +204,7 @@ Job.create!([{
                job_type: "מקצועות שירות ואירוח",
                location: "תל אביב והמרכז",
                job_author: "בלאק",
+               state: "verified",
                user_id: user.id,
                avatar: Rails.root.join("app/assets/images/web-crunch.jpg").open
              }
