@@ -7,6 +7,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # # Choose what kind of storage to use for this uploader:
   # storage :file
   # # storage :fog
+  process convert: 'png'
 
   # # Override the directory where uploaded files will be stored.
   # # This is a sensible default for uploaders that are meant to be mounted:
@@ -21,6 +22,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+  def default_url
+    'https://res.cloudinary.com/jobkitchen/image/upload/v1551193784/favicon.png'
+  end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]
