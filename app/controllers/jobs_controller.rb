@@ -3,7 +3,6 @@ require 'thread'
 require 'faraday'
 require 'faraday-cookie_jar'
 
-
 # Add new column to jobs, state:integer, use enum for state in the model.
 # Manually add null:false, default:0 to the state in the migration
 # Save the job in
@@ -26,7 +25,10 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    if(params.has_key?(:job_type))
+
+    if(params.has_key?(:job_type) && params.has_key?(:location))
+      @jobs = Job.where({job_type: params[:job_type], location: params[:location]}).order("created_at desc")
+    elsif(params.has_key?(:job_type))
       @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
     elsif(params.has_key?(:location))
       @jobs = Job.where(location: params[:location]).order("created_at desc")
