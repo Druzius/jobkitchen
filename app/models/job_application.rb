@@ -10,7 +10,4 @@ class JobApplication < ApplicationRecord
 
   # TODO: email helper
 
-  def years_experience
-    ["ללא ניסיון", "1-3 שנות ניסיון", "3-5 שנות ניסיון", "5+ שנות ניסיון"]
-  end
 end
