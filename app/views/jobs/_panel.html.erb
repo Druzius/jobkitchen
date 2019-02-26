@@ -1,27 +1,27 @@
 <nav class="panel">
   <ul class="filter buttons is-centered">
     <li class="mh3 icon-segment">
-      <%= link_to image_tag('All.png', class: "icon-image", id: "all"), jobs_path, class: "pbutf circle dark" %>
+      <%= link_to image_tag('All.png', class: "icon-image", id: "all"), jobs_path(location: params[:location]), class: "pbutf circle dark" %>
       <%= content_tag :span, "כל התחומים", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
-      <%= link_to image_tag('sales.png', class: "icon-image", id: "sales"), jobs_path(job_type: "ייעוץ, מכירות ושיווק"), class: "pbutf circle link" %>
+      <%= link_to image_tag('sales.png', class: "icon-image", id: "sales"), jobs_path(job_type: "ייעוץ, מכירות ושיווק", location: params[:location]), class: "pbutf circle link" %>
       <%= content_tag :span, "מכירות", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
-      <%= link_to image_tag('kitchen.png', class: "icon-image", id: "kitchen"), jobs_path(job_type: "מקצועות המטבח"), class: "pbutf circle success" %>
+      <%= link_to image_tag('kitchen.png', class: "icon-image", id: "kitchen"), jobs_path(job_type: "מקצועות המטבח", location: params[:location]), class: "pbutf circle success" %>
       <%= content_tag :span, "מטבח", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
-      <%= link_to image_tag('general2.png', class: "icon-image", id: "general"), jobs_path(job_type: "מקצועות כלליים"), class: "pbutf circle blue" %>
+      <%= link_to image_tag('general2.png', class: "icon-image", id: "general"), jobs_path(job_type: "מקצועות כלליים", location: params[:location]), class: "pbutf circle blue" %>
       <%= content_tag :span, "כלליים", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
-      <%= link_to image_tag('management.png', class: "icon-image", id: "management"), jobs_path(job_type: "מקצועות ניהול ומנהלה"), class: "pbutf circle primary" %>
+      <%= link_to image_tag('management.png', class: "icon-image", id: "management"), jobs_path(job_type: "מקצועות ניהול ומנהלה", location: params[:location]), class: "pbutf circle primary" %>
       <%= content_tag :span, "ניהול", class: "icon-text" %>
     </li>
     <li class="mh3 icon-segment">
-      <%= link_to image_tag('service.png', class: "icon-image", id: "service"), jobs_path(job_type: "מקצועות שירות ואירוח"), class: "info pbutf circle" %>
+      <%= link_to image_tag('service.png', class: "icon-image", id: "service"), jobs_path(job_type: "מקצועות שירות ואירוח", location: params[:location]), class: "info pbutf circle" %>
       <%= content_tag :span, "שירות", class: "icon-text" %>
     </li>
     <li>

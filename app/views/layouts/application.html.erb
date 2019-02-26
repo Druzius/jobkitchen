@@ -48,15 +48,15 @@
                 <%= link_to "פרסם משרה", new_job_path, class: "navbar-item button is-primary is-rounded" %>
               </p>
               <% if user_signed_in? %>
-              <p class="control">
-                <div class="navbar-item has-dropdown is-hoverable has-background-light">
-                  <%= link_to 'חשבון', edit_user_registration_path, class: "navbar-link" %>
-                  <div class="navbar-dropdown is-right">
-                    <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
-                    <%= link_to "צא", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                <p class="control">
+                  <div class="navbar-item has-dropdown is-hoverable has-background-light">
+                    <%= link_to 'חשבון', edit_user_registration_path, class: "navbar-link" %>
+                    <div class="navbar-dropdown is-right">
+                      <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                      <%= link_to "צא", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                    </div>
                   </div>
-                </div>
-              </p>
+                </p>
               <% else %>
                 <p class="control">
                   <%= link_to "התחבר", new_user_session_path, class:"navbar-item button" %>
