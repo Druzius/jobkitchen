@@ -9,5 +9,4 @@ class JobApplication < ApplicationRecord
   # TODO: validations for summary, work experience (max length)
 
   # TODO: email helper
-
 end
