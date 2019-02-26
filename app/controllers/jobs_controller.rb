@@ -56,10 +56,13 @@ class JobsController < ApplicationController
 
   def create
     @job = current_user.jobs.build(job_params)
-    @job.save
-    ezcount_charge
-    url = @payment.body["url"]
-    redirect_to url
+    if @job.save
+      ezcount_charge
+      url = @payment.body["url"]
+      redirect_to url
+    else
+      render :new
+    end
   end
 
   def ezcount_charge
