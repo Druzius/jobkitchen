@@ -4,26 +4,132 @@
       <%= link_to image_tag('All.png', class: "icon-image", id: "all"), jobs_path(location: params[:location]), class: "pbutf circle dark" %>
       <%= content_tag :span, "כל התחומים", class: "icon-text" %>
     </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('sales.png', class: "icon-image", id: "sales"), jobs_path(job_type: "ייעוץ, מכירות ושיווק", location: params[:location]), class: "pbutf circle link" %>
-      <%= content_tag :span, "מכירות", class: "icon-text" %>
+
+    <li class="mh3 icon-segment dropdown is-hoverable is-right mr5">
+      <div class="dropdown-trigger">
+        <div aria-haspopup="true" aria-controls="dropdown-menu">
+        <%= link_to image_tag('sales.png', class: "icon-image", id: "sales"), jobs_path(job_type: "ייעוץ, מכירות ושיווק", location: params[:location]), class: "pbutf circle link" %>
+        </div>
+      </div>
+        <%= content_tag :span, "מכירות", class: "icon-text" %>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Dropdown item
+          </a>
+          <a class="dropdown-item">
+            Other dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Active dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Other dropdown item
+          </a>
+        </div>
+      </div>
     </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('kitchen.png', class: "icon-image", id: "kitchen"), jobs_path(job_type: "מקצועות המטבח", location: params[:location]), class: "pbutf circle success" %>
-      <%= content_tag :span, "מטבח", class: "icon-text" %>
+
+    <li class="mh3 icon-segment dropdown is-hoverable is-right mr5">
+      <div class="dropdown-trigger">
+        <div aria-haspopup="true" aria-controls="dropdown-menu">
+        <%= link_to image_tag('kitchen.png', class: "icon-image", id: "kitchen"), jobs_path(job_type: "מקצועות המטבח", location: params[:location]), class: "pbutf circle success" %>
+        </div>
+      </div>
+        <%= content_tag :span, "מטבח", class: "icon-text" %>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Dropdown item
+          </a>
+          <a class="dropdown-item">
+            Other dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Active dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Other dropdown item
+          </a>
+        </div>
+      </div>
     </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('general2.png', class: "icon-image", id: "general"), jobs_path(job_type: "מקצועות כלליים", location: params[:location]), class: "pbutf circle blue" %>
-      <%= content_tag :span, "כלליים", class: "icon-text" %>
+
+    <li class="mh3 icon-segment dropdown is-hoverable is-right mr5">
+      <div class="dropdown-trigger">
+        <div aria-haspopup="true" aria-controls="dropdown-menu">
+        <%= link_to image_tag('general2.png', class: "icon-image", id: "general"), jobs_path(job_type: "מקצועות כלליים", location: params[:location]), class: "pbutf circle blue" %>
+        </div>
+      </div>
+        <%= content_tag :span, "כלליים", class: "icon-text" %>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Dropdown item
+          </a>
+          <a class="dropdown-item">
+            Other dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Active dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Other dropdown item
+          </a>
+        </div>
+      </div>
     </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('management.png', class: "icon-image", id: "management"), jobs_path(job_type: "מקצועות ניהול ומנהלה", location: params[:location]), class: "pbutf circle primary" %>
-      <%= content_tag :span, "ניהול", class: "icon-text" %>
+
+    <li class="mh3 icon-segment dropdown is-hoverable is-right mr5">
+      <div class="dropdown-trigger">
+        <div aria-haspopup="true" aria-controls="dropdown-menu">
+          <%= link_to image_tag('management.png', class: "icon-image", id: "management"), jobs_path(job_type: "מקצועות ניהול ומנהלה", location: params[:location]), class: "pbutf circle primary" %>
+        </div>
+      </div>
+        <%= content_tag :span, "ניהול", class: "icon-text" %>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Dropdown item
+          </a>
+          <a class="dropdown-item">
+            Other dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Active dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Other dropdown item
+          </a>
+        </div>
+      </div>
     </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('service.png', class: "icon-image", id: "service"), jobs_path(job_type: "מקצועות שירות ואירוח", location: params[:location]), class: "info pbutf circle" %>
+
+    <li class="mh3 icon-segment dropdown is-hoverable is-right mr5">
+      <div class="dropdown-trigger">
+        <div aria-haspopup="true" aria-controls="dropdown-menu">
+          <%= link_to image_tag('service.png', class: "icon-image", id: "service"), jobs_path(job_type: "מקצועות שירות ואירוח", location:params[:location]), class: "info pbutf circle" %>
+        </div>
+      </div>
       <%= content_tag :span, "שירות", class: "icon-text" %>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">
+            Dropdown item
+          </a>
+          <a class="dropdown-item">
+            Other dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Active dropdown item
+          </a>
+          <a href="#" class="dropdown-item">
+            Other dropdown item
+          </a>
+        </div>
+      </div>
     </li>
+
     <li>
       <div class="pb4">
         <div class="dropdown is-hoverable is-right mr5">
