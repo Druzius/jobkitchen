@@ -1,10 +1,19 @@
+
+  <div class="banner" style="background-image:
+  linear-gradient(225deg, rgba(186,210,213,0.4) 0%, rgba(0,36,61,0.5) 50%), url(<%= image_path 'jobkitchenbanner.png' %>);">
+  <h1 class="f1 pt4 has-text-centered">Job Kitchen</h1>
+  <h2 class="f2 has-text-centered">לוח דרושים בתחום המזון והמשקאות</h1>
+  </div>
 <div class="columns">
   <div class="column mb4">
-    <div class="buttons is-centered">
+    <div class="panel buttons is-centered">
       <%= render 'panel' %>
     </div>
   </div>
 </div>
+
+
+
 <div class="container">
   <div class="columns reversed is-multiline pa3">
     <% @jobs.each do |job| %>

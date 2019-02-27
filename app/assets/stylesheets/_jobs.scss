@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.banner {
+  color: white;
+  height: 40vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+.panel {
+  margin-top: -40px;
+}
 
 .card-product {
   overflow: hidden;
