@@ -71,24 +71,39 @@
       </div>
     </nav>
     <%= yield %>
-    <footer class="footer">
+    <footer class="footer reversed">
       <div class="container">
-        <div class="content has-text-centered">
-          <p>
-            <a href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i>  תנו לייק בפייסבוק</a>
-          </p>
+        <div class="columns">
+          <div class="column is-one-third">
+            <div class="pr6">
+              <a href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i>  תנו לייק בפייסבוק</a>
+            </div>
+
+          </div>
+
+          <div class="column is-one-third">
+            <div class="pr6">
+              <%= link_to "אודות", "/pages/about", class:"footer-link"%>
+            </div>
+            <div class="pr6">
+              <%= link_to "תקנון מעסיקים", "/pages/תקנון_מעסיקים", class:"footer-link"%>
+            </div>
+            <div class="pr6">
+              <%= link_to "תקנון מחפשי עבודה", "/pages/תקנון_מחפשי_עבודה", class:"footer-link"%>
+            </div>
+          </div>
+
+          <div class="column is-one-third">
+            <div class="pr6">
+              <%= link_to "פרסם משרה", new_job_path, class: "footer-link" %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="container">
-        <div>
-          <%= link_to "about us", "/pages/about", class:""%>
+        <div class="has-text-centered">
+          <p class="f7 pt4">כל הזכויות שמורות לחברת ג'וב קיטשן בע"מ - Copyright © 2019 JobKitchen</p>
+          <p class="f7">Created by Treepsters</p>
         </div>
-        <div>
-          <%= link_to "extra info", "/pages/about", class:""%>
-        </div>
-        <div>
-          <%= link_to "פרסם משרה", new_job_path, class: ""%>
-        </div>
+
       </div>
     </footer>
   </body>
