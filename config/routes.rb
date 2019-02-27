@@ -3,6 +3,8 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   get '/payment_success', to: 'jobs#ezcount_charge_verify', :template => 'pages/payment_success', :defaults => { :format => 'json' }
 
+  get '/pages/:page' => 'pages#show'
+
   mount ForestLiana::Engine => '/forest'
   resources :jobs do
     resources :job_applications
@@ -11,9 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  Rails.application.routes.draw do
-    get '/pages/:page' => 'pages#show'
-  end
+
 
   devise_for :users
   root to: 'jobs#index'
