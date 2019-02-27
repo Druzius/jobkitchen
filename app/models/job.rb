@@ -71,7 +71,6 @@ class Job < ApplicationRecord
     'סגן/ית מנהל/ת'
   ]
 
-
   GENERAL = ["אינסטלטור/ית",
              "חשמלאי/ת",
              "מחסנאי/ת",
