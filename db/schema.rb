@@ -54,13 +54,13 @@ ActiveRecord::Schema.define(version: 2019_02_26_152910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
     t.string "stripe_id"
     t.string "card_brand"
     t.string "card_last4"
     t.string "card_exp_month"
     t.string "card_exp_year"
     t.datetime "expires_at"
-    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
