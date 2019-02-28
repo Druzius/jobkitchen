@@ -9,4 +9,16 @@ class JobApplication < ApplicationRecord
   # TODO: validations for summary, work experience (max length)
 
   # TODO: email helper
+
+  validates :full_name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :phone_number, presence: true, numericality: true, length: { minimum: 2, maximum: 50 }
+  validates :email, presence: true, length: { minimum: 2, maximum: 50 }, format: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+  validates :city, presence: true, length: { minimum: 2, maximum: 255 }
+
+  # validates :resume
+
+  validates :work_experience, length: { maximum: 80 }
+  validates :summary, length: { maximum: 80 }
+  # validates :years_experience, presence: true
 end
