@@ -83,7 +83,6 @@ class Job < ApplicationRecord
              "שוטף/ת כלים",
              "עוזר/ת"]
 
-
   enum state: [ :pending, :verified ]
 
   validates :title, presence: true
