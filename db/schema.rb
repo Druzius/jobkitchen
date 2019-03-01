@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_183712) do
+ActiveRecord::Schema.define(version: 2019_03_01_153140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "job_applications", force: :cascade do |t|
     t.string "phone_number"
@@ -42,7 +48,18 @@ ActiveRecord::Schema.define(version: 2019_02_27_183712) do
     t.integer "user_id"
     t.bigint "job_applications_id"
     t.integer "state", default: 0, null: false
+    t.string "sub_category"
+    t.bigint "positions_id"
     t.index ["job_applications_id"], name: "index_jobs_on_job_applications_id"
+    t.index ["positions_id"], name: "index_jobs_on_positions_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "categories_id"
+    t.index ["categories_id"], name: "index_positions_on_categories_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,17 +71,19 @@ ActiveRecord::Schema.define(version: 2019_02_27_183712) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
     t.string "stripe_id"
     t.string "card_brand"
     t.string "card_last4"
     t.string "card_exp_month"
     t.string "card_exp_year"
     t.datetime "expires_at"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "job_applications", "jobs"
   add_foreign_key "jobs", "job_applications", column: "job_applications_id"
+  add_foreign_key "jobs", "positions", column: "positions_id"
+  add_foreign_key "positions", "categories", column: "categories_id"
 end
