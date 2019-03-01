@@ -7,7 +7,49 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Job.destroy_all
 User.destroy_all
+Categories.destroy_all
+Positions.destroy_all
 
+
+
+Category.create!([{
+                    name: "Sales"
+                  },
+                  {
+                    name: "Kitchen"
+                  },
+                  {
+                    name: "General"
+                  },
+                  {
+                    name: "Management"
+                  },
+                  {
+                    name: "Service"
+                  }
+                  ])
+
+positions.each do |name, category|
+  Position.create!(name: name, category_id: category)
+end
+
+Position.create!([{
+                    name: "waiter"
+                    category_id: 2
+                  },
+                  {
+                    name: "cook"
+                  },
+                  {
+                    name: "General"
+                  },
+                  {
+                    name: "Management"
+                  },
+                  {
+                    name: "Service"
+                  }
+                  ])
 
 user = User.new(
   id: 2,
