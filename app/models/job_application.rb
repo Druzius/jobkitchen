@@ -1,5 +1,6 @@
 class JobApplication < ApplicationRecord
   belongs_to :job
+  mount_uploader :resume, ResumeUploader
 
   # YEARS_EXPERIENCE = ["ללא ניסיון", "1-3 שנות ניסיון", "3-5 שנות ניסיון", "5+ שנות ניסיון"]
   # TODO: validations for all, required
