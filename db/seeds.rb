@@ -11,23 +11,32 @@ Categories.destroy_all
 Positions.destroy_all
 
 
+sales = Category.create!(
+{
+  name: "Sales"
+})
 
-Category.create!([{
-                    name: "Sales"
-                  },
-                  {
-                    name: "Kitchen"
-                  },
-                  {
-                    name: "General"
-                  },
-                  {
-                    name: "Management"
-                  },
-                  {
-                    name: "Service"
-                  }
-                  ])
+kitchen = Category.create!(
+{
+  name: "Kitchen"
+})
+
+general = Category.create!(
+{
+  name: "General"
+})
+
+management = Category.create!(
+{
+  name: "Management"
+})
+
+service = Category.create!(
+{
+  name: "Service"
+})
+
+
 
 positions.each do |name, category|
   Position.create!(name: name, category_id: category)

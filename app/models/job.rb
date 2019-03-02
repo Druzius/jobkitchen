@@ -10,4 +10,10 @@ class Job < ApplicationRecord
 
   validates :title, presence: true
 
+def category?
+  # Get object's position as input or parameter
+  #
+
+end
+
 end
