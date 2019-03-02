@@ -45,6 +45,13 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   padding: 18px;
 }
 
+.navbar-burger {
+  color: white;
+  margin-right: auto;
+  margin-left: 5px;
+  height: 4.25rem;
+}
+
 .navbar-item.has-dropdown {
   border-radius: 4px;
 }
@@ -85,5 +92,11 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   color: black;
   &:hover {
     color: grey;
+  }
+}
+
+@media (max-width: 480px) {
+ .navbar-item img {
+  max-height: 3.75rem;
   }
 }
