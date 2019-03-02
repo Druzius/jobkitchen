@@ -3,7 +3,6 @@
 @import "jobs";
 @import "job_applications";
 @import "devise";
-@import "stripe";
 @import "panel";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -95,8 +94,13 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 807px) {
  .navbar-item img {
   max-height: 3.75rem;
   }
+
+#facebook-button {
+  display: none;
+  }
+
 }

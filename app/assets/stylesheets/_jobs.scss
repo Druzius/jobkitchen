@@ -10,7 +10,7 @@
   background-attachment: fixed;
 }
 
-.panel {
+.panel{
   margin-top: -40px;
 }
 
@@ -92,4 +92,16 @@
 #location {
   text-align: left;
   margin-top: 15px;
+}
+
+
+@media (max-width: 807px) {
+.banner {
+  display: none;
+  }
+
+.panel {
+  margin-top: 0px;
+  }
+
 }
