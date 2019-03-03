@@ -26,7 +26,6 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @position = Position.find_by_name("#{params[:job_type]}")
-    raise
     if(params.has_key?(:job_type) && params.has_key?(:location))
       @jobs = Job.where({position_id: @position, location: params[:location]}).order("created_at desc")
     elsif(params.has_key?(:job_type))
@@ -56,7 +55,12 @@ class JobsController < ApplicationController
   # POST /jobs.json
 
   def create
+
     @job = current_user.jobs.build(job_params)
+
+    # @position = @job.position_id
+    # @job.position_id = Position.find_by_name("#{job_params[position]}")
+
     if @job.save
       ezcount_charge
       url = @payment.body["url"]
@@ -138,6 +142,6 @@ class JobsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
 
   def job_params
-    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar)
+    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar, :position_id)
   end
 end
