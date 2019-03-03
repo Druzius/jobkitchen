@@ -25,11 +25,12 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-
+    @position = Position.find_by_name("#{params[:job_type]}")
+    raise
     if(params.has_key?(:job_type) && params.has_key?(:location))
-      @jobs = Job.where({job_type: params[:job_type], location: params[:location]}).order("created_at desc")
+      @jobs = Job.where({position_id: @position, location: params[:location]}).order("created_at desc")
     elsif(params.has_key?(:job_type))
-      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+      @jobs = Job.where(position_id: @position).order("created_at desc")
     elsif(params.has_key?(:location))
       @jobs = Job.where(location: params[:location]).order("created_at desc")
     else
