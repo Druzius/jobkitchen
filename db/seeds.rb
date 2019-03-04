@@ -12,7 +12,7 @@ Category.destroy_all
 
 JOB_AREA = ["תל אביב והמרכז", "ירושלים וסביבותיה", "הצפון, חיפה והקריות", "אזור השרון", "השפלה ודרום הארץ", "אילת והערבה"]
 
-SALES = ["אחראי/ת משמרת",
+HOTEL = ["אחראי/ת משמרת",
          "פקיד/ת  קבלה",
          "דור מן/ית",
          "חדרן/ית",
@@ -33,21 +33,21 @@ SALES = ["אחראי/ת משמרת",
 
 KITCHEN = [
   "אופה",
-   "איש/ת לחם",
-   "גלידן/ית",
-   "גרילמן/ית",
-   "טבח/ית",
-   "מנהל/ת מטבח",
-   "סו שף/ית",
-   "סו שף/ית קונדיטור",
-   "עוזר טבח/ית",
-   "צ'קר/ית",
-   "קונדיטור/ית",
-   "קניין/ת",
-   "קצב/ית",
-   "שוקולטייר/ית",
-   "שף/ית",
-   "שף/ית קונדיטור"]
+  "איש/ת לחם",
+  "גלידן/ית",
+  "גרילמן/ית",
+  "טבח/ית",
+  "מנהל/ת מטבח",
+  "סו שף/ית",
+  "סו שף/ית קונדיטור",
+  "עוזר טבח/ית",
+  "צ'קר/ית",
+  "קונדיטור/ית",
+  "קניין/ת",
+  "קצב/ית",
+  "שוקולטייר/ית",
+  "שף/ית",
+"שף/ית קונדיטור"]
 
 SERVICE = [
   "אחראי/ת משמרת",
@@ -62,64 +62,64 @@ SERVICE = [
   "עובד/ת דלפק",
 "קופאי/ת"]
 
-  MANAGEMENT = [
-    'יועץ/ת עיסקי',
-    'מנהל/ת',
-    'מנהל/ת חשבונות',
-    'מנהל/ת כספים',
-    'מנהל/ת מזומ"ש',
-    'מנהל/ת רכש',
-    'מנכ"ל/ית',
-    'סגן מנהל/ת כספים',
-    'סגן מנהל/ת מזומ"ש',
-    'סמנכ"ל/ית',
-    'פקיד/ת',
-    'רואה/ת חשבון',
-    'סגן/ית מנהל/ת'
-  ]
+MANAGEMENT = [
+  'יועץ/ת עיסקי',
+  'מנהל/ת',
+  'מנהל/ת חשבונות',
+  'מנהל/ת כספים',
+  'מנהל/ת מזומ"ש',
+  'מנהל/ת רכש',
+  'מנכ"ל/ית',
+  'סגן מנהל/ת כספים',
+  'סגן מנהל/ת מזומ"ש',
+  'סמנכ"ל/ית',
+  'פקיד/ת',
+  'רואה/ת חשבון',
+  'סגן/ית מנהל/ת'
+]
 
-  GENERAL = ["אינסטלטור/ית",
-             "חשמלאי/ת",
-             "מחסנאי/ת",
-             "מטפל/ת",
-             "נהג/ת",
-             "עובד/ת אחזקה",
-             "עובד/ת כללי",
-             "עובד/ת משק",
-             "עובד/ת נקיון",
-             "שוטף/ת כלים",
-             "עוזר/ת"]
+GENERAL = ["אינסטלטור/ית",
+           "חשמלאי/ת",
+           "מחסנאי/ת",
+           "מטפל/ת",
+           "נהג/ת",
+           "עובד/ת אחזקה",
+           "עובד/ת כללי",
+           "עובד/ת משק",
+           "עובד/ת נקיון",
+           "שוטף/ת כלים",
+           "עוזר/ת"]
 
 
-sales = Category.create!(
-{
-  name: "Sales"
+hotel = Category.create!(
+  {
+    name: "Hotel"
 })
 
 kitchen = Category.create!(
-{
-  name: "Kitchen"
+  {
+    name: "Kitchen"
 })
 
 general = Category.create!(
-{
-  name: "General"
+  {
+    name: "General"
 })
 
 management = Category.create!(
-{
-  name: "Management"
+  {
+    name: "Management"
 })
 
 service = Category.create!(
-{
-  name: "Service"
+  {
+    name: "Service"
 })
 
 
 
-SALES.each do |name|
-  Position.create!(name: name, category_id: sales.id)
+HOTEL.each do |name|
+  Position.create!(name: name, category_id: hotel.id)
 end
 
 KITCHEN.each do |name|
@@ -150,61 +150,61 @@ user.save!
 
 5.times do
   Job.create!([
-    {
-               title: "AMIIIIIR",
-               description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-               job_type: "ייעוץ, מכירות ושיווק",
-               position_id: Position.find_by_name("#{MANAGEMENT.sample}").id,
-               location: JOB_AREA.sample,
-               job_author: "ארומה",
-               state: 1,
-               user_id: user.id,
-               avatar: Rails.root.join("app/assets/images/facebook.jpg").open
-             },
-             {
-               title: "משווק",
-               description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-               job_type: "מקצועות כלליים",
-               position_id: Position.find_by_name("#{SALES.sample}").id,
-               location: JOB_AREA.sample,
-               job_author: "קפה נואר",
-               state: 1,
-               user_id: user.id,
-               avatar: Rails.root.join("app/assets/images/slack.jpg").open
-             },
-             {
-               title: "שוטף כלים",
-               description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-               job_type: "מקצועות המטבח",
-               position_id: Position.find_by_name("#{GENERAL.sample}").id,
-               location: JOB_AREA.sample,
-               job_author: "ארומה",
-               state: 1,
-               user_id: user.id,
-               avatar: Rails.root.join("app/assets/images/trello.jpg").open
-             },
-             {
-               title: "מארחת",
-               description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-               job_type: "מקצועות כלליים",
-               position_id: Position.find_by_name("#{SERVICE.sample}").id,
-               location: JOB_AREA.sample,
-               job_author: "אמורה מיו",
-               state: 1,
-               user_id: user.id,
-               avatar: Rails.root.join("app/assets/images/wordpress.jpg").open
-             },
-             {
-               title: "מלצר",
-               description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-               job_type: "ייעוץ, מכירות ושיווק",
-               position_id: Position.find_by_name("#{KITCHEN.sample}").id,
-               location: JOB_AREA.sample,
-               job_author: "ג'פניקה",
-               state: 1,
-               user_id: user.id,
-               avatar: Rails.root.join("app/assets/images/basecamp.jpg").open
-             }
+                {
+                  title: "AMIIIIIR",
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  job_type: "ייעוץ, מכירות ושיווק",
+                  position_id: Position.find_by_name("#{MANAGEMENT.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "ארומה",
+                  state: 1,
+                  user_id: user.id,
+                  avatar: Rails.root.join("app/assets/images/facebook.jpg").open
+                },
+                {
+                  title: "משווק",
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  job_type: "מקצועות כלליים",
+                  position_id: Position.find_by_name("#{HOTEL.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "קפה נואר",
+                  state: 1,
+                  user_id: user.id,
+                  avatar: Rails.root.join("app/assets/images/slack.jpg").open
+                },
+                {
+                  title: "שוטף כלים",
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  job_type: "מקצועות המטבח",
+                  position_id: Position.find_by_name("#{GENERAL.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "ארומה",
+                  state: 1,
+                  user_id: user.id,
+                  avatar: Rails.root.join("app/assets/images/trello.jpg").open
+                },
+                {
+                  title: "מארחת",
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  job_type: "מקצועות כלליים",
+                  position_id: Position.find_by_name("#{SERVICE.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "אמורה מיו",
+                  state: 1,
+                  user_id: user.id,
+                  avatar: Rails.root.join("app/assets/images/wordpress.jpg").open
+                },
+                {
+                  title: "מלצר",
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  job_type: "ייעוץ, מכירות ושיווק",
+                  position_id: Position.find_by_name("#{KITCHEN.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "ג'פניקה",
+                  state: 1,
+                  user_id: user.id,
+                  avatar: Rails.root.join("app/assets/images/basecamp.jpg").open
+                }
   ])
 end
 
