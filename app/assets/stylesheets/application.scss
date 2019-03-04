@@ -3,7 +3,6 @@
 @import "jobs";
 @import "job_applications";
 @import "devise";
-@import "stripe";
 @import "panel";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -43,6 +42,13 @@ h1, h2, h3, h4, h5, p, a, ul, li {
 .navbar-item img {
   max-height: 4.75rem;
   padding: 18px;
+}
+
+.navbar-burger {
+  color: white;
+  margin-right: auto;
+  margin-left: 5px;
+  height: 4.25rem;
 }
 
 .navbar-item.has-dropdown {
@@ -86,4 +92,15 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   &:hover {
     color: grey;
   }
+}
+
+@media (max-width: 807px) {
+ .navbar-item img {
+  max-height: 3.75rem;
+  }
+
+#facebook-button {
+  display: none;
+  }
+
 }

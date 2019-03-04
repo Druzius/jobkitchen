@@ -11,8 +11,11 @@
             <%= link_to image_tag("#{cat.name.downcase}.png", class: "icon-image", id: "#{cat.name.downcase}"), jobs_path(category: "#{cat.name.downcase}", location: params[:location]), class: "pbutf circle #{@style_hash[cat.name.downcase.to_sym]}" %>
           </div>
         </div>
+
         <!-- Make the dropdown dynamic with positions and categories -->
         <%= content_tag :span, "#{cat.hebrew}", class: "icon-text" %>
+        
+        
         <!--         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
             <a href="#" class="dropdown-item">
@@ -27,6 +30,21 @@
             <a href="#" class="dropdown-item">
               Other dropdown item
             </a>
+
+      </div>
+    </li>
+
+    <li>
+      <div class="location-filter">
+        <div class="dropdown is-hoverable is-right mr5">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span class="ml2">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+              <span>סנן לפי איזור</span>
+            </button>
+
           </div>
         </div> -->
       </li>
