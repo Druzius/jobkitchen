@@ -17,6 +17,15 @@ module JobsHelper
     end
   end
 
+  def position_collection
+    @positions = Position.all
+    @category = Category.all
+
+    @positions.each do |cat, pos|
+      [[cat, [pos]], ['General', ['Bob', 'John']]]
+    end
+  end
+
   def job_author(job)
     user_signed_in? && current_user.id == job.user_id
   end

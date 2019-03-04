@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_161649) do
+ActiveRecord::Schema.define(version: 2019_03_04_185132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_161649) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "job_type"
     t.string "location"
     t.string "job_author"
     t.datetime "created_at", null: false
@@ -49,7 +48,6 @@ ActiveRecord::Schema.define(version: 2019_03_04_161649) do
     t.integer "user_id"
     t.bigint "job_applications_id"
     t.integer "state", default: 0, null: false
-    t.string "sub_category"
     t.bigint "position_id"
     t.index ["job_applications_id"], name: "index_jobs_on_job_applications_id"
     t.index ["position_id"], name: "index_jobs_on_position_id"
