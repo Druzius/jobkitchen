@@ -25,11 +25,8 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-
-    # @colors = ["link", "success", "blue", "primary", "info"]
+    # to filter style keys in _panel and jobs index view
     @categories = Category.where.not(name: "General")
-
-    # @cat_colors = Hash[@categories.map(&:to_sym).zip(@colors)]
     @style_hash = {
       general: "link",
       kitchen:  "success",
@@ -37,16 +34,11 @@ class JobsController < ApplicationController
       management: "primary",
       hotel: "info"
     }
-
     # Filter the jobs by categories only, positions will be added later on.
     if(params.has_key?(:category) && params.has_key?(:location))
-      @category = Category.find_by_name("#{params["job_type"]}")
-      @positions = Position.where({category_id: @category})
-      @jobs = Job.where({position_id: @positions, location: params[:location]}).order("created_at desc")
-    elsif(params.has_key?(:job_type))
-      @category = Category.find_by_name("#{params["job_type"]}")
-      @positions = Position.where({category_id: @category})
-      @jobs = Job.where(position_id: @positions).order("created_at desc")
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    elsif(params.has_key?(:category))
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
     elsif(params.has_key?(:location))
       @jobs = Job.where(location: params[:location]).order("created_at desc")
     else
