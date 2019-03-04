@@ -25,8 +25,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    # @category = Category.find_by_name("#{params[:job_type]}")
-
+    # Filter the jobs by categories only, positions will be added later on.
     if(params.has_key?(:job_type) && params.has_key?(:location))
       @category = Category.find_by_name("#{params["job_type"]}")
       @positions = Position.where({category_id: @category})

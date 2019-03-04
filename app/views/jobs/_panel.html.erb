@@ -10,6 +10,7 @@
           <%= link_to image_tag('sales.png', class: "icon-image", id: "sales"), jobs_path(job_type: "ייעוץ, מכירות ושיווק", location: params[:location]), class: "pbutf circle link" %>
         </div>
       </div>
+      <!-- Make the dropdown dynamic with positions and categories -->
       <%= content_tag :span, "מכירות", class: "icon-text" %>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
