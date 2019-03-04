@@ -14,7 +14,7 @@ class JobApplicationsController < ApplicationController
     @job_application.job = @job
     # @job_application.user = current_user
     if @job_application.save!
-      redirect_to jobs_path
+      redirect_to jobs_path, notice: 'תודה! פנייתך נשלחה בהצלחה'
     else
       render :new
     end
