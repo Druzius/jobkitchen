@@ -1,18 +1,28 @@
 module JobsHelper
 
-  def job_type(job_type)
-    if job_type == "ייעוץ, מכירות ושיווק"
-      content_tag :span, "#{job_type}", class: "tag link is-medium"
-    elsif job_type == "מקצועות המטבח"
-      content_tag :span, "#{job_type}", class: "tag success is-medium"
-    elsif job_type == "מקצועות כלליים"
-      content_tag :span, "#{job_type}", class: "tag blue is-medium"
-    elsif job_type == "מקצועות ניהול ומנהלה"
-      content_tag :span, "#{job_type}", class: "tag primary is-medium"
-    elsif job_type == "מקצועות שירות ואירוח"
-      content_tag :span, "#{job_type}", class: "tag info is-medium"
+  def job_type(category)
+
+    if category.name == "General"
+      content_tag :span, "#{category.hebrew}", class: "tag link is-medium"
+    elsif category.name == "Kitchen"
+      content_tag :span, "#{category.hebrew}", class: "tag success is-medium"
+    elsif category.name == "Service"
+      content_tag :span, "#{category.hebrew}", class: "tag blue is-medium"
+    elsif category.name == "Management"
+      content_tag :span, "#{category.hebrew}", class: "tag primary is-medium"
+    elsif category.name == "Hotel"
+      content_tag :span, "#{category.hebrew}", class: "tag info is-medium"
     else
       ""
+    end
+  end
+
+  def position_collection
+    @positions = Position.all
+    @category = Category.all
+
+    @positions.each do |cat, pos|
+      [[cat, [pos]], ['General', ['Bob', 'John']]]
     end
   end
 

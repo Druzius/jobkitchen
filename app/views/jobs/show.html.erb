@@ -1,9 +1,9 @@
 <div class="columns pt4 pb7">
   <div class="column is-7 is-offset-1 reversed">
     <p class="f7"><i class="fa fa-clock"></i> Posted <%= time_ago_in_words(@job.created_at) %> ago</p>
-    <h1 class="title is-2">דרוש\ה <%= @job.title %></h1>
+    <h1 class="title is-2">דרוש\ה <%= @job.position.name %></h1>
     <ul class="list pb4 pt4">
-      <li class="block f6 pr2"><%= job_type(@job.job_type) %></li>
+      <li class="block f6 pr2"><%= job_type(@job.category) %></li>
       <li class="block f6 ph2"><i class="fas fa-map-marker-alt"></i> <%= @job.location %></li>
       <div class="content text-serif f4 ph2">
         <%= @job.description.html_safe %>

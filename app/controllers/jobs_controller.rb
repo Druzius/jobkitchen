@@ -25,11 +25,21 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-
-    if(params.has_key?(:job_type) && params.has_key?(:location))
-      @jobs = Job.where({job_type: params[:job_type], location: params[:location]}).order("created_at desc")
-    elsif(params.has_key?(:job_type))
-      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+    # to filter style keys in _panel and jobs index view
+    # @categories = Category.where.not(name: "General")
+    @categories = Category.all
+    @style_hash = {
+      general: "link",
+      kitchen:  "success",
+      service: "blue",
+      management: "primary",
+      hotel: "info"
+    }
+    # Filter the jobs by categories only, positions will be added later on.
+    if(params.has_key?(:category) && params.has_key?(:location))
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    elsif(params.has_key?(:category))
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
     elsif(params.has_key?(:location))
       @jobs = Job.where(location: params[:location]).order("created_at desc")
     else
@@ -55,7 +65,12 @@ class JobsController < ApplicationController
   # POST /jobs.json
 
   def create
+
     @job = current_user.jobs.build(job_params)
+
+    # @position = @job.position_id
+    # @job.position_id = Position.find_by_name("#{job_params[position]}")
+
     if @job.save
       ezcount_charge
       url = @payment.body["url"]
@@ -137,6 +152,6 @@ class JobsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
 
   def job_params
-    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar)
+    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar, :position_id)
   end
 end
