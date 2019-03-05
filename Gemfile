@@ -72,7 +72,6 @@ gem 'sidekiq'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'cloudinary', '~> 1.11', '>= 1.11.1'
-# gem 'stripe', '~> 4.4'
 gem 'figaro'
 gem 'forest_liana'
 gem 'webpacker', '~> 3.5'
@@ -80,8 +79,6 @@ gem 'compass', '~> 1.0', '>= 1.0.3'
 gem 'faraday', '~> 0.15.4'
 gem 'faraday_middleware', '~> 0.13.1'
 gem 'faraday-cookie_jar', '~> 0.0.6'
-
-
 
 group :production do
   gem 'pg'

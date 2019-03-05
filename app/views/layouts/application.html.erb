@@ -13,7 +13,6 @@
     <%= javascript_pack_tag 'application' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', "https://js.stripe.com/v2/", "https://js.stripe.com/v3/", 'data-turbolinks-track': 'reload' %>
-    <%= tag :meta, name: "stripe-public-key", content: Figaro.env.stripe_publishable_key %>
   </head>
   <body class="<%= yield (:body_class) %>">
     <% if flash[:notice] %>
@@ -36,76 +35,72 @@
           <span ></span>
           <span ></span>
         </div>
-        </div>
       </div>
-      <div id="navbar" class="navbar-menu">
-        <div class="navbar-start">
-          <div class="navbar-item">
-            <div class="field is-grouped">
+    </div>
+    <div id="navbar" class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <%= link_to "<i class='fab fa-facebook'></i> &nbsp; לפייסבוק שלנו".html_safe, href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs", class: "navbar-item button is-link is-rounded", id: "facebook-button"%>
+            </p>
+            <p class="control">
+              <%= link_to "פרסם משרה", new_job_path, class: "navbar-item button is-primary is-rounded" %>
+            </p>
+            <% if user_signed_in? %>
               <p class="control">
-                <%= link_to "<i class='fab fa-facebook'></i> &nbsp; לפייסבוק שלנו".html_safe, href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs", class: "navbar-item button is-link is-rounded", id: "facebook-button"%>
-              </p>
-              <p class="control">
-                <%= link_to "פרסם משרה", new_job_path, class: "navbar-item button is-primary is-rounded" %>
-              </p>
-              <% if user_signed_in? %>
-                <p class="control">
-                  <div class="navbar-item has-dropdown is-hoverable has-background-light">
-                    <%= link_to 'חשבון', edit_user_registration_path, class: "navbar-link" %>
-                    <div class="navbar-dropdown is-right">
-                      <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
-                      <%= link_to "צא", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-                    </div>
+                <div class="navbar-item has-dropdown is-hoverable has-background-light">
+                  <%= link_to 'חשבון', edit_user_registration_path, class: "navbar-link" %>
+                  <div class="navbar-dropdown is-right">
+                    <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                    <%= link_to "צא", destroy_user_session_path, method: :delete, class:"navbar-item" %>
                   </div>
-                </p>
-              <% else %>
-                <p class="control">
-                  <%= link_to "התחבר", new_user_session_path, class:"navbar-item button" %>
-                </p>
-                <p class="control">
-                  <%= link_to "הרשם", new_user_registration_path, class:"navbar-item button"%>
-                </p>
-              <% end %>
-            </div>
+                </div>
+              </p>
+            <% else %>
+              <p class="control">
+                <%= link_to "התחבר", new_user_session_path, class:"navbar-item button" %>
+              </p>
+              <p class="control">
+                <%= link_to "הרשם", new_user_registration_path, class:"navbar-item button"%>
+              </p>
+            <% end %>
           </div>
         </div>
       </div>
-    </nav>
-    <%= yield %>
-    <footer class="footer reversed">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-one-third">
-            <div class="pr6">
-              <a href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i>  תנו לייק בפייסבוק</a>
-            </div>
-
-          </div>
-
-          <div class="column is-one-third">
-            <div class="pr6">
-              <%= link_to "אודות", "/pages/about", class:"footer-link"%>
-            </div>
-            <div class="pr6">
-              <%= link_to "תקנון מעסיקים", "/pages/תקנון_מעסיקים", class:"footer-link"%>
-            </div>
-            <div class="pr6">
-              <%= link_to "תקנון מחפשי עבודה", "/pages/תקנון_מחפשי_עבודה", class:"footer-link"%>
-            </div>
-          </div>
-
-          <div class="column is-one-third">
-            <div class="pr6">
-              <%= link_to "פרסם משרה", new_job_path, class: "footer-link" %>
-            </div>
+    </div>
+  </nav>
+  <%= yield %>
+  <footer class="footer reversed">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third">
+          <div class="pr6">
+            <a href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i>  תנו לייק בפייסבוק</a>
           </div>
         </div>
-        <div class="has-text-centered">
-          <p class="f7 pt4">כל הזכויות שמורות לחברת ג'וב קיטשן בע"מ - Copyright © 2019 JobKitchen</p>
-          <p class="f7">Created by Treepsters</p>
+        <div class="column is-one-third">
+          <div class="pr6">
+            <%= link_to "אודות", "/pages/about", class:"footer-link"%>
+          </div>
+          <div class="pr6">
+            <%= link_to "תקנון מעסיקים", "/pages/תקנון_מעסיקים", class:"footer-link"%>
+          </div>
+          <div class="pr6">
+            <%= link_to "תקנון מחפשי עבודה", "/pages/תקנון_מחפשי_עבודה", class:"footer-link"%>
+          </div>
         </div>
-
+        <div class="column is-one-third">
+          <div class="pr6">
+            <%= link_to "פרסם משרה", new_job_path, class: "footer-link" %>
+          </div>
+        </div>
       </div>
-    </footer>
-  </body>
+      <div class="has-text-centered">
+        <p class="f7 pt4">כל הזכויות שמורות לחברת ג'וב קיטשן בע"מ - Copyright © 2019 JobKitchen</p>
+        <p class="f7">Created by Treepsters</p>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
