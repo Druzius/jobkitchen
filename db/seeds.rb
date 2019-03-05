@@ -93,27 +93,32 @@ GENERAL = ["אינסטלטור/ית",
 
 hotel = Category.create!(
   {
-    name: "Hotel"
+    name: "Hotel",
+    hebrew: "אירוח"
 })
 
 kitchen = Category.create!(
   {
-    name: "Kitchen"
+    name: "Kitchen",
+    hebrew: "מטבח"
 })
 
 general = Category.create!(
   {
-    name: "General"
+    name: "General",
+    hebrew: "כלליים"
 })
 
 management = Category.create!(
   {
-    name: "Management"
+    name: "Management",
+    hebrew: "ניהול"
 })
 
 service = Category.create!(
   {
-    name: "Service"
+    name: "Service",
+    hebrew: "שירות"
 })
 
 HOTEL.each do |name|
@@ -150,7 +155,6 @@ user.save!
                 {
                   title: "AMIIIIIR",
                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-                  job_type: "ייעוץ, מכירות ושיווק",
                   position_id: Position.find_by_name("#{MANAGEMENT.sample}").id,
                   location: JOB_AREA.sample,
                   job_author: "ארומה",
@@ -161,7 +165,6 @@ user.save!
                 {
                   title: "משווק",
                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-                  job_type: "מקצועות כלליים",
                   position_id: Position.find_by_name("#{HOTEL.sample}").id,
                   location: JOB_AREA.sample,
                   job_author: "קפה נואר",
@@ -172,7 +175,6 @@ user.save!
                 {
                   title: "שוטף כלים",
                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-                  job_type: "מקצועות המטבח",
                   position_id: Position.find_by_name("#{GENERAL.sample}").id,
                   location: JOB_AREA.sample,
                   job_author: "ארומה",
@@ -183,7 +185,6 @@ user.save!
                 {
                   title: "מארחת",
                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-                  job_type: "מקצועות כלליים",
                   position_id: Position.find_by_name("#{SERVICE.sample}").id,
                   location: JOB_AREA.sample,
                   job_author: "אמורה מיו",
@@ -194,7 +195,6 @@ user.save!
                 {
                   title: "מלצר",
                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-                  job_type: "ייעוץ, מכירות ושיווק",
                   position_id: Position.find_by_name("#{KITCHEN.sample}").id,
                   location: JOB_AREA.sample,
                   job_author: "ג'פניקה",
