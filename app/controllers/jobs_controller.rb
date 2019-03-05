@@ -112,7 +112,7 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
-      redirect_to job_path
+      redirect_to job_path, notice: 'המשרה פורסמה בהצלחה'
     else
       redirect_to root_path
     end
