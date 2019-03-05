@@ -26,7 +26,8 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     # to filter style keys in _panel and jobs index view
-    @categories = Category.where.not(name: "General")
+    # @categories = Category.where.not(name: "General")
+    @categories = Category.all
     @style_hash = {
       general: "link",
       kitchen:  "success",

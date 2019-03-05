@@ -116,8 +116,6 @@ service = Category.create!(
     name: "Service"
 })
 
-
-
 HOTEL.each do |name|
   Position.create!(name: name, category_id: hotel.id)
 end
@@ -146,7 +144,6 @@ user = User.new(
   password_confirmation: "asdasd"
 )
 user.save!
-
 
 5.times do
   Job.create!([
