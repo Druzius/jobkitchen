@@ -4,24 +4,24 @@
   <div class="columns">
     <div class="field column is-6">
       <div class="control">
-        <%= f.input :full_name, label: "שם מלא", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+        <%= f.input :full_name, label: "שם מלא", error: "אנא מלא שם מלא", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
     <div class="field column is-6">
       <div class="control">
-        <%= f.input :city, label: "עיר", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+        <%= f.input :city, label: "עיר", error: "אנא מלא עיר", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
   </div>
   <div class="columns">
     <div class="field column is-6">
       <div class="control">
-        <%= f.input :phone_number, label: "מספר פלאפון", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+        <%= f.input :phone_number, label: "מספר פלאפון", error: "אנא מלא מספר פלאפון", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
     <div class="field column is-6">
       <div class="control">
-        <%= f.input :email, label: "מייל", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+        <%= f.input :email, label: "מייל", error: "אנא מלא מייל", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
   </div>
