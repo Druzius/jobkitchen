@@ -31,10 +31,11 @@
         <%= link_to root_path, class:"navbar-item" do %>
           <%= image_tag "LOGOWhite.png" %>
         <% end  %>
-        <div class="navbar-burger burger" data-target="navbar">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="navbar-burger burger" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+          <span ></span>
+          <span ></span>
+          <span ></span>
+        </div>
         </div>
       </div>
       <div id="navbar" class="navbar-menu">
@@ -42,7 +43,7 @@
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
-                <%= link_to "<i class='fab fa-facebook'></i> &nbsp; לפייסבוק שלנו".html_safe, href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs", class: "navbar-item button is-link is-rounded"%>
+                <%= link_to "<i class='fab fa-facebook'></i> &nbsp; לפייסבוק שלנו".html_safe, href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs", class: "navbar-item button is-link is-rounded", id: "facebook-button"%>
               </p>
               <p class="control">
                 <%= link_to "פרסם משרה", new_job_path, class: "navbar-item button is-primary is-rounded" %>
