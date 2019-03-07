@@ -85,13 +85,24 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   width: 100%;
   bottom: 0;
   height: 220px;
+  background: #2f2f2f;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  color: white;
 }
 
 .footer-link {
-  color: black;
+  color: white;
   &:hover {
-    color: grey;
+    color: #e5e5e5;
   }
+}
+
+.footer-link-fb:hover {
+  color: #4681df;
+}
+
+.copy {
+  color: #e5e5e5;
 }
 
 @media (max-width: 807px) {
