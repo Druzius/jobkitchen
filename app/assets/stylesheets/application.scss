@@ -90,6 +90,10 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   color: white;
 }
 
+.footer-padding {
+  padding-right: 150px;
+}
+
 .footer-link {
   color: white;
   &:hover {
@@ -105,7 +109,12 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   color: #e5e5e5;
 }
 
-@media (max-width: 807px) {
+@media (max-width: 480px) {
+
+body {
+  padding-bottom: 20rem;
+}
+
  .navbar-item img {
   max-height: 3.75rem;
   }
@@ -113,5 +122,17 @@ h1, h2, h3, h4, h5, p, a, ul, li {
 #facebook-button {
   display: none;
   }
+
+.footer {
+  height: 310px;
+  }
+
+.footer-column {
+  margin-left: 30px;
+  }
+
+.footer-padding {
+  padding-right: 30px;
+}
 
 }

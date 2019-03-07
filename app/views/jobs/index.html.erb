@@ -45,7 +45,7 @@
                           <p><%= link_to job.job_author, job_path(job) %></p>
                         </div>
                         <div class="details">
-                          <p class=""><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
+                          <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
                           <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
                         </div>
                       </div>

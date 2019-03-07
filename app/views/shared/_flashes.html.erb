@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+      <button onclick="slide();" class="notification is-success global-notification" role="alert" id="alert">
+        <p class="notice"><%= notice %></p>
+      </button>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="notification is-danger global-notification" role="alert" id="alert">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>

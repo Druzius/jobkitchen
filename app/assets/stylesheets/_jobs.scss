@@ -61,31 +61,37 @@
 
 
 .card-product-link {
+  height: 100%;
   background-color: rgba(59,135,208,0.9);
 
 }
 
 .card-product-success {
+  height: 100%;
   background-color: rgba(88,49,49,0.9);
 
 }
 
 .card-product-blue {
+  height: 100%;
   background-color: rgba(37,63,115,0.9);
 
 }
 
 .card-product-primary {
+  height: 100%;
   background-color: rgba(29,151,108,0.9);
 
 }
 
 .card-product-infos {
+  height: 100%;
   background-color: rgba(201,76,86,0.9);
 
 }
 
 .card-product-blank {
+  height: 100%;
   background-color: rgba(76,80,87,0.9);
 
 }
@@ -110,7 +116,7 @@
 }
 
 
-@media (max-width: 807px) {
+@media (max-width: 480px) {
 .banner {
   display: none;
   }
@@ -119,4 +125,11 @@
   margin-top: 0px;
   }
 
+.job-description {
+  display: none;
+}
+
+.card-product h2 {
+  display: inline-grid;
+}
 }
