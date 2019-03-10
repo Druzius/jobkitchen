@@ -4,7 +4,7 @@
 
 .banner {
   background-image:
-  linear-gradient(225deg, rgba(186,210,213,0.4) 0%, rgba(0,36,61,0.5) 50%), url("jobkitchen_banner.png");
+  linear-gradient(225deg, rgba(186,210,213,0.4) 0%, rgba(0,36,61,0.5) 50%), url("/assets/jobkitchen_banner.png");
   color: white;
   height: 45vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
@@ -132,4 +132,9 @@
 .card-product h2 {
   display: inline-grid;
 }
+
+.apply-button {
+  margin-right: 60px;
+}
+
 }

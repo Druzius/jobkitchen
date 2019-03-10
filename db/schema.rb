@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2019_03_10_141906) do
     t.bigint "job_applications_id"
     t.integer "state", default: 0, null: false
     t.bigint "position_id"
-    t.string "phone"
     t.string "job_phone"
     t.index ["job_applications_id"], name: "index_jobs_on_job_applications_id"
     t.index ["position_id"], name: "index_jobs_on_position_id"
