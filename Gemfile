@@ -81,8 +81,6 @@ gem 'faraday', '~> 0.15.4'
 gem 'faraday_middleware', '~> 0.13.1'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 
-
-
 group :production do
   gem 'pg'
 end
