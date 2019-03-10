@@ -112,7 +112,7 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
-      redirect_to job_path
+      redirect_to job_path, notice: 'המשרה פורסמה בהצלחה.'
     else
       redirect_to root_path
     end
@@ -123,7 +123,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'המשרה עודכנה בהצלחה' }
+        format.html { redirect_to @job, notice: 'המשרה עודכנה בהצלחה.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -137,7 +137,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'המשרה הוסרה בהצלחה' }
+      format.html { redirect_to jobs_url, notice: 'המשרה הוסרה בהצלחה.' }
       format.json { head :no_content }
     end
   end

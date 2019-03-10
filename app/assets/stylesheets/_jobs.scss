@@ -3,12 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .banner {
+  background-image:
+  linear-gradient(225deg, rgba(186,210,213,0.4) 0%, rgba(0,36,61,0.5) 50%), url("jobkitchen_banner.png");
   color: white;
-  height: 40vh;
+  height: 45vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: contain;
   background-attachment: fixed;
 }
+
 
 .panel{
   margin-top: -40px;
@@ -58,35 +61,53 @@
 
 
 .card-product-link {
+  height: 100%;
   background-color: rgba(59,135,208,0.9);
 
 }
 
 .card-product-success {
+  height: 100%;
   background-color: rgba(88,49,49,0.9);
 
 }
 
 .card-product-blue {
+  height: 100%;
   background-color: rgba(37,63,115,0.9);
 
 }
 
 .card-product-primary {
+  height: 100%;
   background-color: rgba(29,151,108,0.9);
 
 }
 
 .card-product-infos {
+  height: 100%;
   background-color: rgba(201,76,86,0.9);
 
 }
 
 .card-product-blank {
+  height: 100%;
   background-color: rgba(76,80,87,0.9);
 
 }
 
+.tag.info {
+  background-color: rgba(201,76,86,1);
+}
+
+
+.tag.success {
+  background-color: rgba(88,49,49,1);
+}
+
+.tag.primary {
+  background-color: rgba(29,151,108,0.9);
+}
 
 
 #location {
@@ -95,7 +116,7 @@
 }
 
 
-@media (max-width: 807px) {
+@media (max-width: 480px) {
 .banner {
   display: none;
   }
@@ -104,4 +125,11 @@
   margin-top: 0px;
   }
 
+.job-description {
+  display: none;
+}
+
+.card-product h2 {
+  display: inline-grid;
+}
 }

@@ -16,16 +16,8 @@
     <%= tag :meta, name: "stripe-public-key", content: Figaro.env.stripe_publishable_key %>
   </head>
   <body class="<%= yield (:body_class) %>">
-    <% if flash[:notice] %>
-      <div class="notification is-success global-notification" role="alert" id="alert">
-        <p class="notice"><%= notice %></p>
-      </div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="notification is-danger global-notification" role="alert" id="alert">
-        <p class="alert"><%= alert %></p>
-      </div>
-    <% end %>
+     <%= render 'shared/flashes' %>
+
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to root_path, class:"navbar-item" do %>
@@ -74,35 +66,34 @@
     <%= yield %>
     <footer class="footer reversed">
       <div class="container">
-        <div class="columns">
+        <div class="columns footer-column">
           <div class="column is-one-third">
-            <div class="pr6">
-              <a href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i>  תנו לייק בפייסבוק</a>
+            <div class="footer-padding">
+              <a class="footer-link-fb" href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i> תנו לייק בפייסבוק </a>
             </div>
 
           </div>
 
           <div class="column is-one-third">
-            <div class="pr6">
-              <%= link_to "אודות", "/pages/about", class:"footer-link"%>
+            <div class="footer-padding">
+              <%= link_to "אודותינו", "/pages/about", class:"footer-link"%>
             </div>
-            <div class="pr6">
+            <div class="footer-padding">
               <%= link_to "תקנון מעסיקים", "/pages/תקנון_מעסיקים", class:"footer-link"%>
             </div>
-            <div class="pr6">
+            <div class="footer-padding">
               <%= link_to "תקנון מחפשי עבודה", "/pages/תקנון_מחפשי_עבודה", class:"footer-link"%>
             </div>
           </div>
 
           <div class="column is-one-third">
-            <div class="pr6">
+            <div class="footer-padding">
               <%= link_to "פרסם משרה", new_job_path, class: "footer-link" %>
             </div>
           </div>
         </div>
-        <div class="has-text-centered">
+        <div class="has-text-centered copy">
           <p class="f7 pt4">כל הזכויות שמורות לחברת ג'וב קיטשן בע"מ - Copyright © 2019 JobKitchen</p>
-          <p class="f7">Created by Treepsters</p>
         </div>
 
       </div>

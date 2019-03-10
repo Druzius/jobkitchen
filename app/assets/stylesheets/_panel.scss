@@ -136,10 +136,10 @@ ul.filter li {
 
 #hotel {
   position: absolute;
-  top: 25%;
-  left:31%;
-  height: 46px;
-  width: 40px;
+  top: 26%;
+  left: 36%;
+  height: 50px;
+  width: 28px;
 }
 
 #all {
@@ -202,7 +202,7 @@ a.dropdown-item {
   margin-right: 0;
 }
 
-@media (max-width: 475px) {
+@media (max-width: 480px) {
   .pbutf.circle {
     width: 75px;
     height: 75px;
@@ -218,9 +218,9 @@ a.dropdown-item {
     left:29%;
   }
 
-  #sales {
-    top: 19%;
-    left:25%;
+  #hotel {
+    top: 18%;
+    left:32%;
   }
 
   #all {

@@ -85,16 +85,36 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   width: 100%;
   bottom: 0;
   height: 220px;
+  background: #2f2f2f;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  color: white;
+}
+
+.footer-padding {
+  padding-right: 150px;
 }
 
 .footer-link {
-  color: black;
+  color: white;
   &:hover {
-    color: grey;
+    color: #e5e5e5;
   }
 }
 
-@media (max-width: 807px) {
+.footer-link-fb:hover {
+  color: #4681df;
+}
+
+.copy {
+  color: #e5e5e5;
+}
+
+@media (max-width: 480px) {
+
+body {
+  padding-bottom: 20rem;
+}
+
  .navbar-item img {
   max-height: 3.75rem;
   }
@@ -102,5 +122,17 @@ h1, h2, h3, h4, h5, p, a, ul, li {
 #facebook-button {
   display: none;
   }
+
+.footer {
+  height: 310px;
+  }
+
+.footer-column {
+  margin-left: 30px;
+  }
+
+.footer-padding {
+  padding-right: 30px;
+}
 
 }

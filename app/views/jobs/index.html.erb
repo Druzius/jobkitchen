@@ -1,5 +1,4 @@
-<div class="banner" style="background-image:
-  linear-gradient(225deg, rgba(186,210,213,0.4) 0%, rgba(0,36,61,0.5) 50%), url(<%= image_path 'jobkitchen_banner.png' %>);">
+<div class="banner">
   <div class="container">
     <div class="columns is-centered reversed">
       <div class="column is-three-quarters ">
@@ -46,7 +45,7 @@
                           <p><%= link_to job.job_author, job_path(job) %></p>
                         </div>
                         <div class="details">
-                          <p class=""><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
+                          <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
                           <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
                         </div>
                       </div>
