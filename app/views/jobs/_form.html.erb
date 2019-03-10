@@ -36,8 +36,8 @@
   </div>
   <div class="columns">
   <div class="field column">
-    <div class="control">
-      <%= f.input :description, label: "תיאור", required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+    <div class="control mt3">
+      <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" },  label: "תיאור" %>
     </div>
   </div>
   </div>
@@ -48,15 +48,14 @@
       </div>
     </div>
 
-  </div>
-  <div class="columns">
-    <div class="field column is-8">
+    <div class="field column is-4">
       <div class="control">
         <%= f.input :job_phone, label: "מספר פלאפון", error: "אנא מלא מספר פלאפון", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
-
-    <div class="field column is-4">
+    </div>
+    <div class="columns">
+    <div class="field column is-6">
       <div class="control">
         <label class="label">תמונת לוגו</label>
         <div class="file">
