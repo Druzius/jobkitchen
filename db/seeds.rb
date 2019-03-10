@@ -160,7 +160,8 @@ user.save!
                   job_author: "ארומה",
                   state: 1,
                   user_id: user.id,
-                  avatar: Rails.root.join("app/assets/images/facebook.jpg").open
+                  avatar: Rails.root.join("app/assets/images/facebook.jpg").open,
+                  job_phone: "0508288288"
                 },
                 {
                   title: "משווק",
@@ -170,7 +171,8 @@ user.save!
                   job_author: "קפה נואר",
                   state: 1,
                   user_id: user.id,
-                  avatar: Rails.root.join("app/assets/images/slack.jpg").open
+                  avatar: Rails.root.join("app/assets/images/slack.jpg").open,
+                  job_phone: "0508288288"
                 },
                 {
                   title: "שוטף כלים",
@@ -180,7 +182,8 @@ user.save!
                   job_author: "ארומה",
                   state: 1,
                   user_id: user.id,
-                  avatar: Rails.root.join("app/assets/images/trello.jpg").open
+                  avatar: Rails.root.join("app/assets/images/trello.jpg").open,
+                  job_phone: "0508288288"
                 },
                 {
                   title: "מארחת",
@@ -190,7 +193,8 @@ user.save!
                   job_author: "אמורה מיו",
                   state: 1,
                   user_id: user.id,
-                  avatar: Rails.root.join("app/assets/images/wordpress.jpg").open
+                  avatar: Rails.root.join("app/assets/images/wordpress.jpg").open,
+                  job_phone: "0508288288"
                 },
                 {
                   title: "מלצר",
@@ -200,7 +204,8 @@ user.save!
                   job_author: "ג'פניקה",
                   state: 1,
                   user_id: user.id,
-                  avatar: Rails.root.join("app/assets/images/basecamp.jpg").open
+                  avatar: Rails.root.join("app/assets/images/basecamp.jpg").open,
+                  job_phone: "0508288288"
                 }
   ])
 end
