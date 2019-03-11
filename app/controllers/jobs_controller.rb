@@ -37,8 +37,19 @@ class JobsController < ApplicationController
       hotel: "info"
     }
     # Filter the jobs by categories only, positions will be added later on.
-    if(params.has_key?(:category) && params.has_key?(:location))
+    filter
+  end
+
+  def filter
+
+    if(params.has_key?(:category) && params.has_key?(:location) && params.has_key?(:position))
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    elsif(params.has_key?(:category) && params.has_key?(:location))
       @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    elsif(params.has_key?(:category) && params.has_key?(:position))
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
+    elsif(params.has_key?(:location) && params.has_key?(:position))
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, location: params[:location]).order("created_at desc")
     elsif(params.has_key?(:category))
       @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
     elsif(params.has_key?(:location))
@@ -46,6 +57,18 @@ class JobsController < ApplicationController
     else
       @jobs = Job.all.order("created_at desc")
     end
+
+    # case params
+    # when (params.has_key?(:category) && params.has_key?(:location))
+    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    # when (params.has_key?(:category))
+    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
+    # when (params.has_key?(:location))
+    #   @jobs = Job.where(location: params[:location]).order("created_at desc")
+    # else
+    #   @jobs = Job.all.order("created_at desc")
+    # end
+
   end
 
   # GET /jobs/1
