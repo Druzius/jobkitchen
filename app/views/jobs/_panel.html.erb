@@ -11,29 +11,16 @@
             <%= link_to image_tag("#{cat.name.downcase}.png", class: "icon-image", id: "#{cat.name.downcase}"), jobs_path(category: "#{cat.name.downcase}", location: params[:location]), class: "pbutf circle #{@style_hash[cat.name.downcase.to_sym]}" %>
           </div>
         </div>
-
         <!-- Make the dropdown dynamic with positions and categories -->
         <%= content_tag :span, "#{cat.hebrew}", class: "icon-text" %>
-
-
-        <!--         <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
             <a href="#" class="dropdown-item">
               Dropdown item
             </a>
-            <a class="dropdown-item">
-              Other dropdown item
-            </a>
-            <a href="#" class="dropdown-item">
-              Active dropdown item
-            </a>
-            <a href="#" class="dropdown-item">
-              Other dropdown item
-            </a>
-
-      </div>
-    </li>
-
+          </div>
+        </li>
+        <!--
     <li>
       <div class="location-filter">
         <div class="dropdown is-hoverable is-right mr5">
