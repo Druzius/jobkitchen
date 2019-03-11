@@ -1,3 +1,8 @@
+<head>
+  <% content_for :meta_title, "#{@job.position.name} - #{DEFAULT_META["meta_product_name"]}" %>
+  <% content_for :meta_description, @job.description %>
+  <% content_for :meta_image, cl_image_path(@job.avatar_url) %>
+</head>
 <div class="columns pt5 pb5">
   <div class="is-hidden-desktop column is-2 is-offset-1 has-text-centered">
     <% if !@job.avatar.file.nil? %>
