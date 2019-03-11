@@ -10,7 +10,7 @@
     <% end %>
     <h2 class="mt2 mb4 f3 has-text-centered"><%= @job.job_author %></h2>
     <div class="job-phone">
-      <%= @job.job_phone %>
+      <%= tel_to @job.job_phone %>
     </div>
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">
