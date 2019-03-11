@@ -13,16 +13,17 @@
         </div>
         <!-- Make the dropdown dynamic with positions and categories -->
         <%= content_tag :span, "#{cat.hebrew}", class: "icon-text" %>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
+      </li>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <%= @positions.each do |position| %>
             <a href="#" class="dropdown-item">
-              <%= @positions.name %>
+              <%= link_to position.name %>
             </a>
-          </div>
-        </li>
-        <!--
-    <li>
-      <div class="location-filter">
+          <% end %>
+        </div>
+      <% end %>
+      <div class="pb4 location-filter">
         <div class="dropdown is-hoverable is-right mr5">
           <div class="dropdown-trigger">
             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -31,33 +32,18 @@
               </span>
               <span>סנן לפי איזור</span>
             </button>
-
           </div>
-        </div> -->
-      </li>
-    <% end %>
-    <div class="pb4 location-filter">
-      <div class="dropdown is-hoverable is-right mr5">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span class="ml2">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-            <span>סנן לפי איזור</span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <%= link_to 'תל אביב והמרכז', jobs_path(location: "תל אביב והמרכז", category: params[:category]), class: "dropdown-item" %>
-            <%= link_to 'ירושלים וסביבותיה', jobs_path(location: "ירושלים וסביבותיה", category: params[:category]), class: "dropdown-item" %>
-            <%= link_to 'הצפון, חיפה והקריות', jobs_path(location: "הצפון, חיפה והקריות", category: params[:category]), class: "dropdown-item" %>
-            <%= link_to 'אזור השרון', jobs_path(location: "אזור השרון", category: params[:category]), class: "dropdown-item" %>
-            <%= link_to 'השפלה ודרום הארץ', jobs_path(location: "השפלה ודרום הארץ", category: params[:category]), class: "dropdown-item" %>
-            <%= link_to 'אילת והערבה', jobs_path(location: "אילת והערבה", category: params[:category]), class: "dropdown-item" %>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <%= link_to 'תל אביב והמרכז', jobs_path(location: "תל אביב והמרכז", category: params[:category]), class: "dropdown-item" %>
+              <%= link_to 'ירושלים וסביבותיה', jobs_path(location: "ירושלים וסביבותיה", category: params[:category]), class: "dropdown-item" %>
+              <%= link_to 'הצפון, חיפה והקריות', jobs_path(location: "הצפון, חיפה והקריות", category: params[:category]), class: "dropdown-item" %>
+              <%= link_to 'אזור השרון', jobs_path(location: "אזור השרון", category: params[:category]), class: "dropdown-item" %>
+              <%= link_to 'השפלה ודרום הארץ', jobs_path(location: "השפלה ודרום הארץ", category: params[:category]), class: "dropdown-item" %>
+              <%= link_to 'אילת והערבה', jobs_path(location: "אילת והערבה", category: params[:category]), class: "dropdown-item" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </li>
-</ul>
-</nav>
+    </ul>
+  </nav>
