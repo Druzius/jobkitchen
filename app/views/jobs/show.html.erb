@@ -42,6 +42,9 @@
     <% end %>
     <h2 class="mt2 mb4 f3 has-text-centered"><%= @job.job_author %></h2>
     <div class="job-phone">
+      <h4>
+        חייג למעסיק:
+      </h4>
       <%= @job.job_phone %>
     </div>
     <% if current_user.try(:admin) || job_author(@job) %>
