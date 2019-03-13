@@ -182,7 +182,6 @@ ul.filter li {
   padding-bottom: 50px;
 }
 
-
 a.dropdown-item {
   padding-right: 1rem;
   text-align: right;
@@ -212,6 +211,23 @@ a.dropdown-item {
     padding: 20px;
     margin-left: 60px;
   }
+
+.dropdown-menu {
+  min-width: 8rem;
+  left: -35px;
+}
+
+.dropdown.is-right .dropdown-menu {
+  left: -35px;
+}
+
+.dropdown-content {
+  background-color: #2f2f2f;
+}
+
+.dropdown-item {
+  color: white;
+}
 
   #kitchen {
     top: 18%;
