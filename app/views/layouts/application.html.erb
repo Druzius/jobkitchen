@@ -22,8 +22,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="<%= yield (:body_class) %>">
-     <%= render 'shared/flashes' %>
-
+    <%= render 'shared/flashes' %>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to root_path, class:"navbar-item" do %>
@@ -34,75 +33,71 @@
           <span ></span>
           <span ></span>
         </div>
-        </div>
       </div>
-      <div id="navbar" class="navbar-menu">
-        <div class="navbar-start">
-          <div class="navbar-item">
-            <div class="field is-grouped">
+    </div>
+    <div id="navbar" class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <%= link_to "<i class='fab fa-facebook'></i> &nbsp; לפייסבוק שלנו".html_safe, href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs", class: "navbar-item button is-link is-rounded", id: "facebook-button"%>
+            </p>
+            <p class="control">
+              <%= link_to "פרסם משרה", new_job_path, class: "navbar-item button is-primary is-rounded" %>
+            </p>
+            <% if user_signed_in? %>
               <p class="control">
-                <%= link_to "<i class='fab fa-facebook'></i> &nbsp; לפייסבוק שלנו".html_safe, href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs", class: "navbar-item button is-link is-rounded", id: "facebook-button"%>
-              </p>
-              <p class="control">
-                <%= link_to "פרסם משרה", new_job_path, class: "navbar-item button is-primary is-rounded" %>
-              </p>
-              <% if user_signed_in? %>
-                <p class="control">
-                  <div class="navbar-item has-dropdown is-hoverable has-background-light">
-                    <%= link_to 'חשבון', edit_user_registration_path, class: "navbar-link" %>
-                    <div class="navbar-dropdown is-right">
-                      <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
-                      <%= link_to "צא", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-                    </div>
+                <div class="navbar-item has-dropdown is-hoverable has-background-light">
+                  <%= link_to 'חשבון', edit_user_registration_path, class: "navbar-link" %>
+                  <div class="navbar-dropdown is-right">
+                    <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                    <%= link_to "צא", destroy_user_session_path, method: :delete, class:"navbar-item" %>
                   </div>
-                </p>
-              <% else %>
-                <p class="control">
-                  <%= link_to "התחבר", new_user_session_path, class:"navbar-item button" %>
-                </p>
-                <p class="control">
-                  <%= link_to "הרשם", new_user_registration_path, class:"navbar-item button"%>
-                </p>
-              <% end %>
-            </div>
+                </div>
+              </p>
+            <% else %>
+              <p class="control">
+                <%= link_to "התחבר", new_user_session_path, class:"navbar-item button" %>
+              </p>
+              <p class="control">
+                <%= link_to "הרשם", new_user_registration_path, class:"navbar-item button"%>
+              </p>
+            <% end %>
           </div>
         </div>
       </div>
-    </nav>
-    <%= yield %>
-    <footer class="footer reversed">
-      <div class="container">
-        <div class="columns footer-column">
-          <div class="column is-one-third">
-            <div class="footer-padding">
-              <a class="footer-link-fb" href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i> תנו לייק בפייסבוק </a>
-            </div>
-
-          </div>
-
-          <div class="column is-one-third">
-            <div class="footer-padding">
-              <%= link_to "אודותינו", "/pages/about", class:"footer-link"%>
-            </div>
-            <div class="footer-padding">
-              <%= link_to "תקנון מעסיקים", "/pages/תקנון_מעסיקים", class:"footer-link"%>
-            </div>
-            <div class="footer-padding">
-              <%= link_to "תקנון מחפשי עבודה", "/pages/תקנון_מחפשי_עבודה", class:"footer-link"%>
-            </div>
-          </div>
-
-          <div class="column is-one-third">
-            <div class="footer-padding">
-              <%= link_to "פרסם משרה", new_job_path, class: "footer-link" %>
-            </div>
+    </div>
+  </nav>
+  <%= yield %>
+  <footer class="footer reversed">
+    <div class="container">
+      <div class="columns footer-column">
+        <div class="column is-one-third">
+          <div class="footer-padding">
+            <a class="footer-link-fb" href="https://www.facebook.com/profile.php?id=100010043227976&ref=br_rs" target="_blank"><i class="fab fa-facebook"></i> תנו לייק בפייסבוק </a>
           </div>
         </div>
-        <div class="has-text-centered copy">
-          <p class="f7 pt4">כל הזכויות שמורות לחברת ג'וב קיטשן בע"מ - Copyright © 2019 JobKitchen</p>
+        <div class="column is-one-third">
+          <div class="footer-padding">
+            <%= link_to "אודותינו", "/pages/about", class:"footer-link"%>
+          </div>
+          <div class="footer-padding">
+            <%= link_to "תקנון מעסיקים", "/pages/תקנון_מעסיקים", class:"footer-link"%>
+          </div>
+          <div class="footer-padding">
+            <%= link_to "תקנון מחפשי עבודה", "/pages/תקנון_מחפשי_עבודה", class:"footer-link"%>
+          </div>
         </div>
-
+        <div class="column is-one-third">
+          <div class="footer-padding">
+            <%= link_to "פרסם משרה", new_job_path, class: "footer-link" %>
+          </div>
+        </div>
       </div>
-    </footer>
-  </body>
+      <div class="has-text-centered copy">
+        <p class="f7 pt4">כל הזכויות שמורות לחברת ג'וב קיטשן בע"מ - Copyright © 2019 JobKitchen</p>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>

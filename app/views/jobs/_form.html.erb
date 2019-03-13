@@ -35,11 +35,11 @@
     </div>
   </div>
   <div class="columns">
-  <div class="field column">
-    <div class="control mt3">
-      <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" },  label: "תיאור" %>
+    <div class="field column">
+      <div class="control mt3">
+        <%= f.input :description, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" },  label: "תיאור" %>
+      </div>
     </div>
-  </div>
   </div>
   <div class="columns">
     <div class="field column is-4">
@@ -47,14 +47,13 @@
         <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "שם החברה" %>
       </div>
     </div>
-
     <div class="field column is-4">
       <div class="control">
         <%= f.input :job_phone, label: "מספר פלאפון", error: "אנא מלא מספרים בלבד ", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
-      </div>
-    <div class="columns">
+  </div>
+  <div class="columns">
     <div class="field column is-6">
       <div class="control">
         <label class="label">תמונת לוגו</label>
@@ -75,5 +74,5 @@
   </div>
   <hr />
   <%#= render 'payment' %>
-  <%= f.button :submit, value: "שלח", class: "button is-primary is-large is-rounded mv4" %>
+  <%= f.button :submit, value: "פרסם", class: "button is-primary is-large is-rounded mv4", 'data-disable-with' => "פרסם" %>
 <% end %>
