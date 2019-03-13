@@ -187,9 +187,14 @@ a.dropdown-item {
   text-align: right;
 }
 
+.dropdown-menu {
+  min-width: 10rem;
+  left: -45px;
+}
+
 .dropdown.is-right .dropdown-menu {
     left: auto;
-    right: -45px;
+    right: -35px;
 }
 
 .location-filter {
