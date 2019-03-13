@@ -4,47 +4,28 @@
       <%= link_to image_tag('All.png', class: "icon-image", id: "all"), jobs_path(location: params[:location]), class: "pbutf circle dark" %>
       <%= content_tag :span, "כל התחומים", class: "icon-text" %>
     </li>
-    <!-- <% @categories.each do |cat| %>
-      <li class="mh3 icon-segment dropdown is-hoverable is-right mr5 is-hidden-touch">
-        <div class="dropdown-trigger">
-          <div aria-haspopup="true" aria-controls="dropdown-menu">
-            <%= link_to image_tag("#{cat.name.downcase}.png", class: "icon-image", id: "#{cat.name.downcase}"), jobs_path(category: "#{cat.name.downcase}", location: params[:location]), class: "pbutf circle #{@style_hash[cat.name.downcase.to_sym]}" %>
-          </div>
-        </div>
-        <%= content_tag :span, "#{cat.hebrew}", class: "icon-text" %>
-        Make the dropdown dynamic with positions and categories
-        1. create helper method in controller to filter positions by category, and then by presence of job assocation
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <% Position.where(category: cat).joins(:jobs).uniq.each do |position| %>
-              <%= link_to "#{position.name}", jobs_path(category: "#{cat.name.downcase}", position: "#{position.name}", location: params[:location]), class: "dropdown-item" %>
-            <% end %>
-          </div>
-        </div>
-      </li>
-      <% end %> -->
 
-              <% @categories.each do |cat| %>
+    <% @categories.each do |cat| %>
       <li class="mh3 icon-segment is-right mr5 ">
-              <%= link_to image_tag("#{cat.name.downcase}.png", class: "icon-image", id: "#{cat.name.downcase}"), jobs_path(category: "#{cat.name.downcase}", location: params[:location]), class: "pbutf circle #{@style_hash[cat.name.downcase.to_sym]}" %>
+        <%= link_to image_tag("#{cat.name.downcase}.png", class: "icon-image", id: "#{cat.name.downcase}"), jobs_path(category: "#{cat.name.downcase}", location: params[:location]), class: "pbutf circle #{@style_hash[cat.name.downcase.to_sym]}" %>
         <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
             <div class="text-dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
               <span class="ml2">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-        <%= content_tag :span, "#{cat.hebrew}", class: "icon-text" %>
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+              <%= content_tag :span, "#{cat.hebrew}", class: "icon-text" %>
             </div>
           </div>
         <!-- Make the dropdown dynamic with positions and categories -->
         <!-- 1. create helper method in controller to filter positions by category, and then by presence of job assocation -->
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <% Position.where(category: cat).joins(:jobs).uniq.each do |position| %>
-              <%= link_to "#{position.name}", jobs_path(category: "#{cat.name.downcase}", position: "#{position.name}", location: params[:location]), class: "dropdown-item" %>
-            <% end %>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <% Position.where(category: cat).joins(:jobs).uniq.each do |position| %>
+                <%= link_to "#{position.name}", jobs_path(category: "#{cat.name.downcase}", position: "#{position.name}", location: params[:location]), class: "dropdown-item" %>
+              <% end %>
+            </div>
           </div>
-        </div>
         </div>
       </li>
     <% end %>
