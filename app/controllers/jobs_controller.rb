@@ -109,7 +109,7 @@ class JobsController < ApplicationController
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
       req.body = {:sum => 5,
-                  :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
+                  :successUrl => "https://jobkitchen.herokuapp.com/jobs/#{@job.id}/payment_success",
                   :api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
                   :developer_email => 'DEVELOPER@example.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
