@@ -1,7 +1,6 @@
 require 'httparty'
 require 'thread'
 require 'faraday'
-require 'faraday-cookie_jar'
 
 # Add new column to jobs, state:integer, use enum for state in the model.
 # Manually add null:false, default:0 to the state in the migration
@@ -10,16 +9,10 @@ require 'faraday-cookie_jar'
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_connection, only: [:create, :new, :ezcount_charge_verify]
+  # before_action :set_connection, only: [:create, :new, :ezcount_charge_verify]
 
   def set_connection
-    @conn = Faraday.new(:url => 'https://demo.ezcount.co.il') do |c|
-      c.use Faraday::Request::UrlEncoded
-      c.use Faraday::Response::Logger
-      c.use Faraday::Adapter::NetHttp
-      c.use :cookie_jar # to maintain the session cookie across the @payment and @verify requests
-      c.response :json, :content_type => /\bjson$/
-    end
+
   end
 
   # GET /jobs
@@ -105,6 +98,12 @@ class JobsController < ApplicationController
   end
 
   def ezcount_charge
+    @conn = Faraday.new(:url => 'https://demo.ezcount.co.il') do |c|
+      c.use Faraday::Request::UrlEncoded
+      c.use Faraday::Response::Logger
+      c.use Faraday::Adapter::NetHttp
+      c.response :json, :content_type => /\bjson$/
+    end
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
@@ -120,6 +119,13 @@ class JobsController < ApplicationController
   end
 
   def ezcount_charge_verify
+    @conn = Faraday.new(:url => 'https://demo.ezcount.co.il') do |c|
+      c.use Faraday::Request::UrlEncoded
+      c.use Faraday::Response::Logger
+      c.use Faraday::Adapter::NetHttp
+      c.response :json, :content_type => /\bjson$/
+    end
+
     @url = "https://demo.ezcount.co.il/api/payment/validate/#{session[:transactionId]}"
 
     @verify = @conn.post do |req|
