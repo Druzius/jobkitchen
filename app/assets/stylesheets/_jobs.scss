@@ -38,6 +38,16 @@
   width: 110px;
 }
 
+.text-box {
+  position: relative;
+}
+
+.job-description {
+  position: absolute;
+  right: 12px;
+  bottom: 50px;
+}
+
 .card-product h2 {
   color: white;
   font-size: 18px;
@@ -110,8 +120,15 @@
 
 
 #location {
-  text-align: left;
-  margin-top: 15px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+}
+
+.time-posted {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
 }
 
 .error_notification {
