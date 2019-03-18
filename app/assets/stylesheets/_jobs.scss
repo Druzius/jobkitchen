@@ -152,6 +152,24 @@
   display: none;
 }
 
+.title {
+  position: absolute;
+  top: 1px;
+}
+
+
+.time-posted {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}
+
+#location {
+  position: absolute;
+  bottom: 28px;
+  right: 10px;
+}
+
 .card-product h2 {
   display: inline-grid;
 }
