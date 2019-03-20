@@ -30,9 +30,4 @@ module JobsHelper
     user_signed_in? && current_user.id == job.user_id
   end
 
-  def tel_to(text)
-    groups = text.to_s.scan(/(?:^\d{3}-+)?\d+/)
-    link_to text, "tel:#{groups.join '-'}"
-  end
-
 end

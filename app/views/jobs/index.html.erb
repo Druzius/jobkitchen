@@ -29,24 +29,25 @@
               <% end %>
             </div>
             <% if job.category.name.downcase == 'general' %>
-              <div class="column card-product-link">
+              <div class="column text-box card-product-link">
               <% elsif job.category.name.downcase == 'kitchen' %>
-                <div class="column card-product-success">
+                <div class="column text-box card-product-success">
                 <% elsif job.category.name.downcase == 'service' %>
-                  <div class="column card-product-blue">
+                  <div class="column text-box card-product-blue">
                   <% elsif job.category.name.downcase == 'management' %>
-                    <div class="column card-product-primary">
+                    <div class="column text-box card-product-primary">
                     <% elsif job.category.name.downcase == 'hotel' %>
-                      <div class="column card-product-infos">
+                      <div class="column text-box card-product-infos">
                       <% else %>
-                        <div class="column card-product-blank">
+                        <div class="column text-box card-product-blank">
                         <% end %>
                         <div class="title">
                           <h2>דרוש/ה <%= link_to job.position.name, job_path(job) %></h2>
                           <p><%= link_to job.job_author, job_path(job) %></p>
                         </div>
                         <div class="details">
-                          <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
+                          <!-- <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p> -->
+                          <p class="time-posted"><i class="fa fa-clock"></i> פרסם לפני <%= time_ago_in_words(job.created_at) %> </p>
                           <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
                         </div>
                       </div>
