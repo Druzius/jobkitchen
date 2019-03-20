@@ -46,7 +46,7 @@
                           <p><%= link_to job.job_author, job_path(job) %></p>
                         </div>
                         <div class="details">
-                          <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
+                          <!-- <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p> -->
                           <p class="time-posted"><i class="fa fa-clock"></i> פרסם לפני <%= time_ago_in_words(job.created_at) %> </p>
                           <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
                         </div>
