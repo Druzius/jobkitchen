@@ -108,9 +108,9 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:sum => 5,
+      req.body = {:sum => 249,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
-                  :api_key => '3b88bf40421924de9e64a72a646b6616dcabdbad8fb280ab551a5b672e31af0b',
+                  :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'DEVELOPER@example.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
     end
@@ -125,7 +125,7 @@ class JobsController < ApplicationController
     @verify = @conn.post do |req|
       req.url @url
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:api_key => '3b88bf40421924de9e64a72a646b6616dcabdbad8fb280ab551a5b672e31af0b',
+      req.body = {:api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
 
