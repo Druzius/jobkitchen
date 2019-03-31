@@ -19,6 +19,6 @@ module JobK
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { api_token: Env['POSTMARK_API_KEY'] }
+    config.action_mailer.postmark_settings = { api_token: ENV['POSTMARK_API_KEY'] }
   end
 end
