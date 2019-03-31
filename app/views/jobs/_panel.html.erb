@@ -4,49 +4,55 @@
       <%= link_to image_tag('All.png', class: "icon-image", id: "all"), jobs_path(location: params[:location]), class: "pbutf circle dark" %>
       <%= content_tag :span, "כל התחומים", class: "icon-text" %>
     </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('sales.png', class: "icon-image", id: "sales"), jobs_path(job_type: "ייעוץ, מכירות ושיווק", location: params[:location]), class: "pbutf circle link" %>
-      <%= content_tag :span, "מכירות", class: "icon-text" %>
-    </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('kitchen.png', class: "icon-image", id: "kitchen"), jobs_path(job_type: "מקצועות המטבח", location: params[:location]), class: "pbutf circle success" %>
-      <%= content_tag :span, "מטבח", class: "icon-text" %>
-    </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('general2.png', class: "icon-image", id: "general"), jobs_path(job_type: "מקצועות כלליים", location: params[:location]), class: "pbutf circle blue" %>
-      <%= content_tag :span, "כלליים", class: "icon-text" %>
-    </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('management.png', class: "icon-image", id: "management"), jobs_path(job_type: "מקצועות ניהול ומנהלה", location: params[:location]), class: "pbutf circle primary" %>
-      <%= content_tag :span, "ניהול", class: "icon-text" %>
-    </li>
-    <li class="mh3 icon-segment">
-      <%= link_to image_tag('service.png', class: "icon-image", id: "service"), jobs_path(job_type: "מקצועות שירות ואירוח", location: params[:location]), class: "info pbutf circle" %>
-      <%= content_tag :span, "שירות", class: "icon-text" %>
-    </li>
-    <li>
-      <div class="pb4">
-        <div class="dropdown is-hoverable is-right mr5">
+
+    <% @categories.each do |cat| %>
+      <li class="mh3 icon-segment is-right mr5 ">
+        <%= link_to image_tag("#{cat.name.downcase}.png", class: "icon-image", id: "#{cat.name.downcase}"), jobs_path(category: "#{cat.name.downcase}", location: params[:location]), class: "pbutf circle #{@style_hash[cat.name.downcase.to_sym]}" %>
+        <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <div class="text-dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
               <span class="ml2">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>
-              <span>סנן לפי איזור</span>
-            </button>
+              <%= content_tag :span, "#{cat.hebrew}", class: "icon-text" %>
+            </div>
           </div>
+        <!-- Make the dropdown dynamic with positions and categories -->
+        <!-- 1. create helper method in controller to filter positions by category, and then by presence of job assocation -->
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-              <%= link_to 'תל אביב והמרכז', jobs_path(location: "תל אביב והמרכז", job_type: params[:job_type]), class: "dropdown-item" %>
-              <%= link_to 'ירושלים וסביבותיה', jobs_path(location: "ירושלים וסביבותיה", job_type: params[:job_type]), class: "dropdown-item" %>
-              <%= link_to 'הצפון, חיפה והקריות', jobs_path(location: "הצפון, חיפה והקריות", job_type: params[:job_type]), class: "dropdown-item" %>
-              <%= link_to 'אזור השרון', jobs_path(location: "אזור השרון", job_type: params[:job_type]), class: "dropdown-item" %>
-              <%= link_to 'השפלה ודרום הארץ', jobs_path(location: "השפלה ודרום הארץ", job_type: params[:job_type]), class: "dropdown-item" %>
-              <%= link_to 'אילת והערבה', jobs_path(location: "אילת והערבה", job_type: params[:job_type]), class: "dropdown-item" %>
+              <% Position.where(category: cat).joins(:jobs).uniq.each do |position| %>
+                <%= link_to "#{position.name}", jobs_path(category: "#{cat.name.downcase}", position: "#{position.name}", location: params[:location]), class: "dropdown-item" %>
+              <% end %>
             </div>
           </div>
         </div>
+      </li>
+    <% end %>
+
+    <div class="pb4 location-filter">
+      <div class="dropdown is-hoverable is-right mr5">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span class="ml2">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            <span>סנן לפי איזור</span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <%= link_to 'כל האיזורים', jobs_path(position: params[:position], category: params[:category]), class: "dropdown-item" %>
+            <%= link_to 'תל אביב והמרכז', jobs_path(location: "תל אביב והמרכז", position: params[:position], category: params[:category]), class: "dropdown-item" %>
+            <%= link_to 'ירושלים וסביבותיה', jobs_path(location: "ירושלים וסביבותיה", position: params[:position], category: params[:category]), class: "dropdown-item" %>
+            <%= link_to 'הצפון, חיפה והקריות', jobs_path(location: "הצפון, חיפה והקריות", position: params[:position], category: params[:category]), class: "dropdown-item" %>
+            <%= link_to 'אזור השרון', jobs_path(location: "אזור השרון", position: params[:position], category: params[:category]), class: "dropdown-item" %>
+            <%= link_to 'השפלה ודרום הארץ', jobs_path(location: "השפלה ודרום הארץ", position: params[:position], category: params[:category]), class: "dropdown-item" %>
+            <%= link_to 'אילת והערבה', jobs_path(location: "אילת והערבה", position: params[:position], category: params[:category]), class: "dropdown-item" %>
+          </div>
+        </div>
       </div>
-    </li>
-  </ul>
+    </div>
+
+</ul>
 </nav>

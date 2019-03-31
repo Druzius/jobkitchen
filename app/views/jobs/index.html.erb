@@ -1,6 +1,16 @@
+<div class="banner" style="background-image:
+  linear-gradient(225deg, rgba(186,210,213,0.4) 0%, rgba(0,36,61,0.5) 50%), url(<%= image_path 'jobkitchen_banner.png' %>);">
+  <div class="container">
+    <div class="columns is-centered reversed">
+      <div class="column is-three-quarters ">
+        <h1 class="f2 pt5 pr6">פורטל המזון המשקאות והאירוח של ישראל</h1>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="columns">
   <div class="column mb4">
-    <div class="buttons is-centered">
+    <div class="panel buttons is-centered">
       <%= render 'panel' %>
     </div>
   </div>
@@ -18,25 +28,26 @@
                 <%= link_to image_tag('favicon.png', width: 100, height: 100), job_path(job) %>
               <% end %>
             </div>
-            <% if job.job_type == 'ייעוץ, מכירות ושיווק' %>
-              <div class="column card-product-link">
-              <% elsif job.job_type == 'מקצועות המטבח' %>
-                <div class="column card-product-success">
-                <% elsif job.job_type == 'מקצועות כלליים' %>
-                  <div class="column card-product-blue">
-                  <% elsif job.job_type == 'מקצועות ניהול ומנהלה' %>
-                    <div class="column card-product-primary">
-                    <% elsif job.job_type == 'מקצועות שירות ואירוח' %>
-                      <div class="column card-product-infos">
+            <% if job.category.name.downcase == 'general' %>
+              <div class="column text-box card-product-link">
+              <% elsif job.category.name.downcase == 'kitchen' %>
+                <div class="column text-box card-product-success">
+                <% elsif job.category.name.downcase == 'service' %>
+                  <div class="column text-box card-product-blue">
+                  <% elsif job.category.name.downcase == 'management' %>
+                    <div class="column text-box card-product-primary">
+                    <% elsif job.category.name.downcase == 'hotel' %>
+                      <div class="column text-box card-product-infos">
                       <% else %>
-                        <div class="column card-product-blank">
+                        <div class="column text-box card-product-blank">
                         <% end %>
                         <div class="title">
-                          <h2>דרוש\ה <%= link_to job.title, job_path(job) %></h2>
+                          <h2>דרוש/ה <%= link_to job.position.name, job_path(job) %></h2>
                           <p><%= link_to job.job_author, job_path(job) %></p>
                         </div>
                         <div class="details">
-                          <p class=""><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p>
+                          <!-- <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p> -->
+                          <p class="time-posted"><i class="fa fa-clock"></i> פרסם לפני <%= time_ago_in_words(job.created_at) %> </p>
                           <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
                         </div>
                       </div>

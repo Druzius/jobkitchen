@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.banner {
+  color: white;
+  text-shadow: 2px 2px #000000;
+  height: 45vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+
+.panel{
+  margin-top: -40px;
+}
 
 .card-product {
   overflow: hidden;
@@ -23,6 +36,16 @@
 .card-image {
   margin: 7px;
   width: 110px;
+}
+
+.text-box {
+  position: relative;
+}
+
+.job-description {
+  position: absolute;
+  right: 12px;
+  bottom: 50px;
 }
 
 .card-product h2 {
@@ -47,38 +70,126 @@
 
 
 .card-product-link {
+  height: 100%;
   background-color: rgba(59,135,208,0.9);
 
 }
 
 .card-product-success {
+  height: 100%;
   background-color: rgba(88,49,49,0.9);
 
 }
 
 .card-product-blue {
+  height: 100%;
   background-color: rgba(37,63,115,0.9);
 
 }
 
 .card-product-primary {
+  height: 100%;
   background-color: rgba(29,151,108,0.9);
 
 }
 
 .card-product-infos {
+  height: 100%;
   background-color: rgba(201,76,86,0.9);
 
 }
 
 .card-product-blank {
+  height: 100%;
   background-color: rgba(76,80,87,0.9);
 
 }
 
+.tag.info {
+  background-color: rgba(201,76,86,1);
+}
+
+
+.tag.success {
+  background-color: rgba(88,49,49,1);
+}
+
+.tag.primary {
+  background-color: rgba(29,151,108,0.9);
+}
 
 
 #location {
-  text-align: left;
-  margin-top: 15px;
+  position: absolute;
+  bottom: 32px;
+  right: 12px;
+}
+
+.time-posted {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+}
+
+.phone-button {
+  color: #00b400;
+}
+
+.error_notification {
+  color: red;
+}
+
+.error {
+  color: red;
+}
+
+@media (max-width: 480px) {
+.banner {
+  display: none;
+  }
+
+.panel {
+  margin-top: 0px;
+  }
+
+.job-description {
+  display: none;
+}
+
+.text-box .title {
+  position: absolute;
+  top: -8px;
+}
+
+.time-posted {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}
+
+#location {
+  position: absolute;
+  bottom: 28px;
+  right: 10px;
+}
+
+.card-product h2 {
+  display: inline-grid;
+}
+
+.apply-button {
+  display: flex;
+  justify-content: space-between;
+}
+
+.phone-button {
+  color: white;
+  background-color: #00b400;
+
+}
+
+.phone-number {
+  display: none;
+}
+
 }

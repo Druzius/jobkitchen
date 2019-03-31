@@ -7,8 +7,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
+# postgresql
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -81,7 +80,8 @@ gem 'compass', '~> 1.0', '>= 1.0.3'
 gem 'faraday', '~> 0.15.4'
 gem 'faraday_middleware', '~> 0.13.1'
 gem 'faraday-cookie_jar', '~> 0.0.6'
-gem 'sendgrid-ruby'
+gem 'tel_to_helper'
+gem 'postmark-rails'
 
 group :production do
   gem 'pg'

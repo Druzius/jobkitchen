@@ -25,16 +25,50 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
+    # to filter style keys in _panel and jobs index view
+    # @categories = Category.where.not(name: "General")
+    @positions = Position.all
+    @categories = Category.all
+    @style_hash = {
+      general: "link",
+      kitchen:  "success",
+      service: "blue",
+      management: "primary",
+      hotel: "info"
+    }
+    # Filter the jobs by categories only, positions will be added later on.
+    filter
+  end
 
-    if(params.has_key?(:job_type) && params.has_key?(:location))
-      @jobs = Job.where({job_type: params[:job_type], location: params[:location]}).order("created_at desc")
-    elsif(params.has_key?(:job_type))
-      @jobs = Job.where(job_type: params[:job_type]).order("created_at desc")
+  def filter
+
+    if(params.has_key?(:category) && params.has_key?(:location) && params.has_key?(:position))
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    elsif(params.has_key?(:category) && params.has_key?(:location))
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    elsif(params.has_key?(:category) && params.has_key?(:position))
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
+    elsif(params.has_key?(:location) && params.has_key?(:position))
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, location: params[:location]).order("created_at desc")
+    elsif(params.has_key?(:category))
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
     elsif(params.has_key?(:location))
       @jobs = Job.where(location: params[:location]).order("created_at desc")
     else
       @jobs = Job.all.order("created_at desc")
     end
+
+    # case params
+    # when (params.has_key?(:category) && params.has_key?(:location))
+    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+    # when (params.has_key?(:category))
+    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
+    # when (params.has_key?(:location))
+    #   @jobs = Job.where(location: params[:location]).order("created_at desc")
+    # else
+    #   @jobs = Job.all.order("created_at desc")
+    # end
+
   end
 
   # GET /jobs/1
@@ -55,7 +89,12 @@ class JobsController < ApplicationController
   # POST /jobs.json
 
   def create
+
     @job = current_user.jobs.build(job_params)
+
+    # @position = @job.position_id
+    # @job.position_id = Position.find_by_name("#{job_params[position]}")
+
     if @job.save
       ezcount_charge
       url = @payment.body["url"]
@@ -97,7 +136,7 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
-      redirect_to job_path
+      redirect_to job_path, notice: 'המשרה פורסמה בהצלחה.'
     else
       redirect_to root_path
     end
@@ -108,7 +147,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'המשרה עודכנה בהצלחה' }
+        format.html { redirect_to @job, notice: 'המשרה עודכנה בהצלחה.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -122,7 +161,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'המשרה הוסרה בהצלחה' }
+      format.html { redirect_to jobs_url, notice: 'המשרה הוסרה בהצלחה.' }
       format.json { head :no_content }
     end
   end
@@ -135,7 +174,8 @@ class JobsController < ApplicationController
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
+
   def job_params
-    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar)
+    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar, :position_id, :job_phone)
   end
 end
