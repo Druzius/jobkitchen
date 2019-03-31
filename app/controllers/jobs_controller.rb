@@ -13,7 +13,7 @@ class JobsController < ApplicationController
   before_action :set_connection, only: [:create, :new, :ezcount_charge_verify]
 
   def set_connection
-    @conn = Faraday.new(:url => 'https://demo.ezcount.co.il') do |c|
+    @conn = Faraday.new(:url => 'https://api.ezcount.co.il') do |c|
       c.use Faraday::Request::UrlEncoded
       c.use Faraday::Response::Logger
       c.use Faraday::Adapter::NetHttp
@@ -108,9 +108,9 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:sum => 5,
+      req.body = {:sum => 249,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
-                  :api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
+                  :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'DEVELOPER@example.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
     end
@@ -120,12 +120,12 @@ class JobsController < ApplicationController
   end
 
   def ezcount_charge_verify
-    @url = "https://demo.ezcount.co.il/api/payment/validate/#{session[:transactionId]}"
+    @url = "https://api.ezcount.co.il/api/payment/validate/#{session[:transactionId]}"
 
     @verify = @conn.post do |req|
       req.url @url
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:api_key => '4c4b3fd224e0943891588ea5a70d6cb566af3a5b4d506908ca04b30526234551',
+      req.body = {:api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
 
