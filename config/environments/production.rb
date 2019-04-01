@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.delivery_method     = :smtp
+  config.action_mailer.delivery_method     = :postmark
   config.action_mailer.default_url_options = { host: "www.jobkitchen.co.il" }
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
