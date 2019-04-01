@@ -5,4 +5,9 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
 
   has_many :jobs
+
+  after_create :send_admin_mail
+  def send_admin_mail
+    UserMailer.welcome(self).deliver_now
+  end
 end
