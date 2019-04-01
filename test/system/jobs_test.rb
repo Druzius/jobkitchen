@@ -19,7 +19,6 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Job author", with: @job.job_author
     fill_in "Job type", with: @job.job_type
     fill_in "Location", with: @job.location
-    fill_in "Title", with: @job.title
     fill_in "Url", with: @job.url
     click_on "Create Job"
 
@@ -36,7 +35,6 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Job author", with: @job.job_author
     fill_in "Job type", with: @job.job_type
     fill_in "Location", with: @job.location
-    fill_in "Title", with: @job.title
     fill_in "Url", with: @job.url
     click_on "Update Job"
 
