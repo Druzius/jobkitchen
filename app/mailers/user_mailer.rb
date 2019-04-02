@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
   def job_posted(user)
     @user = user
     # @user = params[:user]
-    mail(to: @user.email, subject: 'You succesfully created a job listing')
+    mail(to: @user.email, subject: 'פרסמת משרה בהצלחה')
   end
 end
