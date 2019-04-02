@@ -96,7 +96,6 @@ class JobsController < ApplicationController
     # @job.position_id = Position.find_by_name("#{job_params[position]}")
 
     if @job.save
-      UserMailer.job_posted(current_user).deliver_now
       ezcount_charge
       url = @payment.body["url"]
       redirect_to url
@@ -137,6 +136,7 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
+      UserMailer.job_posted(current_user).deliver_now
       redirect_to job_path, notice: 'המשרה פורסמה בהצלחה.'
     else
       redirect_to root_path
