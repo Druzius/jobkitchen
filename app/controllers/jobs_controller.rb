@@ -136,7 +136,8 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
-      #UserMailer.job_posted(user).deliver_now
+      raise
+      UserMailer.job_posted(user).deliver_now
       redirect_to job_path, notice: 'המשרה פורסמה בהצלחה.'
     else
       redirect_to root_path
