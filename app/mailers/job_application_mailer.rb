@@ -10,7 +10,7 @@ class JobApplicationMailer < ApplicationMailer
     @job_application = job_application  # Instance variable => available in view
 
     if @job_application.resume.present?
-      attachments[0] = File.read(cl_image_tag(@applicant.resume, attachment: true)) # Attached file
+      attachments[0] = File.read(cl_image_tag(@job_application.resume, attachment: true)) # Attached file
     end
 
     mail(to: @job_application.job.user.email, subject: 'somebody applied to your job posting')
