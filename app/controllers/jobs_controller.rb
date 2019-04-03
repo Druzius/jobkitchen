@@ -10,7 +10,7 @@ require 'faraday-cookie_jar'
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_connection, only: [:create, :new, :ezcount_charge_verify]
+  before_action :set_connection, only: [:create, :new, :ezcount_charge_verify, :ezcount_document_creation]
 
   def set_connection
     @conn = Faraday.new(:url => 'https://api.ezcount.co.il') do |c|
@@ -36,12 +36,12 @@ class JobsController < ApplicationController
       management: "primary",
       hotel: "info"
     }
-    # Filter the jobs by categories only, positions will be added later on.
+    # Filter the jobs by categories only and positions and locations.
     filter
   end
 
   def filter
-
+    # Filter the jobs by categories only and positions and locations.
     if(params.has_key?(:category) && params.has_key?(:location) && params.has_key?(:position))
       @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
     elsif(params.has_key?(:category) && params.has_key?(:location))
@@ -68,7 +68,6 @@ class JobsController < ApplicationController
     # else
     #   @jobs = Job.all.order("created_at desc")
     # end
-
   end
 
   # GET /jobs/1
@@ -89,7 +88,6 @@ class JobsController < ApplicationController
   # POST /jobs.json
 
   def create
-
     @job = current_user.jobs.build(job_params)
 
     # @position = @job.position_id
@@ -108,13 +106,14 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:sum => 249,
+      req.body = {:sum => 5,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
                   :api_key => ENV['EZCOUNT_API'],
-                  :developer_email => 'DEVELOPER@example.com',
+                  :developer_email => 'venomdrophearthstone@gmail.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
     end
     secretTransactionId = @payment.body["secretTransactionId"]
+    session[:customer_name] = @payment.body["cgp_customer_name"]
     session[:transactionId] = secretTransactionId
     session[:job_posting] = @job
   end
@@ -129,10 +128,10 @@ class JobsController < ApplicationController
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
 
-    session[:transactionId] = ""
 
     # @job.destroy if @verified == false
     if @verify.body["success"] == true
+      ezcount_document_creation
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
@@ -141,6 +140,23 @@ class JobsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def ezcount_document_creation
+    @document = @conn.post do |req|
+      req.url '/api/createDoc'
+      req.headers['Content-Type'] = 'application/json'
+      req.body = {:type => 320,
+                  :transaction_id => session[:transactionId],
+                  :api_key => ENV['EZCOUNT_API'],
+                  :developer_email => 'venomdrophearthstone@gmail.com',
+                  :customer_name => session[:customer_name]
+                  }.to_json
+    end
+    session.delete(:transactionId)
+    session.delete(:customer_name)
+    # session[:transactionId] = ""
+    # session[:customer_name] = ""
   end
 
   # PATCH/PUT /jobs/1
