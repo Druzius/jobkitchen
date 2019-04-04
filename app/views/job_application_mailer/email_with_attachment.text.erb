@@ -1,1 +1,15 @@
 Here comes the text for the user when somebody applied to the job posting.
+
+<%= @job_application.full_name %>
+<%= @job_application.phone_number %>
+<%= @job_application.email %>
+
+<%= @job_application.summary %>
+<%= @job_application.years_experience %>
+<%= @job_application.work_experience %>
+
+
+
+<% if @job_application.resume.present? %>
+Resume: <%= @job_application.resume.metadata["secure_url"] %>
+<% end %>
