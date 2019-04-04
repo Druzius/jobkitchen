@@ -106,7 +106,7 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:sum => 249,
+      req.body = {:sum => 5,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
                   :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',
@@ -151,16 +151,18 @@ class JobsController < ApplicationController
                   :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',
                   :customer_name => @job.job_author,
+                  :customer_address => @job.address,
+                  :customer_phone => @job.job_phone,
                   :item => [{
                               details: "רכישת משרה בג'וב קיטצ'ן",
-                              price: 249.0,
+                              price: 5.0,
                               amount: 1
                   }],
-                  :price_total => 249.0,
+                  :price_total => 5.0,
                   :payment => [{
                                  payment_type: 1,
                                  date: Time.now.strftime("%d/%m/%Y"),
-                                 payment_sum: 249.0
+                                 payment_sum: 5.0
                   }]
                   }.to_json
     end
@@ -204,6 +206,6 @@ class JobsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
 
   def job_params
-    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar, :position_id, :job_phone)
+    params.require(:job).permit(:title, :description, :job_type, :location, :job_author, :avatar, :position_id, :job_phone, :address)
   end
 end
