@@ -12,7 +12,7 @@
         <label class="label">סוג עבודה:</label>
         <div class="control has-icons-left">
           <span class="select">
-            <%= f.input_field :position_id, required: true, collection: Position.all, prompt: "סוג עבודה" %>
+            <%= f.input_field :position_id, required: true, collection: Position.all.order('name ASC'), prompt: "סוג עבודה" %>
           </span>
           <span class="icon is-small is-left">
             <i class="fa fa-briefcase"></i>
