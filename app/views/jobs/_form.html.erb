@@ -49,6 +49,11 @@
     </div>
     <div class="field column is-4">
       <div class="control">
+        <%= f.input :address, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: "כתובת החברה" %>
+      </div>
+    </div>
+    <div class="field column is-4">
+      <div class="control">
         <%= f.input :job_phone, label: "מספר פלאפון", error: "אנא מלא מספרים בלבד ", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
       </div>
     </div>
