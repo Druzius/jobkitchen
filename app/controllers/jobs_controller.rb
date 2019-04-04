@@ -106,7 +106,7 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:sum => 5,
+      req.body = {:sum => 249,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
                   :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',
@@ -131,10 +131,10 @@ class JobsController < ApplicationController
 
     # @job.destroy if @verified == false
     if @verify.body["success"] == true
-      ezcount_document_creation
       @job = Job.find(params[:id])
       @job.state = 1
       @job.save!
+      ezcount_document_creation
       UserMailer.job_posted(current_user).deliver_now
       redirect_to job_path, notice: 'המשרה פורסמה בהצלחה.'
     else
@@ -150,7 +150,18 @@ class JobsController < ApplicationController
                   :transaction_id => session[:transactionId],
                   :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',
-                  :customer_name => session[:customer_name]
+                  :customer_name => @job.job_author,
+                  :item => [{
+                              details: "רכישת משרה בג'וב קיטצ'ן",
+                              price: 249.0,
+                              amount: 1
+                  }],
+                  :price_total => 249.0,
+                  :payment => [{
+                                 payment_type: 1,
+                                 date: Time.now.strftime("%d/%m/%Y"),
+                                 payment_sum: 249.0
+                  }]
                   }.to_json
     end
     session.delete(:transactionId)
