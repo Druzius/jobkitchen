@@ -1,0 +1,20 @@
+<span style="direction: rtl;">
+<p>שלום מצוות ג'וב קיטצ'ן,<br>
+קיבלתם פניה למשרת <%= @job_application.job.position.name %>
+</p>
+
+<p>שם: <%= @job_application.full_name %></p>
+<p>טלפון: <%= @job_application.phone_number %></p>
+<p>אימייל: <%= @job_application.email %></p>
+
+<p><%= @job_application.summary %></p>
+<p><%= @job_application.years_experience %></p>
+<p><%= @job_application.work_experience %></p>
+
+
+<p>
+
+קורות חיים: <%= link_to "הורד כאן", @job_application.resume.metadata["secure_url"] %>
+
+</p>
+</span>

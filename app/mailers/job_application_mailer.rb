@@ -9,6 +9,6 @@ class JobApplicationMailer < ApplicationMailer
   def email_with_attachment(job_application)
     @job_application = job_application  # Instance variable => available in view
 
-    mail(to: @job_application.job.user.email, subject: 'somebody applied to your job posting')
+    mail(to: @job_application.job.user.email, subject: "פניה למשרתכם בג'וב קיטצ'ן")
   end
 end
