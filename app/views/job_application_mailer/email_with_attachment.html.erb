@@ -13,8 +13,8 @@
 
 
 <p>
-
+<% if @job_application.resume.metadata.present? %>
 קורות חיים: <%= link_to "הורד כאן", @job_application.resume.metadata["secure_url"] %>
-
+<% end %>
 </p>
 </span>
