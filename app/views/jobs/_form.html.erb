@@ -9,10 +9,10 @@
   <div class="columns">
     <div class="field column is-4">
       <div class="control is-pulled-right">
-        <label class="label">סוג עבודה:</label>
+        <label class="label">בחר תפקיד:</label>
         <div class="control has-icons-left">
           <span class="select">
-            <%= f.input_field :position_id, required: true, collection: Position.all.order('name ASC'), prompt: "סוג עבודה" %>
+            <%= f.input_field :position_id, required: true, collection: Position.all.order('name ASC'), prompt: "בחר תפקיד" %>
           </span>
           <span class="icon is-small is-left">
             <i class="fa fa-briefcase"></i>
