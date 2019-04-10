@@ -6,6 +6,7 @@
       <%#= f.input :position_id, label: "כותרת", required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "שף ראשי" %>
     </div>
   </div> -->
+  <%= image_tag("payment.png") %>
   <div class="columns">
     <div class="field column is-4">
       <div class="control is-pulled-right">
@@ -78,7 +79,5 @@
     </div>
   </div>
   <hr />
-  <%#= render 'payment' %>
-  <h4>כל המשרות עולות ₪249 במקום ₪299 לזמן מוקצב, הפרסום כולל בפורטל, דפי וקבוצות הפייסבוק השייכות ל-<strong>JOB KITCHEN</strong></h4>
   <%= f.button :submit, value: "פרסם", class: "button is-primary is-large is-rounded mv4", 'data-disable-with' => "פרסם" %>
 <% end %>
