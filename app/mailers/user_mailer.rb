@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
   def welcome(user)
     @user = user  # Instance variable => available in view
     # @user = params[:user]
-    mail(to: @user.email, subject: "ברוכים הבאים לג'וב קיטשן")
+    mail(to: @user.email, subject: "ברוכים הבאים לג'וב קיטשן!")
     # This will render a view in `app/views/user_mailer`!
 
   end
@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
   def job_posted(user)
     @user = user
     # @user = params[:user]
-    mail(to: @user.email, subject: 'פרסמת משרה בהצלחה')
+    mail(to: @user.email, subject: 'משרתך פורסמה בהצלחה!')
   end
 end
