@@ -15,5 +15,6 @@ class Job < ApplicationRecord
 
   validates :position, presence: true
   validates :location, presence: true
+  validates :address, presence: true
   validates :job_phone, presence: true, numericality: true, length: { minimum: 2, maximum: 30 }
 end
