@@ -1,20 +1,36 @@
-<span style="direction: rtl;">
-<p>שלום מצוות ג'וב קיטצ'ן,<br>
-קיבלתם פניה למשרת <%= @job_application.job.position.name %>
-</p>
+<div style="direction: rtl;">
+  <table align="right" width="600">
+    <tr>
+      <td>
+        <span style="float: right;"><img src="https://res.cloudinary.com/jobkitchen/image/upload/v1555185671/email-image.png" alt="Job Kitchen logo"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3>שלום רב!</h3>
+        <p>קיבלתם פניה למשרת <%= @job_application.job.position.name %></p>
 
-<p>שם: <%= @job_application.full_name %></p>
-<p>טלפון: <%= @job_application.phone_number %></p>
-<p>אימייל: <%= @job_application.email %></p>
+        <p>
+        שם: <%= @job_application.full_name %><br>
+        טלפון: <%= @job_application.phone_number %><br>
+        אימייל: <%= @job_application.email %>
+        </p>
 
-<p><%= @job_application.summary %></p>
-<p><%= @job_application.years_experience %></p>
-<p><%= @job_application.work_experience %></p>
+        <p>
+        <%= @job_application.summary %><br>
+        <%= @job_application.years_experience %><br>
+        <%= @job_application.work_experience %>
+        </p>
 
 
-<p>
-<% if @job_application.resume.metadata.present? %>
-קורות חיים: <%= link_to "הורד כאן", @job_application.resume.metadata["secure_url"] %>
-<% end %>
-</p>
-</span>
+        <p>
+        <% if @job_application.resume.metadata.present? %>
+        קורות חיים: <%= link_to "הורד כאן", @job_application.resume.metadata["secure_url"] %>
+        <% end %>
+        </p>
+        <p>שלך,</p>
+        <p><strong>צוות Job Kitchen</strong></p>
+      </td>
+    </tr>
+  </table>
+</div>
