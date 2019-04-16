@@ -15,6 +15,7 @@ class JobApplicationsController < ApplicationController
     # @job_application.user = current_user
     if @job_application.save
       JobApplicationMailer.apply(@job_application).deliver_now
+      JobApplicationMailer.email_with_attachment(@job_application).deliver_now
       redirect_to jobs_path, notice: 'תודה! פנייתך נשלחה בהצלחה.'
     else
       render :new
