@@ -196,6 +196,10 @@ class JobsController < ApplicationController
     end
   end
 
+  def dashboard
+    @jobs = Job.where(user: current_user.id)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

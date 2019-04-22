@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="columns reversed is-multiline pa3">
+    <% @jobs.each do |job| %>
+      <% if job.state == "verified" %>
+        <div class="column is-one-third">
+          <div class="card-product" style="cursor:pointer;" onclick="document.location='<%= job_path(job) %>'">
+            <div class="card-image">
+              <% if !job.avatar.file.nil? %>
+                <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job_path(job) %>
+              <% else %>
+                <%= link_to image_tag('favicon.png', width: 100, height: 100), job_path(job) %>
+              <% end %>
+            </div>
+            <% if job.category.name.downcase == 'general' %>
+              <div class="column text-box card-product-link">
+              <% elsif job.category.name.downcase == 'kitchen' %>
+                <div class="column text-box card-product-success">
+                <% elsif job.category.name.downcase == 'service' %>
+                  <div class="column text-box card-product-blue">
+                  <% elsif job.category.name.downcase == 'management' %>
+                    <div class="column text-box card-product-primary">
+                    <% elsif job.category.name.downcase == 'hotel' %>
+                      <div class="column text-box card-product-infos">
+                      <% else %>
+                        <div class="column text-box card-product-blank">
+                        <% end %>
+                        <div class="title">
+                          <h2>דרוש/ה <%= link_to job.position.name, job_path(job) %></h2>
+                          <p><%= link_to job.job_author, job_path(job) %></p>
+                        </div>
+                        <div class="details">
+                          <!-- <p class="job-description"><%= sanitize(job.description.truncate(40, separator: '</p>')) %></p> -->
+                          <p class="time-posted"><i class="fa fa-clock"></i> פרסם לפני <%= time_ago_in_words(job.created_at) %> </p>
+                          <p id="location"><i class="fas fa-map-marker-alt"></i>  <%= job.location %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
