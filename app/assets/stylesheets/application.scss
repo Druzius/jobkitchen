@@ -113,6 +113,10 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   color: #e5e5e5;
 }
 
+.navbar-item.button {
+  margin-right: 6px;
+}
+
 @media (max-width: 480px) {
 
 body {
@@ -126,6 +130,10 @@ body {
 .navbar-item img {
   max-height: 3.75rem;
   }
+
+  .navbar-item.button {
+    margin-right: 0px;
+}
 
 #facebook-button {
   display: none;
