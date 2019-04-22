@@ -71,6 +71,10 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   margin-bottom: 0;
 }
 
+.mobile-button-links {
+  display: inline-flex;
+}
+
 .hint {
   font-size: small;
 }
@@ -137,6 +141,16 @@ body {
 
 .footer-padding {
   padding-right: 30px;
+}
+
+#mobile-login-menu {
+  display: flex;
+  justify-content: flex-end;
+  width: 103%;
+}
+
+#job-post-button {
+  width: 500vw;
 }
 
 }
