@@ -9,12 +9,9 @@
       <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered") %>
     <% end %>
     <h2 class="mt2 mb4 f3 has-text-centered"><%= @job.job_author %></h2>
-
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">פעולות מנהל: </li>
-        <!-- <li class="pv1 inline-block">
-          <%= link_to 'ראה', @job, class: 'button is-small is-link is-outlined' %></li> -->
         <li class="pv1 inline-block">
           <%= link_to 'ערוך משרה', edit_job_path(@job), class: 'button is-small is-link is-outlined' %></li>
         <li class="pv1 inline-block">
@@ -28,17 +25,18 @@
       <li class="block f6 pr2"><%= job_type(@job.category) %></li>
       <li class="block f6 ph2"><span class="pl4"><i class="fas fa-map-marker-alt"></i> <%= @job.location %></span> <i class="fa fa-clock"></i> פרסם לפני <%= time_ago_in_words(@job.created_at) %></li>
       <div class="content text-serif f4 ph2">
-        <%= @job.description.html_safe %>
+        <% if @job.description.present? %>
+          <%= @job.description.html_safe %>
+        <% else %>
+          <%= "" %>
+        <% end %>
       </div>
     </ul>
     <div class="inline-block apply-button">
-    <%= link_to 'שלח קורות חיים', new_job_job_application_path(@job.id), class:"button is-rounded is-large is-link" %>
-    <%= tel_to "<i class='fas fa-phone-square'></i>".html_safe, @job.job_phone, class: "job-phone is-hidden-desktop button phone-button is-rounded is-large"%>
+      <%= link_to 'שלח קורות חיים', new_job_job_application_path(@job.id), class:"button is-rounded is-large is-link" %>
+      <%= tel_to "<i class='fas fa-phone-square'></i>".html_safe, @job.job_phone, class: "job-phone is-hidden-desktop button phone-button is-rounded is-large"%>
     </div>
   </div>
-
-
-
   <div class="is-hidden-touch column is-2 is-offset-1 has-text-centered">
     <% if !@job.avatar.file.nil? %>
       <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered") %>
@@ -47,12 +45,9 @@
     <div class="job-phone">
       <p> <span class="phone-button"><i class="fas fa-phone-square fa-2x"></i></span> <span class="pr2"><%= tel_to @job.job_phone %></span></p>
     </div>
-
     <% if current_user.try(:admin) || job_author(@job) %>
       <ul class="pv3">
         <li class="pv1 f6">פעולות מנהל: </li>
-        <!-- <li class="pv1 inline-block">
-          <%= link_to 'ראה', @job, class: 'button is-small is-link is-outlined' %></li> -->
         <li class="pv1 inline-block">
           <%= link_to 'ערוך משרה', edit_job_path(@job), class: 'button is-small is-link is-outlined' %></li>
         <li class="pv1 inline-block">
