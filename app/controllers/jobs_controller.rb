@@ -106,6 +106,7 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
+      # change to 5 when testing, 249 when not testing.
       req.body = {:sum => 249,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
                   :api_key => ENV['EZCOUNT_API'],
@@ -141,7 +142,7 @@ class JobsController < ApplicationController
       redirect_to root_path
     end
   end
-
+  # To test, change prices from 249 to 5, and api.ezcount on the 2 urls to demo.ezcount
   def ezcount_document_creation
     @document = @conn.post do |req|
       req.url '/api/createDoc'
@@ -152,6 +153,7 @@ class JobsController < ApplicationController
                   :developer_email => 'venomdrophearthstone@gmail.com',
                   :customer_name => @job.job_author,
                   :customer_address => @job.address,
+                  :customer_email => @job.user.email,
                   :customer_phone => @job.job_phone,
                   :item => [{
                               details: "רכישת משרה בג'וב קיטצ'ן",
