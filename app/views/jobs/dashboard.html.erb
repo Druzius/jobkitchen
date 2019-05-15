@@ -1,4 +1,13 @@
-<h1>המשרות שלי</h1>
+<div class="banner" style="background-image:
+  linear-gradient(225deg, rgba(186,210,213,0.4) 0%, rgba(0,36,61,0.5) 50%), url(<%= image_path 'jobkitchen_banner.png' %>);">
+  <div class="container">
+    <div class="columns is-centered reversed">
+      <div class="column is-three-quarters ">
+        <h1 class="f2 pt6 has-text-centered">המשרות שלי</h1>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="columns reversed is-multiline pa3">
     <% current_user.jobs.each do |job| %>
