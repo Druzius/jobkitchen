@@ -106,8 +106,8 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      # change to 5 when testing, 249 when not testing.
-      req.body = {:sum => 249,
+      # change to 5 when testing, 99 when not testing.
+      req.body = {:sum => 99,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
                   :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',
@@ -157,14 +157,14 @@ class JobsController < ApplicationController
                   :customer_phone => @job.job_phone,
                   :item => [{
                               details: "רכישת משרה בג'וב קיטצ'ן",
-                              price: 249.0,
+                              price: 99.0,
                               amount: 1
                   }],
-                  :price_total => 249.0,
+                  :price_total => 99.0,
                   :payment => [{
                                  payment_type: 1,
                                  date: Time.now.strftime("%d/%m/%Y"),
-                                 payment_sum: 249.0
+                                 payment_sum: 99.0
                   }]
                   }.to_json
     end
