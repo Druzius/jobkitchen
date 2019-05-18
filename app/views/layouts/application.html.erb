@@ -56,6 +56,7 @@
                   <%= link_to 'חשבון', edit_user_registration_path, class: "navbar-link" %>
                   <div class="navbar-dropdown is-right">
                     <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                    <%= link_to "איזור אישי", dashboard_path, class:"navbar-item"  %>
                     <%= link_to "צא", destroy_user_session_path, method: :delete, class:"navbar-item" %>
                   </div>
                 </div>
