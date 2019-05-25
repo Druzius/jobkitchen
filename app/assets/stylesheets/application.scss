@@ -44,6 +44,10 @@ h1, h2, h3, h4, h5, p, a, ul, li {
   padding: 18px;
 }
 
+.mobile-text {
+  display: none;
+}
+
 .navbar-burger {
   color: white;
   margin-right: auto;
@@ -133,6 +137,14 @@ body {
 
   .navbar-item.button {
     margin-right: 0px;
+}
+
+.mobile-text {
+  display: inline-block;
+}
+
+.desktop-text {
+  display: none;
 }
 
 #facebook-button {
