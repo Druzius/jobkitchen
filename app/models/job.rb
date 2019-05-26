@@ -9,7 +9,7 @@ class Job < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   # pagination
-  self.per_page = 2
+  self.per_page = 51
 
 
   # JOB_TYPES = ["כל התחומים", "ייעוץ, מכירות ושיווק", "מקצועות המטבח", "מקצועות כלליים", "מקצועות ניהול ומנהלה", "מקצועות שירות ואירוח"]

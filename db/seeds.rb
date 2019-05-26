@@ -150,65 +150,65 @@ user = User.new(
 )
 user.save!
 
-# 5.times do
-#   Job.create!([
-#                 {
-#                   title: "AMIIIIIR",
-#                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-#                   position_id: Position.find_by_name("#{MANAGEMENT.sample}").id,
-#                   location: JOB_AREA.sample,
-#                   job_author: "ארומה",
-#                   state: 1,
-#                   user_id: user.id,
-#                   avatar: Rails.root.join("app/assets/images/facebook.jpg").open,
-#                   job_phone: "0508288288"
-#                 },
-#                 {
-#                   title: "משווק",
-#                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-#                   position_id: Position.find_by_name("#{HOTEL.sample}").id,
-#                   location: JOB_AREA.sample,
-#                   job_author: "קפה נואר",
-#                   state: 1,
-#                   user_id: user.id,
-#                   avatar: Rails.root.join("app/assets/images/slack.jpg").open,
-#                   job_phone: "0508288288"
-#                 },
-#                 {
-#                   title: "שוטף כלים",
-#                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-#                   position_id: Position.find_by_name("#{GENERAL.sample}").id,
-#                   location: JOB_AREA.sample,
-#                   job_author: "ארומה",
-#                   state: 1,
-#                   user_id: user.id,
-#                   avatar: Rails.root.join("app/assets/images/trello.jpg").open,
-#                   job_phone: "0508288288"
-#                 },
-#                 {
-#                   title: "מארחת",
-#                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-#                   position_id: Position.find_by_name("#{SERVICE.sample}").id,
-#                   location: JOB_AREA.sample,
-#                   job_author: "אמורה מיו",
-#                   state: 1,
-#                   user_id: user.id,
-#                   avatar: Rails.root.join("app/assets/images/wordpress.jpg").open,
-#                   job_phone: "0508288288"
-#                 },
-#                 {
-#                   title: "מלצר",
-#                   description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
-#                   position_id: Position.find_by_name("#{KITCHEN.sample}").id,
-#                   location: JOB_AREA.sample,
-#                   job_author: "ג'פניקה",
-#                   state: 1,
-#                   user_id: user.id,
-#                   avatar: Rails.root.join("app/assets/images/basecamp.jpg").open,
-#                   job_phone: "0508288288"
-#                 }
-#   ])
-# end
+100.times do
+  Job.create!([
+                {
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  position_id: Position.find_by_name("#{MANAGEMENT.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "ארומה",
+                  state: 1,
+                  user_id: user.id,
+                  # avatar: Rails.root.join("app/assets/images/facebook.jpg").open,
+                  job_phone: "0508288288",
+                  address: "test"
+                },
+                {
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  position_id: Position.find_by_name("#{HOTEL.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "קפה נואר",
+                  state: 1,
+                  user_id: user.id,
+                  # avatar: Rails.root.join("app/assets/images/slack.jpg").open,
+                  job_phone: "0508288288",
+                  address: "test"
+                },
+                {
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  position_id: Position.find_by_name("#{GENERAL.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "ארומה",
+                  state: 1,
+                  user_id: user.id,
+                  # avatar: Rails.root.join("app/assets/images/trello.jpg").open,
+                  job_phone: "0508288288",
+                  address: "test"
+                },
+                {
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  position_id: Position.find_by_name("#{SERVICE.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "אמורה מיו",
+                  state: 1,
+                  user_id: user.id,
+                  # avatar: Rails.root.join("app/assets/images/wordpress.jpg").open,
+                  job_phone: "0508288288",
+                  address: "test"
+                },
+                {
+                  description: "קווי האופי המובהקים של אוסף המסות הזה – סוגה שנכחדה כמעט לחלוטין בספרות העברית – הם סקרנות עצומה, כבוד למסורת התרבותית, חירות אינטלקטואלית, רוחב דעת וצלילות. צלקה נע באלגנטיות ובתנופה בין רשימות מסע להרהורים על אמנות, מוזיקה וציור, בין חיי היומיום בתל אביב ",
+                  position_id: Position.find_by_name("#{KITCHEN.sample}").id,
+                  location: JOB_AREA.sample,
+                  job_author: "ג'פניקה",
+                  state: 1,
+                  user_id: user.id,
+                  # avatar: Rails.root.join("app/assets/images/basecamp.jpg").open,
+                  job_phone: "0508288288",
+                  address: "test"
+                }
+  ])
+end
 
 
 
