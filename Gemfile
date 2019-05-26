@@ -83,6 +83,7 @@ gem 'faraday_middleware', '~> 0.13.1'
 gem 'faraday-cookie_jar', '~> 0.0.6'
 gem 'tel_to_helper'
 gem 'postmark-rails'
+gem 'will_paginate', '~> 3.1.0'
 
 group :production do
   gem 'pg'
