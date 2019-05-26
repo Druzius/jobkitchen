@@ -54,7 +54,7 @@
                   </div>
                 <% end %>
               <% end %>
-              <%= will_paginate @jobs %>
+              <%= will_paginate @jobs, :page_links => false, class: "digg_pagination", :previous_label => 'עמוד קודם', :next_label => 'עמוד הבא' %>
             </div>
           </div>
         </div>
