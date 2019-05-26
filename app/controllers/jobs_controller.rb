@@ -2,6 +2,7 @@ require 'httparty'
 require 'thread'
 require 'faraday'
 require 'faraday-cookie_jar'
+require 'will_paginate/array'
 
 # Add new column to jobs, state:integer, use enum for state in the model.
 # Manually add null:false, default:0 to the state in the migration
@@ -27,6 +28,7 @@ class JobsController < ApplicationController
   def index
     # to filter style keys in _panel and jobs index view
     # @categories = Category.where.not(name: "General")
+
     @positions = Position.all
     @categories = Category.all
     @style_hash = {
@@ -38,24 +40,31 @@ class JobsController < ApplicationController
     }
     # Filter the jobs by categories only and positions and locations.
     filter
+
+
+    # Job.page(params[:page]).order('created_at DESC')
+
+
+    # pagination
+    # @jobs = Job.paginate(page: params[:page])
   end
 
   def filter
     # Filter the jobs by categories only and positions and locations.
     if(params.has_key?(:category) && params.has_key?(:location) && params.has_key?(:position))
-      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).paginate(page: params[:page]).order("created_at desc")
     elsif(params.has_key?(:category) && params.has_key?(:location))
-      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).paginate(page: params[:page]).order("created_at desc")
     elsif(params.has_key?(:category) && params.has_key?(:position))
-      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, categories: { name: "#{params[:category].capitalize}" }).paginate(page: params[:page]).order("created_at desc")
     elsif(params.has_key?(:location) && params.has_key?(:position))
-      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, location: params[:location]).order("created_at desc")
+      @jobs = Job.joins(position: :category).where(positions: { name: "#{params[:position]}" }, location: params[:location]).paginate(page: params[:page]).order("created_at desc")
     elsif(params.has_key?(:category))
-      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
+      @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).paginate(page: params[:page]).order("created_at desc")
     elsif(params.has_key?(:location))
-      @jobs = Job.where(location: params[:location]).order("created_at desc")
+      @jobs = Job.where(location: params[:location]).paginate(page: params[:page]).order("created_at desc")
     else
-      @jobs = Job.all.order("created_at desc")
+      @jobs = Job.all.paginate(page: params[:page]).order("created_at desc")
     end
 
     # case params
