@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  validates :terms_of_service, acceptance: true
+
   has_many :jobs
 
   after_create :send_admin_mail
