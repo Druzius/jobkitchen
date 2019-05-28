@@ -103,6 +103,8 @@ class JobsController < ApplicationController
     # @job.position_id = Position.find_by_name("#{job_params[position]}")
 
     if @job.save
+      current_user.admin = true
+      current_user.save
       ezcount_charge
       url = @payment.body["url"]
       redirect_to url
