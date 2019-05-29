@@ -28,7 +28,7 @@
           <div class="field">
             <div class="control">
               <span style="padding-bottom: 10px" class="labelText pull-right">במידה ונרשם כמעסיק נא סמן
-                <%= f.check_box :admin, as: :boolean, checked_value: true, unchecked_value: false %>
+                <%= f.check_box :admin, as: :boolean, checked_value: true, unchecked_value: false, input_html: { id: 'checkbox' } %>
               </span>
             </div>
           </div>
