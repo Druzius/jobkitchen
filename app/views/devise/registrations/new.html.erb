@@ -27,14 +27,15 @@
           </div>
           <div class="field">
             <div class="control">
-              <span style="padding-bottom: 10px" class="labelText pull-right">מעסיק?
+              <span style="padding-bottom: 10px" class="labelText pull-right">במידה ונרשם כמעסיק נא סמן
                 <%= f.check_box :admin, as: :boolean, checked_value: true, unchecked_value: false %>
               </span>
             </div>
           </div>
           <div class="field">
             <div class="control">
-              <span style="padding-bottom: 10px" class="labelText pull-right">קראתי והסכמתי לתנאי השימוש
+              <span style="padding-bottom: 10px" class="labelText pull-right">קראתי והסכמתי ל
+                <%= link_to "תנאי השימוש", "/pages/תקנון_מחפשי_עבודה" %>
                 <%= f.check_box :terms_of_service %>
               </span>
             </div>
