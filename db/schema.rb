@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_152306) do
+ActiveRecord::Schema.define(version: 2019_05_29_120310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_152306) do
     t.bigint "job_applications_id"
     t.integer "state", default: 0, null: false
     t.bigint "position_id"
+    t.string "phone"
     t.string "job_phone"
     t.string "address"
     t.index ["job_applications_id"], name: "index_jobs_on_job_applications_id"
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_152306) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin"
+    t.boolean "email_checkbox"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

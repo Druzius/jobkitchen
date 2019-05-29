@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     # added admin checkbox on user signup
     devise_parameter_sanitizer.permit(:sign_up, keys: [:admin])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email_checkbox])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:terms_of_service])
-
   end
 end
