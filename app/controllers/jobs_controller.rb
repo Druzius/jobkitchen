@@ -23,8 +23,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /jobs
-  # GET /jobs.json
   def index
     # to filter style keys in _panel and jobs index view
     # @categories = Category.where.not(name: "General")
@@ -41,9 +39,7 @@ class JobsController < ApplicationController
     # Filter the jobs by categories only and positions and locations.
     filter
 
-
     # Job.page(params[:page]).order('created_at DESC')
-
 
     # pagination
     # @jobs = Job.paginate(page: params[:page])
@@ -66,17 +62,6 @@ class JobsController < ApplicationController
     else
       @jobs = Job.all.paginate(page: params[:page]).order("created_at desc")
     end
-
-    # case params
-    # when (params.has_key?(:category) && params.has_key?(:location))
-    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
-    # when (params.has_key?(:category))
-    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
-    # when (params.has_key?(:location))
-    #   @jobs = Job.where(location: params[:location]).order("created_at desc")
-    # else
-    #   @jobs = Job.all.order("created_at desc")
-    # end
   end
 
   # GET /jobs/1
@@ -119,10 +104,10 @@ class JobsController < ApplicationController
       req.headers['Content-Type'] = 'application/json'
       # change to 5 when testing, 99 when not testing.
       # test api key f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf
-      # dev api key EZCOUNT_API
+      # dev api key ENV['EZCOUNT_API']
       req.body = {:sum => 5,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
-                  :api_key => ENV['f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf'],
+                  :api_key => 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
                   :developer_email => 'venomdrophearthstone@gmail.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
     end
@@ -138,7 +123,7 @@ class JobsController < ApplicationController
     @verify = @conn.post do |req|
       req.url @url
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:api_key => ENV['EZCOUNT_API'],
+      req.body = {:api_key => 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
 
@@ -149,7 +134,7 @@ class JobsController < ApplicationController
       @job.save!
       ezcount_document_creation
       UserMailer.job_posted(current_user).deliver_now
-      redirect_to job_path, notice: 'המשרה פורסמה בהצלחה.'
+      redirect_to '/pages/thank_you', notice: 'המשרה פורסמה בהצלחה.'
     else
       redirect_to root_path
     end
@@ -160,8 +145,9 @@ class JobsController < ApplicationController
       req.url '/api/createDoc'
       req.headers['Content-Type'] = 'application/json'
       req.body = {:type => 320,
+                  # => change api key
                   :transaction_id => session[:transactionId],
-                  :api_key => ENV['EZCOUNT_API'],
+                  :api_key => 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
                   :developer_email => 'venomdrophearthstone@gmail.com',
                   :customer_name => @job.job_author,
                   :customer_address => @job.address,
