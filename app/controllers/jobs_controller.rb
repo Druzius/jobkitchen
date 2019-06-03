@@ -23,8 +23,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /jobs
-  # GET /jobs.json
   def index
     # to filter style keys in _panel and jobs index view
     # @categories = Category.where.not(name: "General")
@@ -41,9 +39,7 @@ class JobsController < ApplicationController
     # Filter the jobs by categories only and positions and locations.
     filter
 
-
     # Job.page(params[:page]).order('created_at DESC')
-
 
     # pagination
     # @jobs = Job.paginate(page: params[:page])
@@ -66,17 +62,6 @@ class JobsController < ApplicationController
     else
       @jobs = Job.all.paginate(page: params[:page]).order("created_at desc")
     end
-
-    # case params
-    # when (params.has_key?(:category) && params.has_key?(:location))
-    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }, location: params[:location]).order("created_at desc")
-    # when (params.has_key?(:category))
-    #   @jobs = Job.joins(position: :category).where(categories: { name: "#{params[:category].capitalize}" }).order("created_at desc")
-    # when (params.has_key?(:location))
-    #   @jobs = Job.where(location: params[:location]).order("created_at desc")
-    # else
-    #   @jobs = Job.all.order("created_at desc")
-    # end
   end
 
   # GET /jobs/1
@@ -117,7 +102,9 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      # change to 5 when testing, 99 when not testing.
+      # change to 5 when testing, 116 when not testing.
+      # test api key f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf
+      # dev api key ENV['EZCOUNT_API']
       req.body = {:sum => 116,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
                   :api_key => ENV['EZCOUNT_API'],
@@ -140,7 +127,6 @@ class JobsController < ApplicationController
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
 
-
     # @job.destroy if @verified == false
     if @verify.body["success"] == true
       @job = Job.find(params[:id])
@@ -148,17 +134,18 @@ class JobsController < ApplicationController
       @job.save!
       ezcount_document_creation
       UserMailer.job_posted(current_user).deliver_now
-      redirect_to job_path, notice: 'המשרה פורסמה בהצלחה.'
+      redirect_to '/pages/thank_you', notice: 'המשרה פורסמה בהצלחה.'
     else
       redirect_to root_path
     end
   end
-  # To test, change prices from 249 to 5, and api.ezcount on the 2 urls to demo.ezcount
+  # To test, change prices from 116 to 5, and api.ezcount on the 2 urls to demo.ezcount
   def ezcount_document_creation
     @document = @conn.post do |req|
       req.url '/api/createDoc'
       req.headers['Content-Type'] = 'application/json'
       req.body = {:type => 320,
+                  # => change api key
                   :transaction_id => session[:transactionId],
                   :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',

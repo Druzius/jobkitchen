@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  get '/payment_success', to: 'jobs#ezcount_charge_verify', :template => 'pages/payment_success', :defaults => { :format => 'json' }
+  get '/payment_success', to: 'jobs#ezcount_charge_verify', :template => 'pages/thank_you', :defaults => { :format => 'json' }
   get '/dashboard', to: 'jobs#dashboard', :template => 'jobs/dashboard'
   get '/pages/:page' => 'pages#show'
 
