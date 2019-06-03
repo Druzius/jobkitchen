@@ -14,7 +14,7 @@ class JobsController < ApplicationController
   before_action :set_connection, only: [:create, :new, :ezcount_charge_verify, :ezcount_document_creation]
 
   def set_connection
-    @conn = Faraday.new(:url => 'https://demo.ezcount.co.il') do |c|
+    @conn = Faraday.new(:url => 'https://api.ezcount.co.il') do |c|
       c.use Faraday::Request::UrlEncoded
       c.use Faraday::Response::Logger
       c.use Faraday::Adapter::NetHttp
@@ -102,12 +102,12 @@ class JobsController < ApplicationController
     @payment = @conn.post do |req|
       req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
       req.headers['Content-Type'] = 'application/json'
-      # change to 5 when testing, 99 when not testing.
+      # change to 5 when testing, 116 when not testing.
       # test api key f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf
       # dev api key ENV['EZCOUNT_API']
-      req.body = {:sum => 5,
+      req.body = {:sum => 116,
                   :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
-                  :api_key => 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
+                  :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',
                   :api_email => 'demo@ezcount.co.il'}.to_json
     end
@@ -118,12 +118,12 @@ class JobsController < ApplicationController
   end
 
   def ezcount_charge_verify
-    @url = "https://demo.ezcount.co.il/api/payment/validate/#{session[:transactionId]}"
+    @url = "https://api.ezcount.co.il/api/payment/validate/#{session[:transactionId]}"
 
     @verify = @conn.post do |req|
       req.url @url
       req.headers['Content-Type'] = 'application/json'
-      req.body = {:api_key => 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
+      req.body = {:api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'DEVELOPER@example.com'}.to_json
     end
 
@@ -139,7 +139,7 @@ class JobsController < ApplicationController
       redirect_to root_path
     end
   end
-  # To test, change prices from 249 to 5, and api.ezcount on the 2 urls to demo.ezcount
+  # To test, change prices from 116 to 5, and api.ezcount on the 2 urls to demo.ezcount
   def ezcount_document_creation
     @document = @conn.post do |req|
       req.url '/api/createDoc'
@@ -147,7 +147,7 @@ class JobsController < ApplicationController
       req.body = {:type => 320,
                   # => change api key
                   :transaction_id => session[:transactionId],
-                  :api_key => 'f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf',
+                  :api_key => ENV['EZCOUNT_API'],
                   :developer_email => 'venomdrophearthstone@gmail.com',
                   :customer_name => @job.job_author,
                   :customer_address => @job.address,
@@ -155,14 +155,14 @@ class JobsController < ApplicationController
                   :customer_phone => @job.job_phone,
                   :item => [{
                               details: "רכישת משרה בג'וב קיטצ'ן",
-                              price: 5.0,
+                              price: 116.0,
                               amount: 1
                   }],
-                  :price_total => 5.0,
+                  :price_total => 116.0,
                   :payment => [{
                                  payment_type: 1,
                                  date: Time.now.strftime("%d/%m/%Y"),
-                                 payment_sum: 5.0
+                                 payment_sum: 116.0
                   }]
                   }.to_json
     end
