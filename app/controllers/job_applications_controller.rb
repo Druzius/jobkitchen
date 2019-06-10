@@ -1,8 +1,4 @@
 class JobApplicationsController < ApplicationController
-  # def index
-  #     user dashboard for all applications
-  # end
-
   def new
     @job = Job.find(params[:job_id])
     @job_application = JobApplication.new
