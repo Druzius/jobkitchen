@@ -6,6 +6,22 @@
     <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
+    <!-- data layer -->
+    <script>
+      dataLayer = [{
+        'pageCategory': 'signup',
+        'visitorType': 'high-value'
+        }];
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WXHXDXV');
+    </script>
+    <!-- End Google Tag Manager -->
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
@@ -16,24 +32,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WXHXDXV');
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- GOOGLE ADS -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-2109862014139028",
-        enable_page_level_ads: true
-      });
-    </script>
-    <!-- GOOGLE ADS_END -->
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
