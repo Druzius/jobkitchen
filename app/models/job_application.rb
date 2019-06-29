@@ -16,6 +16,6 @@ class JobApplication < ApplicationRecord
 
   validates :city, presence: true, length: { minimum: 2, maximum: 30 }
 
-  validates :work_experience, length: { maximum: 80 }
-  validates :summary, length: { maximum: 80 }
+  validates :work_experience, length: { maximum: 200 }
+  validates :summary, length: { maximum: 200 }
 end
