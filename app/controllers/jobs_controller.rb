@@ -11,7 +11,7 @@ require 'faraday-cookie_jar'
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   # >>>>>>> EZCOUNT <<<<<<<
   before_action :set_connection, only: [:create, :new, :ezcount_charge_verify, :ezcount_document_creation]
   # >>>>>>> EZCOUNT_END <<<<<<<
