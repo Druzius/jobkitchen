@@ -15,12 +15,12 @@ require 'will_paginate/array'
 
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   ## >>>>>>> EZCOUNT <<<<<<<
   # before_action :set_connection, only: [:create, :new, :ezcount_charge_verify, :ezcount_document_creation]
   ## >>>>>>> EZCOUNT_END <<<<<<<
 
-## >>>>>>> EZCOUNT <<<<<<<
+  ## >>>>>>> EZCOUNT <<<<<<<
   # def set_connection
   #   @conn = Faraday.new(:url => 'https://api.ezcount.co.il') do |c|
   #     c.use Faraday::Request::UrlEncoded
@@ -30,7 +30,7 @@ class JobsController < ApplicationController
   #     c.response :json, :content_type => /\bjson$/
   #   end
   # end
-## >>>>>>> EZCOUNT_END <<<<<<<
+  ## >>>>>>> EZCOUNT_END <<<<<<<
 
   def index
     # to filter style keys in _panel and jobs index view
@@ -106,8 +106,8 @@ class JobsController < ApplicationController
       # ezcount_charge
       # url = @payment.body["url"]
       # redirect_to url
-    # else
-    #   render :new
+      # else
+      #   render :new
       ## >>>>>>> EZCOUNT_END <<<<<<<
     end
   end
@@ -117,9 +117,9 @@ class JobsController < ApplicationController
   #   @payment = @conn.post do |req|
   #     req.url '/api/payment/prepareSafeUrl/clearingFormForWeb'
   #     req.headers['Content-Type'] = 'application/json'
-      ## change to 5 when testing, 116 when not testing.
-      ## test api key f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf
-      ## dev api key ENV['EZCOUNT_API']
+  ## change to 5 when testing, 116 when not testing.
+  ## test api key f1c85d16fc1acd369a93f0489f4615d93371632d97a9b0a197de6d4dc0da51bf
+  ## dev api key ENV['EZCOUNT_API']
   #     req.body = {:sum => 116,
   #                 :successUrl => "#{root_url}jobs/#{@job.id}/payment_success",
   #                 :api_key => ENV['EZCOUNT_API'],
